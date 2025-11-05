@@ -1,0 +1,62 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Catalogo/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5245 }],
+      "Priority": 0
+    }
+    ,
+    {
+      "UpstreamPathTemplate": "/api/Identity/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5290 }],
+      "Priority": 0
+    }
+    ,
+    {
+      "UpstreamPathTemplate": "/api/Files",
+      "UpstreamHttpMethod": ["POST"],
+      "DownstreamPathTemplate": "/api/Files",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5410 }],
+      "Priority": 1
+    }
+    ,
+    {
+      "UpstreamPathTemplate": "/api/Files/{everything}",
+      "UpstreamHttpMethod": ["GET", "HEAD", "DELETE"],
+      "DownstreamPathTemplate": "/api/Files/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5410 }],
+      "Priority": 1
+    }
+    ,
+    {
+      "UpstreamPathTemplate": "/api/WeaveCore/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5310 }],
+      "Priority": 0
+    }
+    ,
+    {
+      "UpstreamPathTemplate": "/api/FileServer/{everything}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [{ "Host": "localhost", "Port": 5410 }],
+      "Priority": 0
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://gateway.erp.com",
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
+}
