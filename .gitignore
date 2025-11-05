@@ -1,0 +1,95 @@
+# .NET / Visual Studio / Rider
+
+# Artefactos de compilación
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+artifacts/
+
+# Configuraciones de solución
+.vs/
+*.sln.docstates
+
+# Archivos específicos de usuario/IDE
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.userprefs
+
+# Directorios de configuración de compilación
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+
+# Logs
+*.log
+logs/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Resultados de tests y cobertura
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# NCrunch
+_NCrunch_*
+.*crunch*
+nCrunchTemp_*
+
+# ReSharper / JetBrains Rider
+_ReSharper*/
+*.[Rr]e[Ss]harper/
+.idea/
+*.sln.iml
+
+# DotCover
+*.dotCover
+
+# StyleCop
+StyleCop.Cache
+
+# ASP.NET (librerías cliente recuperadas por gestores)
+wwwroot/lib/
+
+# Azure Functions (ajustes locales)
+local.settings.json
+
+# EF/SQL (archivos de base de datos locales)
+*.mdf
+*.ldf
+*.dbmdl
+
+# Restauración de paquetes (legacy)
+project.lock.json
+
+# Variables de entorno y secretos
+.env
+.env.*
+
+# Basura del sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Visual Studio Code (mantener archivos útiles)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
