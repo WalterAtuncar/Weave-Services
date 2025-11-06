@@ -1,0 +1,163 @@
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 100%;
+  border-right: 1px solid;
+  padding: 16px;
+  gap: 16px;
+  overflow-y: auto;
+  background-color: #f8fafc;
+  flex-shrink: 0; /* No permitir que se encoja */
+}
+
+.toolbarSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: #374151;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+/* Lista de nodos */
+.nodeList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nodeItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.nodeItem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nodeItem:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+.nodeItem.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.nodeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.nodeLabel {
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* Lista de acciones */
+.actionList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.actionButton {
+  justify-content: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  height: 36px;
+  padding: 0 12px;
+}
+
+.dangerButton:hover {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Instrucciones */
+.instructions {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.instructionText {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .toolbar {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    padding: 12px;
+  }
+  
+  .nodeItem {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .nodeIcon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .nodeLabel {
+    font-size: 12px;
+  }
+  
+  .actionButton {
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 8px;
+  }
+  
+  .sectionTitle {
+    font-size: 13px;
+  }
+  
+  .instructionText {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,86 @@
+/* ====================================================================
+   SEARCH TOOLBAR COMPONENT STYLES
+   ==================================================================== */
+
+.searchToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.searchContainer {
+  min-width: 300px;
+  max-width: 400px;
+  flex: 1;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.actionButton {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ====================================================================
+   RESPONSIVE DESIGN
+   ==================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .searchToolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .toolbarLeft {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .searchContainer {
+    min-width: auto;
+    max-width: none;
+  }
+  
+  .toolbarRight {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .searchToolbar {
+    padding: 0.75rem 0;
+  }
+  
+  .toolbarLeft {
+    gap: 0.5rem;
+  }
+  
+  .actionButton {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+} 

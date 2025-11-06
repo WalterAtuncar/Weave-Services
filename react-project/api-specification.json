@@ -1,0 +1,2918 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Gestión de Procesos - Endpoints Utilizados",
+    "description": "Especificación de los endpoints que realmente se están utilizando en el frontend",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Equipo de Desarrollo",
+      "email": "desarrollo@empresa.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.gestion-procesos.com",
+      "description": "Servidor de Producción"
+    },
+    {
+      "url": "https://api-dev.gestion-procesos.com", 
+      "description": "Servidor de Desarrollo"
+    }
+  ],
+  "paths": {
+    "/Auth/login": {
+      "post": {
+        "tags": ["Autenticación"],
+        "summary": "Iniciar sesión",
+        "description": "Autentica un usuario y devuelve token de acceso",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login exitoso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          }
+        }
+      }
+    },
+    "/Auth/solicitarCodigoRecuperacion": {
+      "post": {
+        "tags": ["Autenticación"],
+        "summary": "Solicitar código de recuperación",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitarCodigoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Código enviado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolicitarCodigoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Auth/validarCodigoRecuperacion": {
+      "post": {
+        "tags": ["Autenticación"],
+        "summary": "Validar código de recuperación",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidarCodigoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Código válido"
+          }
+        }
+      }
+    },
+    "/Auth/cambiarContrasena": {
+      "post": {
+        "tags": ["Autenticación"],
+        "summary": "Cambiar contraseña",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarContrasenaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Contraseña cambiada exitosamente"
+          }
+        }
+      }
+    },
+    "/Auth/validarConfiguracionAd/{dominio}": {
+      "get": {
+        "tags": ["Autenticación"],
+        "summary": "Validar configuración Active Directory",
+        "parameters": [
+          {
+            "name": "dominio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Configuración AD válida"
+          }
+        }
+      }
+    },
+    "/Organizaciones": {
+      "get": {
+        "tags": ["Organizaciones"],
+        "summary": "Obtener organizaciones",
+        "parameters": [
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de organizaciones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizacionesResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Organizaciones"],
+        "summary": "Crear organización",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrganizacionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Organización creada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrganizacionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Organizaciones/{id}": {
+      "get": {
+        "tags": ["Organizaciones"],
+        "summary": "Obtener organización por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organización encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizacionResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Organizaciones"],
+        "summary": "Actualizar organización",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrganizacionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Organización actualizada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Organizaciones"],
+        "summary": "Eliminar organización",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organización eliminada"
+          }
+        }
+      }
+    },
+    "/Organizaciones/{id}/completa": {
+      "get": {
+        "tags": ["Organizaciones"],
+        "summary": "Obtener organización completa",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organización completa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizacionCompletaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Organizaciones/paginated": {
+      "get": {
+        "tags": ["Organizaciones"],
+        "summary": "Obtener organizaciones paginadas",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "SearchTerm",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organizaciones paginadas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizacionesPaginatedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Organizaciones/{id}/estructura-organizacional": {
+      "get": {
+        "tags": ["Organizaciones"],
+        "summary": "Obtener estructura organizacional",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estructura organizacional"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Organizaciones"],
+        "summary": "Eliminar estructura organizacional",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estructura eliminada"
+          }
+        }
+      }
+    },
+    "/Organizaciones/carga-masiva": {
+      "post": {
+        "tags": ["Organizaciones"],
+        "summary": "Carga masiva de datos",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CargaMasivaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Carga masiva exitosa"
+          }
+        }
+      }
+    },
+    "/Personas/paginated": {
+      "get": {
+        "tags": ["Personas"],
+        "summary": "Obtener personas paginadas",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "SearchTerm",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personas paginadas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonasPaginatedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Personas/{id}/completo": {
+      "get": {
+        "tags": ["Personas"],
+        "summary": "Obtener persona completa",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Persona completa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaCompletaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Personas/perfil/{perfilId}": {
+      "get": {
+        "tags": ["Personas"],
+        "summary": "Obtener personas por perfil",
+        "parameters": [
+          {
+            "name": "perfilId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personas del perfil"
+          }
+        }
+      }
+    },
+    "/Personas/con-usuario": {
+      "post": {
+        "tags": ["Personas"],
+        "summary": "Crear persona con usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePersonaConUsuarioRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Persona y usuario creados"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Personas"],
+        "summary": "Actualizar persona con usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePersonaConUsuarioRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persona y usuario actualizados"
+          }
+        }
+      }
+    },
+    "/Personas": {
+      "put": {
+        "tags": ["Personas"],
+        "summary": "Actualizar persona",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePersonaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persona actualizada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Personas"],
+        "summary": "Eliminar persona",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeletePersonaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persona eliminada"
+          }
+        }
+      }
+    },
+    "/Usuarios/persona/{personaId}": {
+      "get": {
+        "tags": ["Usuarios"],
+        "summary": "Obtener usuario por persona ID",
+        "parameters": [
+          {
+            "name": "personaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Sedes/paginated": {
+      "get": {
+        "tags": ["Sedes"],
+        "summary": "Obtener sedes paginadas",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "OrganizacionId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sedes paginadas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SedesPaginatedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Sedes": {
+      "post": {
+        "tags": ["Sedes"],
+        "summary": "Crear sede",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSedeCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sede creada"
+          }
+        }
+      }
+    },
+    "/Sedes/{id}": {
+      "put": {
+        "tags": ["Sedes"],
+        "summary": "Actualizar sede",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSedeCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sede actualizada"
+          }
+        }
+      }
+    },
+    "/Ubigeo": {
+      "get": {
+        "tags": ["Ubicación Geográfica"],
+        "summary": "Obtener códigos geográficos",
+        "parameters": [
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de ubicaciones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UbigeoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Ubigeo/paises": {
+      "get": {
+        "tags": ["Ubicación Geográfica"],
+        "summary": "Obtener países",
+        "responses": {
+          "200": {
+            "description": "Lista de países"
+          }
+        }
+      }
+    },
+    "/Ubigeo/departamentos": {
+      "get": {
+        "tags": ["Ubicación Geográfica"],
+        "summary": "Obtener departamentos",
+        "responses": {
+          "200": {
+            "description": "Lista de departamentos"
+          }
+        }
+      }
+    },
+    "/Ubigeo/{id}/hijos": {
+      "get": {
+        "tags": ["Ubicación Geográfica"],
+        "summary": "Obtener ubicaciones hijas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ubicaciones hijas"
+          }
+        }
+      }
+    },
+    "/Servidores/{organizacionId}": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener servidores por organización",
+        "parameters": [
+          {
+            "name": "organizacionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de servidores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServidoresResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Servidores/{id}": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener servidor por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Servidor encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Servidores"],
+        "summary": "Eliminar servidor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Servidor eliminado"
+          }
+        }
+      }
+    },
+    "/Servidores": {
+      "post": {
+        "tags": ["Servidores"],
+        "summary": "Crear servidor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateServidorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Servidor creado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Servidores"],
+        "summary": "Actualizar servidor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateServidorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Servidor actualizado"
+          }
+        }
+      }
+    },
+    "/Servidores/{organizacionId}/activos": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener servidores activos",
+        "parameters": [
+          {
+            "name": "organizacionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Servidores activos"
+          }
+        }
+      }
+    },
+    "/Servidores/{organizacionId}/buscar": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Buscar servidores",
+        "parameters": [
+          {
+            "name": "organizacionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "termino",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultados de búsqueda"
+          }
+        }
+      }
+    },
+    "/Servidores/asignar-sistema": {
+      "post": {
+        "tags": ["Servidores"],
+        "summary": "Asignar sistema a servidor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AsignarSistemaServidorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sistema asignado"
+          }
+        }
+      }
+    },
+    "/Servidores/desasignar-sistema": {
+      "delete": {
+        "tags": ["Servidores"],
+        "summary": "Desasignar sistema de servidor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DesasignarSistemaServidorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sistema desasignado"
+          }
+        }
+      }
+    },
+    "/Servidores/{id}/sistemas": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener sistemas por servidor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sistemas del servidor"
+          }
+        }
+      }
+    },
+    "/Servidores/sistema/{sistemaId}": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener servidores por sistema",
+        "parameters": [
+          {
+            "name": "sistemaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Servidores del sistema"
+          }
+        }
+      }
+    },
+    "/Servidores/{organizacionId}/estadisticas": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Obtener estadísticas de servidores",
+        "parameters": [
+          {
+            "name": "organizacionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estadísticas de servidores"
+          }
+        }
+      }
+    },
+    "/Servidores/{id}/estado": {
+      "patch": {
+        "tags": ["Servidores"],
+        "summary": "Cambiar estado de servidor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarEstadoServidorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado cambiado"
+          }
+        }
+      }
+    },
+    "/Servidores/validar-codigo": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Validar código de servidor",
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizacionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "servidorId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validación del código"
+          }
+        }
+      }
+    },
+    "/Servidores/validar-ip": {
+      "get": {
+        "tags": ["Servidores"],
+        "summary": "Validar IP de servidor",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizacionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "servidorId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validación de IP"
+          }
+        }
+      }
+    },
+    "/Perfiles": {
+      "get": {
+        "tags": ["Perfiles"],
+        "summary": "Obtener perfiles",
+        "parameters": [
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de perfiles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerfilesResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Perfiles"],
+        "summary": "Crear perfil",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePerfilRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Perfil creado"
+          }
+        }
+      }
+    },
+    "/Perfiles/{id}": {
+      "put": {
+        "tags": ["Perfiles"],
+        "summary": "Actualizar perfil",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePerfilRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Perfil actualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Perfiles"],
+        "summary": "Eliminar perfil",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Perfil eliminado"
+          }
+        }
+      }
+    },
+    "/MenuPerfiles": {
+      "get": {
+        "tags": ["Menú-Perfiles"],
+        "summary": "Obtener menú-perfiles",
+        "responses": {
+          "200": {
+            "description": "Lista de menú-perfiles"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Menú-Perfiles"],
+        "summary": "Crear menú-perfil",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMenuPerfilRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Menú-perfil creado"
+          }
+        }
+      }
+    },
+    "/MenuPerfiles/{id}": {
+      "put": {
+        "tags": ["Menú-Perfiles"],
+        "summary": "Actualizar menú-perfil",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuPerfilRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Menú-perfil actualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Menú-Perfiles"],
+        "summary": "Eliminar menú-perfil",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menú-perfil eliminado"
+          }
+        }
+      }
+    },
+    "/PlanesSuscripcion": {
+      "get": {
+        "tags": ["Planes de Suscripción"],
+        "summary": "Obtener planes de suscripción",
+        "responses": {
+          "200": {
+            "description": "Lista de planes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanesSuscripcionResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Planes de Suscripción"],
+        "summary": "Crear plan de suscripción",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlanSuscripcionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Plan creado"
+          }
+        }
+      }
+    },
+    "/PlanesSuscripcion/paginated": {
+      "get": {
+        "tags": ["Planes de Suscripción"],
+        "summary": "Obtener planes paginados",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Planes paginados"
+          }
+        }
+      }
+    },
+    "/PlanesSuscripcion/{id}": {
+      "put": {
+        "tags": ["Planes de Suscripción"],
+        "summary": "Actualizar plan de suscripción",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlanSuscripcionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Plan actualizado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Planes de Suscripción"],
+        "summary": "Eliminar plan de suscripción",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Plan eliminado"
+          }
+        }
+      }
+    },
+    "/SuscripcionesOrganizacion/paginated": {
+      "get": {
+        "tags": ["Suscripciones"],
+        "summary": "Obtener suscripciones paginadas",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Suscripciones paginadas"
+          }
+        }
+      }
+    },
+    "/SuscripcionesOrganizacion": {
+      "post": {
+        "tags": ["Suscripciones"],
+        "summary": "Crear suscripción",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSuscripcionOrganizacionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Suscripción creada"
+          }
+        }
+      }
+    },
+    "/SuscripcionesOrganizacion/{id}": {
+      "put": {
+        "tags": ["Suscripciones"],
+        "summary": "Actualizar suscripción",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSuscripcionOrganizacionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Suscripción actualizada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Suscripciones"],
+        "summary": "Eliminar suscripción",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Suscripción eliminada"
+          }
+        }
+      }
+    },
+    "/SuscripcionesOrganizacion/extender": {
+      "post": {
+        "tags": ["Suscripciones"],
+        "summary": "Extender suscripción",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtenderSuscripcionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Suscripción extendida"
+          }
+        }
+      }
+    },
+    "/SuscripcionesOrganizacion/renovar": {
+      "post": {
+        "tags": ["Suscripciones"],
+        "summary": "Renovar suscripción",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RenovarSuscripcionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Suscripción renovada"
+          }
+        }
+      }
+    },
+    "/UnidadesOrg": {
+      "post": {
+        "tags": ["Unidades Organizacionales"],
+        "summary": "Crear unidad organizacional",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUnidadOrgCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Unidad organizacional creada"
+          }
+        }
+      }
+    },
+    "/UnidadesOrg/{id}": {
+      "put": {
+        "tags": ["Unidades Organizacionales"],
+        "summary": "Actualizar unidad organizacional",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUnidadOrgCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Unidad organizacional actualizada"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "required": ["nombreUsuario", "password", "authAD"],
+        "properties": {
+          "nombreUsuario": {
+            "type": "string",
+            "description": "Nombre de usuario"
+          },
+          "password": {
+            "type": "string",
+            "description": "Contraseña"
+          },
+          "authAD": {
+            "type": "boolean",
+            "description": "Autenticación con Active Directory"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginResponseData"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "statusCode": {
+            "type": "integer"
+          },
+          "metadata": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginResponseData": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "menu": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuItem"
+            }
+          },
+          "token": {
+            "type": "string"
+          },
+          "organizacion": {
+            "$ref": "#/components/schemas/OrganizacionLogin"
+          }
+        }
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "usuarioId": {
+            "type": "integer"
+          },
+          "nombreUsuario": {
+            "type": "string"
+          },
+          "tipoUsuarioId": {
+            "type": "integer"
+          },
+          "personaId": {
+            "type": "integer"
+          },
+          "perfilId": {
+            "type": "integer"
+          },
+          "fechaExpiracion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "esActivo": {
+            "type": "boolean"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "nombreCompleto": {
+            "type": "string"
+          },
+          "fotoUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "MenuItem": {
+        "type": "object",
+        "properties": {
+          "menuId": {
+            "type": "integer"
+          },
+          "menuPadreId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "ruta": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoIcono": {
+            "type": "string"
+          },
+          "icono": {
+            "type": "string"
+          },
+          "clase": {
+            "type": "string"
+          },
+          "esTituloGrupo": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "string",
+            "nullable": true
+          },
+          "badgeClase": {
+            "type": "string",
+            "nullable": true
+          },
+          "menusHijos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuItem"
+            }
+          },
+          "tituloMenuPadre": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "OrganizacionLogin": {
+        "type": "object",
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "codigo": {
+            "type": "string"
+          },
+          "razonSocial": {
+            "type": "string"
+          },
+          "nombreComercial": {
+            "type": "string"
+          },
+          "numeroDocumento": {
+            "type": "string"
+          },
+          "direccion": {
+            "type": "string"
+          },
+          "ubicacionCompleta": {
+            "type": "string"
+          }
+        }
+      },
+      "SolicitarCodigoRequest": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "SolicitarCodigoResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "emailOriginal": {
+                "type": "string"
+              },
+              "emailEnviadoA": {
+                "type": "string"
+              },
+              "codigoExpiraEn": {
+                "type": "string"
+              },
+              "nota": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "ValidarCodigoRequest": {
+        "type": "object",
+        "required": ["email", "codigo"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "codigo": {
+            "type": "string"
+          }
+        }
+      },
+      "CambiarContrasenaRequest": {
+        "type": "object",
+        "required": ["email", "nuevaContrasena", "confirmarContrasena"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "nuevaContrasena": {
+            "type": "string",
+            "minLength": 8
+          },
+          "confirmarContrasena": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      },
+      "OrganizacionDto": {
+        "type": "object",
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "codigo": {
+            "type": "string",
+            "nullable": true
+          },
+          "razonSocial": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreComercial": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDocumento": {
+            "type": "integer",
+            "nullable": true
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "sector": {
+            "type": "integer",
+            "nullable": true
+          },
+          "industria": {
+            "type": "integer",
+            "nullable": true
+          },
+          "pais": {
+            "type": "integer",
+            "nullable": true
+          },
+          "departamento": {
+            "type": "integer",
+            "nullable": true
+          },
+          "provincia": {
+            "type": "integer",
+            "nullable": true
+          },
+          "distrito": {
+            "type": "integer",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "paginaWeb": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer"
+          },
+          "estado": {
+            "type": "integer"
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registroEliminado": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreateOrganizacionCommand": {
+        "type": "object",
+        "required": ["razonSocial"],
+        "properties": {
+          "codigo": {
+            "type": "string"
+          },
+          "razonSocial": {
+            "type": "string"
+          },
+          "nombreComercial": {
+            "type": "string"
+          },
+          "tipoDocumento": {
+            "type": "integer"
+          },
+          "numeroDocumento": {
+            "type": "string"
+          },
+          "direccion": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "UpdateOrganizacionCommand": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string"
+          },
+          "razonSocial": {
+            "type": "string"
+          },
+          "nombreComercial": {
+            "type": "string"
+          },
+          "tipoDocumento": {
+            "type": "integer"
+          },
+          "numeroDocumento": {
+            "type": "string"
+          },
+          "direccion": {
+            "type": "string"
+          },
+          "telefono": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "CreateOrganizacionResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "integer",
+            "description": "ID de la organización creada"
+          }
+        }
+      },
+      "OrganizacionesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizacionDto"
+            }
+          }
+        }
+      },
+      "OrganizacionResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrganizacionDto"
+          }
+        }
+      },
+      "OrganizacionCompletaResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrganizacionDto"
+          }
+        }
+      },
+      "OrganizacionesPaginatedResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PagedResult"
+          }
+        }
+      },
+      "PagedResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {}
+          },
+          "totalItems": {
+            "type": "integer"
+          },
+          "pageNumber": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CargaMasivaRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "Datos para carga masiva"
+          }
+        }
+      },
+      "PersonaDto": {
+        "type": "object",
+        "properties": {
+          "personaId": {
+            "type": "integer"
+          },
+          "tipoDoc": {
+            "type": "integer",
+            "nullable": true
+          },
+          "nroDoc": {
+            "type": "string",
+            "nullable": true
+          },
+          "codEmpleado": {
+            "type": "string",
+            "nullable": true
+          },
+          "apellidoPaterno": {
+            "type": "string"
+          },
+          "apellidoMaterno": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "fotoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "estadoLaboral": {
+            "type": "integer"
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaIngreso": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "emailPersonal": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizacionId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "sedeId": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      },
+      "CreatePersonaConUsuarioRequest": {
+        "type": "object",
+        "required": ["apellidoPaterno", "nombres"],
+        "properties": {
+          "apellidoPaterno": {
+            "type": "string"
+          },
+          "apellidoMaterno": {
+            "type": "string"
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "nroDoc": {
+            "type": "string"
+          },
+          "emailPersonal": {
+            "type": "string",
+            "format": "email"
+          },
+          "celular": {
+            "type": "string"
+          },
+          "nombreUsuario": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "perfilId": {
+            "type": "integer"
+          }
+        }
+      },
+      "UpdatePersonaConUsuarioRequest": {
+        "type": "object",
+        "properties": {
+          "personaId": {
+            "type": "integer"
+          },
+          "apellidoPaterno": {
+            "type": "string"
+          },
+          "apellidoMaterno": {
+            "type": "string"
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "nroDoc": {
+            "type": "string"
+          },
+          "emailPersonal": {
+            "type": "string",
+            "format": "email"
+          },
+          "celular": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdatePersonaRequest": {
+        "type": "object",
+        "properties": {
+          "personaId": {
+            "type": "integer"
+          },
+          "apellidoPaterno": {
+            "type": "string"
+          },
+          "apellidoMaterno": {
+            "type": "string"
+          },
+          "nombres": {
+            "type": "string"
+          },
+          "nroDoc": {
+            "type": "string"
+          },
+          "emailPersonal": {
+            "type": "string",
+            "format": "email"
+          },
+          "celular": {
+            "type": "string"
+          }
+        }
+      },
+      "DeletePersonaRequest": {
+        "type": "object",
+        "required": ["personaId"],
+        "properties": {
+          "personaId": {
+            "type": "integer"
+          },
+          "motivo": {
+            "type": "string"
+          }
+        }
+      },
+      "PersonasPaginatedResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PagedResult"
+          }
+        }
+      },
+      "PersonaCompletaResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PersonaDto"
+          }
+        }
+      },
+      "UsuarioResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "usuarioId": {
+                "type": "integer"
+              },
+              "nombreUsuario": {
+                "type": "string"
+              },
+              "personaId": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "SedeDto": {
+        "type": "object",
+        "properties": {
+          "sedeId": {
+            "type": "integer"
+          },
+          "organizacionId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ubigeo": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateSedeCommand": {
+        "type": "object",
+        "required": ["organizacionId", "nombre"],
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "ubigeo": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateSedeCommand": {
+        "type": "object",
+        "properties": {
+          "sedeId": {
+            "type": "integer"
+          },
+          "organizacionId": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "ubigeo": {
+            "type": "string"
+          }
+        }
+      },
+      "SedesPaginatedResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PagedResult"
+          }
+        }
+      },
+      "UbigeoDto": {
+        "type": "object",
+        "properties": {
+          "ubigeoId": {
+            "type": "integer"
+          },
+          "ubigeoPadreId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "idNivel": {
+            "type": "integer"
+          },
+          "codigo": {
+            "type": "string"
+          },
+          "codigoCompleto": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "nombreCorto": {
+            "type": "string"
+          },
+          "tipoNivel": {
+            "type": "string"
+          },
+          "esPais": {
+            "type": "boolean"
+          },
+          "esDepartamento": {
+            "type": "boolean"
+          },
+          "esProvincia": {
+            "type": "boolean"
+          },
+          "esDistrito": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UbigeoResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UbigeoDto"
+            }
+          }
+        }
+      },
+      "CreateServidorDto": {
+        "type": "object",
+        "required": ["organizacionId", "codigoServidor", "nombreServidor"],
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "codigoServidor": {
+            "type": "string"
+          },
+          "nombreServidor": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "puerto": {
+            "type": "integer"
+          },
+          "tipoServidor": {
+            "type": "string",
+            "enum": ["APLICACION", "BASE_DATOS", "WEB", "ARCHIVOS"]
+          },
+          "sistemaOperativo": {
+            "type": "string",
+            "enum": ["WINDOWS", "LINUX", "UNIX", "MACOS"]
+          },
+          "ambiente": {
+            "type": "string",
+            "enum": ["DESARROLLO", "PRUEBAS", "PRODUCCION"]
+          },
+          "proveedor": {
+            "type": "string",
+            "enum": ["AWS", "AZURE", "GOOGLE_CLOUD", "ON_PREMISE"]
+          }
+        }
+      },
+      "UpdateServidorDto": {
+        "type": "object",
+        "properties": {
+          "servidorId": {
+            "type": "integer"
+          },
+          "codigoServidor": {
+            "type": "string"
+          },
+          "nombreServidor": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "puerto": {
+            "type": "integer"
+          },
+          "tipoServidor": {
+            "type": "string"
+          },
+          "sistemaOperativo": {
+            "type": "string"
+          },
+          "ambiente": {
+            "type": "string"
+          },
+          "proveedor": {
+            "type": "string"
+          }
+        }
+      },
+      "ServidoresResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "servidorId": {
+                  "type": "integer"
+                },
+                "codigoServidor": {
+                  "type": "string"
+                },
+                "nombreServidor": {
+                  "type": "string"
+                },
+                "descripcion": {
+                  "type": "string"
+                },
+                "ip": {
+                  "type": "string"
+                },
+                "puerto": {
+                  "type": "integer"
+                },
+                "tipoServidor": {
+                  "type": "string"
+                },
+                "sistemaOperativo": {
+                  "type": "string"
+                },
+                "ambiente": {
+                  "type": "string"
+                },
+                "estado": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "AsignarSistemaServidorRequest": {
+        "type": "object",
+        "required": ["sistemaId", "servidorId"],
+        "properties": {
+          "sistemaId": {
+            "type": "integer"
+          },
+          "servidorId": {
+            "type": "integer"
+          },
+          "observaciones": {
+            "type": "string"
+          }
+        }
+      },
+      "DesasignarSistemaServidorRequest": {
+        "type": "object",
+        "required": ["sistemaId", "servidorId"],
+        "properties": {
+          "sistemaId": {
+            "type": "integer"
+          },
+          "servidorId": {
+            "type": "integer"
+          }
+        }
+      },
+      "CambiarEstadoServidorRequest": {
+        "type": "object",
+        "required": ["nuevoEstado"],
+        "properties": {
+          "nuevoEstado": {
+            "type": "string",
+            "enum": ["ACTIVO", "INACTIVO", "MANTENIMIENTO", "FUERA_SERVICIO"]
+          },
+          "motivo": {
+            "type": "string"
+          }
+        }
+      },
+      "PerfilDto": {
+        "type": "object",
+        "properties": {
+          "perfilId": {
+            "type": "integer"
+          },
+          "nombrePerfil": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "integer"
+          },
+          "registroEliminado": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreatePerfilRequest": {
+        "type": "object",
+        "required": ["nombrePerfil"],
+        "properties": {
+          "nombrePerfil": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdatePerfilRequest": {
+        "type": "object",
+        "properties": {
+          "nombrePerfil": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          }
+        }
+      },
+      "PerfilesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerfilDto"
+            }
+          }
+        }
+      },
+      "CreateMenuPerfilRequest": {
+        "type": "object",
+        "required": ["menuId", "perfilId", "accesoId"],
+        "properties": {
+          "menuId": {
+            "type": "integer"
+          },
+          "perfilId": {
+            "type": "integer"
+          },
+          "accesoId": {
+            "type": "integer"
+          }
+        }
+      },
+      "UpdateMenuPerfilRequest": {
+        "type": "object",
+        "properties": {
+          "accesoId": {
+            "type": "integer"
+          }
+        }
+      },
+      "PlanSuscripcionDto": {
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "integer"
+          },
+          "nombrePlan": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "limiteUsuarios": {
+            "type": "integer"
+          },
+          "duracionDias": {
+            "type": "integer"
+          },
+          "precio": {
+            "type": "number",
+            "nullable": true
+          },
+          "tipoPlan": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          }
+        }
+      },
+      "CreatePlanSuscripcionCommand": {
+        "type": "object",
+        "required": ["nombrePlan", "limiteUsuarios", "duracionDias"],
+        "properties": {
+          "nombrePlan": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "limiteUsuarios": {
+            "type": "integer"
+          },
+          "duracionDias": {
+            "type": "integer"
+          },
+          "precio": {
+            "type": "number"
+          },
+          "tipoPlan": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdatePlanSuscripcionCommand": {
+        "type": "object",
+        "properties": {
+          "nombrePlan": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "limiteUsuarios": {
+            "type": "integer"
+          },
+          "duracionDias": {
+            "type": "integer"
+          },
+          "precio": {
+            "type": "number"
+          },
+          "tipoPlan": {
+            "type": "string"
+          }
+        }
+      },
+      "PlanesSuscripcionResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanSuscripcionDto"
+            }
+          }
+        }
+      },
+      "CreateSuscripcionOrganizacionCommand": {
+        "type": "object",
+        "required": ["organizacionId", "planId", "fechaInicio"],
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "planId": {
+            "type": "integer"
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "UpdateSuscripcionOrganizacionCommand": {
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "integer"
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "ExtenderSuscripcionRequest": {
+        "type": "object",
+        "required": ["suscripcionId", "diasExtension"],
+        "properties": {
+          "suscripcionId": {
+            "type": "integer"
+          },
+          "diasExtension": {
+            "type": "integer"
+          }
+        }
+      },
+      "RenovarSuscripcionRequest": {
+        "type": "object",
+        "required": ["suscripcionId"],
+        "properties": {
+          "suscripcionId": {
+            "type": "integer"
+          },
+          "nuevoPlanId": {
+            "type": "integer"
+          }
+        }
+      },
+      "CreateUnidadOrgCommand": {
+        "type": "object",
+        "required": ["organizacionId", "nombreCorto", "nombreCompleto"],
+        "properties": {
+          "organizacionId": {
+            "type": "integer"
+          },
+          "nombreCorto": {
+            "type": "string"
+          },
+          "nombreCompleto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "unidadPadreId": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateUnidadOrgCommand": {
+        "type": "object",
+        "properties": {
+          "nombreCorto": {
+            "type": "string"
+          },
+          "nombreCompleto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "unidadPadreId": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+} 

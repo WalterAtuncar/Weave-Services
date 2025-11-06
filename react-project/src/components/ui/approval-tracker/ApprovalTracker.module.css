@@ -1,0 +1,582 @@
+/* =============================================
+   APPROVAL TRACKER STYLES
+   ============================================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== LOADING & NOT FOUND ===== */
+
+.loading,
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px;
+  gap: 10px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p,
+.notFound p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ===== HEADER ===== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.operacionInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.operacionInfo h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.solicitudMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.solicitudId {
+  font-weight: 500;
+  color: #374151;
+}
+
+.solicitudFecha {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.headerStatus {
+  flex-shrink: 0;
+}
+
+/* ===== PROGRESS SECTION ===== */
+
+.progressSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.progressHeader span:first-child {
+  font-weight: 500;
+  color: #374151;
+}
+
+.progressHeader span:last-child {
+  color: #6b7280;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* ===== SOLICITANTE SECTION ===== */
+
+.solicitanteSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.solicitanteSection h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.solicitanteCard {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.solicitanteInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.solicitanteInfo div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.solicitanteNombre {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.solicitanteCargo {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.motivoSection {
+  margin-top: 4px;
+}
+
+.motivoSection h5 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.motivoSection p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ===== TAREA ACTIVA SECTION ===== */
+
+.tareaActivaSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tareaActivaSection h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.tareaActivaCard {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #3b82f6;
+  background-color: #f0f9ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tareaActivaInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tareaActivaInfo div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tareaActivaNombre {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+.tareaActivaRol {
+  font-size: 12px;
+  color: #3b82f6;
+}
+
+/* ===== STEPS SECTION ===== */
+
+.stepsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stepsSection h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== APPROVAL STEP ===== */
+
+.approvalStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepContent {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.stepContent:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.activeStep {
+  border-color: #3b82f6 !important;
+  background-color: #f0f9ff !important;
+  box-shadow: 0 0 0 1px #3b82f6, 0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.activeStep:hover {
+  border-color: #2563eb !important;
+  background-color: #eff6ff !important;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.stepInfo {
+  flex: 1;
+}
+
+.stepTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.stepTitleRow h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.stepSubtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.stepStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.rejectionReason {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fee2e2; /* red-100 */
+  color: #991b1b; /* red-900 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.stepDetails {
+  margin-top: 6px;
+}
+
+.stepMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.stepOrder {
+  font-weight: 600;
+  color: #374151;
+}
+
+.stepDate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepComments {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+  background-color: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.stepActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.approveButton,
+.rejectButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.approveButton {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.approveButton:hover {
+  background-color: #bbf7d0;
+}
+
+.rejectButton {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.rejectButton:hover {
+  background-color: #fecaca;
+}
+
+.disabledButton {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  background-color: #f3f4f6 !important;
+  color: #9ca3af !important;
+  border-color: #e5e7eb !important;
+}
+
+.disabledButton:hover {
+  background-color: #f3f4f6 !important;
+  color: #9ca3af !important;
+  border-color: #e5e7eb !important;
+}
+
+/* ===== STEP CONNECTOR ===== */
+
+.stepConnector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.connectorLine {
+  width: 24px;
+  height: 2px;
+  background-color: #e5e7eb;
+  transition: background-color 0.3s ease;
+}
+
+.connectorLine.completed {
+  background-color: #10b981;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .solicitudMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .approvalStep {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .stepConnector {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .connectorLine {
+    width: 2px;
+    height: 24px;
+  }
+
+  .stepHeader {
+    gap: 10px;
+  }
+
+  .stepIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stepTitleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .stepActions {
+    flex-direction: column;
+  }
+
+  .solicitanteCard {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+.stepContent {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.progressFill {
+  animation: progressAnimation 1s ease-out;
+}
+
+@keyframes progressAnimation {
+  from {
+    width: 0%;
+  }
+}
+
+/* ===== ESTADO OCULTO ===== */
+
+.stepContent[data-oculto="true"] {
+  opacity: 0.6;
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.stepContent[data-oculto="true"] .stepHeader {
+  opacity: 0.7;
+}
+
+.stepContent[data-oculto="true"] .stepInfo h4 {
+  color: #6b7280;
+}
+
+.stepContent[data-oculto="true"] .stepSubtitle {
+  color: #9ca3af;
+}
+

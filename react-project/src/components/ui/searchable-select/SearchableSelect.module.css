@@ -1,0 +1,304 @@
+/* SearchableSelect.module.css */
+
+.searchableSelect {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 4px;
+}
+
+.trigger {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.trigger:disabled {
+  background-color: var(--surface-color);
+  color: var(--text-secondary-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.trigger:focus:not(:disabled) {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color-20);
+}
+
+.triggerContent {
+  flex: 1;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.searchContainer {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.searchInputContainer {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary-color);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 14px;
+  outline: none;
+}
+
+.optionsContainer {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.option:disabled {
+  color: var(--text-secondary-color);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.option:hover:not(:disabled) {
+  background-color: var(--primary-color-08);
+}
+
+.optionSelected {
+  background-color: var(--primary-color-15);
+}
+
+.optionContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.optionLabel {
+  flex: 1;
+}
+
+.noResults {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary-color);
+  font-size: 14px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown {
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* Scroll personalizado para el contenedor de opciones */
+.optionsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.optionsContainer::-webkit-scrollbar-track {
+  background: var(--surface-color);
+  border-radius: 3px;
+}
+
+.optionsContainer::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.optionsContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary-color);
+}
+
+/* Scrollbar en modo oscuro */
+.dark .optionsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dark .optionsContainer::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 3px;
+}
+
+.dark .optionsContainer::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.dark .optionsContainer::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Tema oscuro */
+.dark .trigger {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #f1f5f9 !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .trigger:hover:not(:disabled) {
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+}
+
+.dark .trigger:focus:not(:disabled) {
+  border-color: #3b82f6 !important;
+  background-color: #374151 !important;
+  box-shadow: 
+    inset 0 1px 2px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark .trigger:disabled {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #9ca3af !important;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.dark .dropdown {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4), 
+    0 4px 8px -2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .searchInput {
+  background-color: #1f2937 !important;
+  border-color: #4b5563 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .searchInput::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark .option {
+  color: #e2e8f0 !important;
+}
+
+.dark .option:hover {
+  background-color: #4b5563 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .option:disabled {
+  color: #6b7280 !important;
+}
+
+.dark .clearButton {
+  color: #9ca3af !important;
+}
+
+.dark .clearButton:hover {
+  color: #f1f5f9 !important;
+}
+
+.dark .chevronIcon {
+  color: #9ca3af !important;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .dropdown {
+    max-height: 250px;
+  }
+  
+  .optionsContainer {
+    max-height: 150px;
+  }
+  
+  .trigger {
+    padding: 10px 14px;
+  }
+  
+  .searchContainer {
+    padding: 10px;
+  }
+  
+  .option {
+    padding: 10px 14px;
+  }
+} 

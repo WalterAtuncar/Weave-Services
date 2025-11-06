@@ -1,0 +1,312 @@
+/* ==============================================
+   MODAL DE DUPLICACIÓN DE SISTEMAS
+   ============================================== */
+
+.duplicationModal {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* ==============================================
+   INFORMACIÓN DEL SISTEMA ORIGINAL
+   ============================================== */
+
+.originalSystemInfo {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+}
+
+.originalSystemHeader {
+  margin-bottom: 1rem;
+}
+
+.originalSystemHeader h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.originalSystemDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detailLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==============================================
+   SECCIONES
+   ============================================== */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ==============================================
+   FORMULARIOS
+   ============================================== */
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.autoGenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.advancedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* ==============================================
+   OPCIONES DE DUPLICACIÓN
+   ============================================== */
+
+.optionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.option:hover {
+  background: var(--color-surface-hover);
+}
+
+.optionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.optionLabel {
+  font-weight: 500;
+  user-select: none;
+}
+
+.optionDescription {
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+/* ==============================================
+   VALIDACIÓN
+   ============================================== */
+
+.validation {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.validationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.validationHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.validationList {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.validationList li {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* ==============================================
+   ACCIONES
+   ============================================== */
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.primaryActions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+@media (max-width: 768px) {
+  .duplicationModal {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .autoGenGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .advancedGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .originalSystemDetails {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .primaryActions {
+    justify-content: stretch;
+  }
+  
+  .primaryActions > * {
+    flex: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .duplicationModal {
+    padding: 0.75rem;
+  }
+  
+  .originalSystemInfo {
+    padding: 1rem;
+  }
+  
+  .option {
+    padding: 0.75rem;
+  }
+  
+  .validation {
+    padding: 0.75rem;
+  }
+}
+
+/* ==============================================
+   VARIABLES CSS PARA TEMAS
+   ============================================== */
+
+:root {
+  --color-surface-secondary: rgba(0, 0, 0, 0.02);
+  --color-surface-hover: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  --color-surface-secondary: rgba(255, 255, 255, 0.05);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+}
+
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
+
+.duplicationModal * {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: slideIn 0.3s ease-out;
+}
+
+.section:nth-child(1) { animation-delay: 0.1s; }
+.section:nth-child(2) { animation-delay: 0.2s; }
+.section:nth-child(3) { animation-delay: 0.3s; }
+.section:nth-child(4) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .duplicationModal *,
+  .option,
+  .section {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ==============================================
+   ESTADOS DE FOCUS
+   ============================================== */
+
+.option:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+} 

@@ -1,0 +1,119 @@
+/* MenuCard.module.css - estilos modernos y profesionales, con soporte light/dark */
+
+.card {
+  /* Variables de tamaño por defecto (medium) */
+  --card-padding: 16px;
+  --card-radius: 14px;
+  --card-min-height: 168px;
+  --title-size: clamp(16px, 1.6vw, 18px);
+  --desc-size: clamp(13px, 1.4vw, 14px);
+  --icon-size: clamp(28px, 2.2vw, 32px);
+
+  border-radius: var(--card-radius);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: var(--card-min-height);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Centrado vertical y horizontal para estado colapsado */
+.vcenter {
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+.icon svg { width: 100%; height: 100%; }
+
+.title {
+  font-size: var(--title-size);
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  transition: font-size 0.2s ease;
+}
+
+.description {
+  font-size: var(--desc-size);
+  margin: 0;
+  text-align: center;
+}
+
+.actions {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandHint {
+  font-size: 12px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* Variantes de tamaño */
+.small {
+  --card-padding: 14px;
+  --card-radius: 12px;
+  --card-min-height: 152px;
+  --title-size: clamp(15px, 1.4vw, 17px);
+  --desc-size: clamp(12px, 1.2vw, 13px);
+  --icon-size: clamp(24px, 2vw, 28px);
+}
+
+.medium {
+  /* Usa los valores por defecto */
+}
+
+.large {
+  --card-padding: 18px;
+  --card-radius: 16px;
+  --card-min-height: 196px;
+  /* +50% sobre el estado natural */
+  --title-size: clamp(27px, 2.7vw, 30px);
+  --desc-size: clamp(14px, 1.6vw, 15px);
+  --icon-size: clamp(48px, 3.9vw, 54px);
+}
+
+/* Dark theme adjustments (scoped via parent [data-theme="dark"] or .dark) */
+[data-theme="dark"] .card, .dark .card {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .expandHint, .dark .expandHint {
+  opacity: 0.7;
+}

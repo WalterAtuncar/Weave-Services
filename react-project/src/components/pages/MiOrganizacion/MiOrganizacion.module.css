@@ -1,0 +1,1264 @@
+/* ============================================================================
+   MI ORGANIZACIÓN - ESTILOS PRINCIPALES
+   ============================================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.header {
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid;
+  margin-bottom: 8px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.headerInfo h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.headerInfo p {
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ============================================================================
+   SECCIÓN DE ORGANIZACIÓN - CARD PRINCIPAL
+   ============================================================================ */
+
+.organizacionSection {
+  width: 100%;
+}
+
+.organizacionCard {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Contenedor principal mejorado */
+.organizacionInfoContainer {
+  padding: 8px 0;
+}
+
+/* Header con logo y título */
+.organizacionHeader {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 12px 0 18px 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.organizacionLogo {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.logoPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #374151, #6b7280);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.organizacionTitleSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.organizacionName {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #111827, #374151);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.razonSocial {
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0 0 12px 0;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.organizacionCodes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.documentoChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+/* Grid de información organizada */
+.organizacionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+/* Secciones de información */
+.infoSection {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(249, 250, 251, 0.9));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.infoSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #374151, #6b7280, #9ca3af);
+  border-radius: 12px 12px 0 0;
+}
+
+.infoSection:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #374151;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.sectionTitle svg {
+  color: #374151;
+  background: rgba(55, 65, 81, 0.1);
+  padding: 3px;
+  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Items de información */
+.infoItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.infoItem svg {
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.infoDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.infoLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.infoValue {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.infoText {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.4;
+  margin: 0;
+  text-align: justify;
+}
+
+.infoLink {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.infoLink:hover {
+  color: #4f46e5;
+  border-bottom-color: #4f46e5;
+}
+
+/* Estados de carga y error para la card */
+.loadingCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px;
+  opacity: 0.7;
+}
+
+.errorCard {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.errorCard svg {
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.errorCard h4 {
+  margin: 0 0 4px 0;
+  color: #ef4444;
+}
+
+.errorCard p {
+  margin: 0 0 12px 0;
+  opacity: 0.8;
+}
+
+/* ============================================================================
+   SECCIÓN DE SEDES
+   ============================================================================ */
+
+.sedesSection {
+  width: 100%;
+}
+
+.sedesCard {
+  width: 100%;
+}
+
+.sedesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sedesControls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  flex: 1;
+  min-width: 280px;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.filterButton:hover {
+  opacity: 0.8;
+}
+
+.sedesGrid {
+  margin-top: 16px;
+}
+
+/* ============================================================================
+   CONTENIDO DEL GRID DE SEDES
+   ============================================================================ */
+
+/* Estilos para columnas simplificadas */
+.sedeBasic {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sedeNombre {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.sedeDescripcion {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.ubigeoInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #059669;
+  font-weight: 500;
+}
+
+/* Estilos legacy mantenidos para compatibilidad */
+.sedeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ubicacionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ubicacionCompleta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.ubigeoCode {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-left: 20px;
+  font-family: monospace;
+}
+
+.estadisticas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.estatItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.estatItem svg {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge.activa {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.statusBadge.inactiva {
+  background: rgba(107, 114, 128, 0.1);
+  color: #6b7280;
+}
+
+/* ============================================================================
+   MODAL - VISTA DE DETALLES
+   ============================================================================ */
+
+.modalViewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modalViewSection {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.modalViewSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modalViewItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 16px;
+}
+
+.modalViewItem:last-child {
+  border-bottom: none;
+}
+
+.modalViewLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.modalViewValue {
+  flex: 1;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* ============================================================================
+   CARD HEADER CON ACCIONES
+   ============================================================================ */
+
+.cardHeaderWithActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+}
+
+
+
+/* ============================================================================
+   MODAL - FORMULARIOS
+   ============================================================================ */
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.organizacionModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.modalFormSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.required {
+  color: #ef4444;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.formTextarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.formHint {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 4px;
+}
+
+/* ============================================================================
+   PREVISUALIZACIÓN DEL LOGO
+   ============================================================================ */
+
+.logoPreview {
+  margin-top: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(249, 250, 251, 0.8);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+}
+
+.logoImage {
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 8px;
+}
+
+/* ============================================================================
+   PREVISUALIZACIÓN DE COLORES
+   ============================================================================ */
+
+.colorInputContainer {
+  position: relative;
+}
+
+.colorPreview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(249, 250, 251, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.colorCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.colorValue {
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+   INFORMACIÓN CORPORATIVA
+   ============================================================================ */
+
+.corporateInfo {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+}
+
+.corporateInfoText {
+  color: rgba(59, 130, 246, 0.9);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   ALERTAS Y ESTADOS DE ERROR
+   ============================================================================ */
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 6px;
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.infoAlert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 6px;
+  color: #3b82f6;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 64px 32px;
+  text-align: center;
+  min-height: 400px;
+}
+
+.errorContainer svg {
+  color: #6b7280;
+}
+
+.errorContainer h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #374151;
+}
+
+.errorContainer p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+  max-width: 400px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .header {
+    padding: 20px;
+    margin-bottom: 0;
+  }
+
+  .headerInfo h1 {
+    font-size: 24px;
+  }
+
+  .headerInfo p {
+    font-size: 14px;
+  }
+
+  .organizacionHeader {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 16px 0 20px 0;
+    margin-bottom: 24px;
+  }
+
+  .organizacionLogo {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+  }
+
+  .logoPlaceholder {
+    font-size: 22px;
+  }
+
+  .organizacionName {
+    font-size: 22px;
+  }
+
+  .organizacionGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .infoSection {
+    padding: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .sedesHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sedesControls {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .searchContainer {
+    min-width: unset;
+  }
+
+  .filterButton {
+    justify-content: center;
+  }
+
+  .modalViewContent,
+  .modalForm {
+    max-height: 70vh;
+  }
+
+  .modalViewItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .modalViewLabel {
+    min-width: unset;
+  }
+
+  .modalViewValue {
+    text-align: left;
+  }
+
+  .cardHeaderWithActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .header {
+    padding: 16px;
+  }
+
+  .headerInfo h1 {
+    font-size: 20px;
+  }
+
+  .organizacionName {
+    font-size: 18px;
+  }
+
+  .organizacionLogo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logoPlaceholder {
+    font-size: 16px;
+  }
+
+  .organizacionGrid {
+    gap: 12px;
+  }
+
+  .infoSection {
+    padding: 14px;
+  }
+
+  .sectionTitle {
+    font-size: 15px;
+  }
+
+  .infoLabel {
+    font-size: 12px;
+  }
+
+  .infoValue {
+    font-size: 14px;
+  }
+
+  .infoText {
+    font-size: 13px;
+  }
+
+  .modalViewContent,
+  .modalForm {
+    max-height: 75vh;
+  }
+
+  .organizacionModalForm {
+    max-height: 80vh;
+    padding: 2px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .modalViewSection {
+    padding: 16px;
+  }
+
+  .modalSectionTitle {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================================
+   TEMA OSCURO
+   ============================================================================ */
+
+/* Clases dinámicas para tema oscuro */
+.dark .organizacionHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .organizacionName {
+  background: linear-gradient(135deg, #ffffff, #d1d5db) !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #d1d5db !important;
+}
+
+.dark .razonSocial {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .documentoChip {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.3), rgba(55, 65, 81, 0.2)) !important;
+  color: #d1d5db !important;
+  border-color: rgba(75, 85, 99, 0.4) !important;
+}
+
+.dark .sedeNombre {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+.dark .sedeDescripcion {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .ubigeoInfo {
+  color: #10b981 !important;
+}
+
+.dark .infoSection {
+  background: linear-gradient(135deg, rgba(75, 85, 99, 0.1), rgba(55, 65, 81, 0.05)) !important;
+  border-color: rgba(75, 85, 99, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .infoSection::before {
+  opacity: 0.8 !important;
+}
+
+.dark .sectionTitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .sectionTitle svg {
+  background: rgba(75, 85, 99, 0.2) !important;
+}
+
+.dark .infoItem {
+  border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .infoLabel {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark .infoValue {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .infoText {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Estilos específicos del modal para tema oscuro */
+.dark .formLabel {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .formLabel svg {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .modalSectionTitle {
+  color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .modalSectionTitle svg {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .formInput,
+.dark .formTextarea,
+.dark .formSelect {
+  background: rgba(75, 85, 99, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .formInput:focus,
+.dark .formTextarea:focus,
+.dark .formSelect:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+}
+
+.dark .formInput::placeholder,
+.dark .formTextarea::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Información de la Organización */
+  .organizacionHeader {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .organizacionName {
+    background: linear-gradient(135deg, #ffffff, #d1d5db) !important;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #d1d5db;
+  }
+
+  .razonSocial {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .documentoChip {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.3), rgba(55, 65, 81, 0.2));
+    color: #d1d5db;
+    border-color: rgba(75, 85, 99, 0.4);
+  }
+
+  .infoSection {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.1), rgba(55, 65, 81, 0.05));
+    border-color: rgba(75, 85, 99, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .infoSection::before {
+    opacity: 0.8;
+  }
+
+  .sectionTitle {
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sectionTitle svg {
+    background: rgba(75, 85, 99, 0.2);
+  }
+
+  .infoItem {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .infoLabel {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .infoValue {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .infoText {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .infoLink {
+    color: #93c5fd;
+  }
+
+  .infoLink:hover {
+    color: #dbeafe;
+    border-bottom-color: #dbeafe;
+  }
+
+  /* Grid de sedes */
+  .sedeNombre {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .sedeDescripcion {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .ubigeoInfo {
+    color: #10b981;
+  }
+
+  /* Alertas */
+  .infoAlert {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #93c5fd;
+  }
+
+  /* Formularios */
+  .formInput,
+  .formTextarea,
+  .formSelect {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .formInput:focus,
+  .formTextarea:focus,
+  .formSelect:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .formHint {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .formLabel {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .formLabel svg {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .required {
+    color: #f87171;
+  }
+
+  .modalSectionTitle {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .modalSectionTitle svg {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Modales */
+  .modalViewSection {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .modalViewItem {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .modalViewSectionTitle {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .modalSectionTitle {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Formulario de organización */
+  .organizacionModalForm {
+    background: transparent;
+  }
+
+  .cardHeaderWithActions {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Previsualización del logo */
+  .logoPreview {
+    background: rgba(75, 85, 99, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .logoContainer {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.2), rgba(55, 65, 81, 0.1));
+  }
+
+  /* Previsualización de colores */
+  .colorPreview {
+    background: rgba(75, 85, 99, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .colorValue {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Información corporativa */
+  .corporateInfo {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .corporateInfoText {
+    color: #93c5fd;
+  }
+
+}

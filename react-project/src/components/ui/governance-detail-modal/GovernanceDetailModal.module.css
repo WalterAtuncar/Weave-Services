@@ -1,0 +1,445 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  max-height: 80vh;
+}
+
+/* Navegación de tabs */
+.tabNavigation {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tabButton:hover:not(.active) {
+  background-color: var(--surface-color);
+}
+
+.tabButton.active {
+  font-weight: 600;
+  border-bottom-color: var(--primary-color);
+}
+
+.tabCount {
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+/* Contenedor del contenido */
+.tabContentContainer {
+  flex: 1;
+  overflow: auto;
+  padding-right: 8px;
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header de cada tab */
+.tabHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Estados vacíos */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Tab de Roles */
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roleCard {
+  padding: 20px;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.roleCard:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.roleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.roleInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.roleDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.roleStatus {
+  flex-shrink: 0;
+}
+
+.roleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--text-secondary-color);
+}
+
+.roleMetaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.roleObservaciones {
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 12px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.roleActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Formularios overlay */
+.formOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.formCard {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.formGrid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.formGrid > * {
+  grid-column: 1 / -1;
+}
+
+/* Para formularios con 2 columnas en pantallas grandes */
+@media (min-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .formGrid > *:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Tab de Historial */
+.historialList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.historialItem {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.historialIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.historialContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.historialDescription {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.historialMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary-color);
+}
+
+/* Tab de Notificaciones */
+.notificacionesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notificacionItem {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.notificacionItem.noLeida {
+  background-color: rgba(var(--primary-color-rgb), 0.02);
+  border-left: 4px solid var(--primary-color);
+}
+
+.notificacionItem.leida {
+  background-color: var(--surface-color);
+  opacity: 0.7;
+}
+
+.notificacionIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notificacionContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notificacionMensaje {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.notificacionMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-secondary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .tabNavigation {
+    flex-direction: column;
+  }
+
+  .tabButton {
+    justify-content: flex-start;
+    padding: 12px;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .tabButton.active {
+    border-bottom: none;
+    border-left-color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+  }
+
+  .roleHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .roleActions {
+    justify-content: flex-start;
+    align-self: flex-end;
+  }
+
+  .roleMeta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .formCard {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .historialMeta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notificacionMeta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabContent {
+    gap: 16px;
+  }
+
+  .roleCard {
+    padding: 16px;
+  }
+
+  .formCard {
+    padding: 16px;
+  }
+
+  .historialItem,
+  .notificacionItem {
+    padding: 12px;
+  }
+}
+
+/* Scrollbar personalizado */
+.tabContentContainer::-webkit-scrollbar,
+.historialList::-webkit-scrollbar,
+.notificacionesList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tabContentContainer::-webkit-scrollbar-track,
+.historialList::-webkit-scrollbar-track,
+.notificacionesList::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: 3px;
+}
+
+.tabContentContainer::-webkit-scrollbar-thumb,
+.historialList::-webkit-scrollbar-thumb,
+.notificacionesList::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.tabContentContainer::-webkit-scrollbar-thumb:hover,
+.historialList::-webkit-scrollbar-thumb:hover,
+.notificacionesList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary-color);
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .formOverlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .roleCard:hover,
+[data-theme="dark"] .historialItem,
+[data-theme="dark"] .notificacionItem {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

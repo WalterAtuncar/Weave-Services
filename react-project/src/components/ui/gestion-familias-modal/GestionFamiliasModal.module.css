@@ -1,0 +1,408 @@
+/* ====================================================================
+   GESTION FAMILIAS MODAL - ESTILOS MODERNOS
+   ==================================================================== */
+
+.gestionFamiliasModal {
+  /* Estilos específicos del modal si son necesarios */
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* ====================================================================
+   MENSAJE DE ERROR
+   ==================================================================== */
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ====================================================================
+   SECCIONES
+   ==================================================================== */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fafbfc;
+  transition: all 0.2s ease;
+}
+
+.section:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionTitle h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ====================================================================
+   ESTADOS DE CARGA Y VACÍO
+   ==================================================================== */
+
+.loadingState,
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 2px dashed #e2e8f0;
+}
+
+.emptyState {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* ====================================================================
+   FORMULARIO DE ASIGNACIÓN
+   ==================================================================== */
+
+.assignForm {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.selectContainer {
+  flex: 1;
+  min-width: 250px;
+}
+
+.familiaSelect {
+  width: 100%;
+}
+
+.assignButton {
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+/* ====================================================================
+   CHIP GROUP PERSONALIZADO
+   ==================================================================== */
+
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+/* ====================================================================
+   MODAL DE CONFIRMACIÓN
+   ==================================================================== */
+
+.confirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.confirmDialog {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  animation: slideIn 0.3s ease-out;
+}
+
+.confirmHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.confirmHeader h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.confirmDialog p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* ====================================================================
+   ANIMACIONES
+   ==================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ====================================================================
+   RESPONSIVE DESIGN
+   ==================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .modalContent {
+    gap: 20px;
+    max-height: calc(100vh - 120px);
+  }
+  
+  .section {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .sectionTitle h3 {
+    font-size: 15px;
+  }
+  
+  .assignForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .selectContainer {
+    min-width: unset;
+  }
+  
+  .assignButton {
+    min-width: unset;
+  }
+  
+  .confirmDialog {
+    padding: 20px;
+    margin: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .modalContent {
+    gap: 16px;
+  }
+  
+  .section {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .sectionTitle {
+    gap: 8px;
+  }
+  
+  .sectionTitle h3 {
+    font-size: 14px;
+  }
+  
+  .badge {
+    min-width: 20px;
+    height: 20px;
+    font-size: 11px;
+  }
+  
+  .confirmDialog {
+    padding: 16px;
+    margin: 12px;
+  }
+  
+  .confirmHeader h4 {
+    font-size: 16px;
+  }
+  
+  .confirmActions {
+    gap: 8px;
+  }
+}
+
+/* ====================================================================
+   TEMA OSCURO
+   ==================================================================== */
+
+/* Estilos para tema oscuro usando clase global */
+:global(.dark) .section {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:global(.dark) .section:hover {
+  border-color: #475569;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .sectionTitle h3 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .badge {
+  background-color: rgba(241, 245, 249, 0.1) !important;
+  color: #94a3b8 !important;
+}
+
+:global(.dark) .loadingState,
+:global(.dark) .emptyState {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+:global(.dark) .emptyState {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+:global(.dark) .errorMessage {
+  background-color: rgba(220, 38, 38, 0.1) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #fca5a5 !important;
+}
+
+:global(.dark) .confirmDialog {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .confirmHeader h4 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .confirmDialog p {
+  color: #94a3b8;
+}
+
+/* Estilos para botón de asignación en tema oscuro */
+:global(.dark) .assignButton {
+  background-color: #059669 !important;
+  border-color: #047857 !important;
+  color: #ffffff !important;
+}
+
+:global(.dark) .assignButton:hover {
+  background-color: #047857 !important;
+  border-color: #065f46 !important;
+}
+
+:global(.dark) .assignButton:disabled {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #9ca3af !important;
+  opacity: 0.6;
+}
+
+/* Estilos para chips en tema oscuro */
+:global(.dark) .chipGroup {
+  /* Los chips usan sus propias variables CSS que ya están definidas */
+}
+
+/* Fallback para @media query */
+@media (prefers-color-scheme: dark) {
+  .section {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .section:hover {
+    border-color: #475569;
+  }
+  
+  .loadingState,
+  .emptyState {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  
+  .emptyState {
+    background: #1e293b;
+    border-color: #475569;
+  }
+}

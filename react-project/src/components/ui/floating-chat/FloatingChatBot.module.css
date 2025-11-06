@@ -1,0 +1,499 @@
+/* Botón flotante */
+.floatingButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floatingButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+}
+
+.assistantImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.pulseAnimation {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  border: 2px solid rgba(102, 126, 234, 0.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Contenedor del chat */
+.chatContainer {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 475px;
+  height: 675px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  border: 1px solid;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.chatContainer.minimized {
+  height: 60px;
+}
+
+/* Header del chat */
+.chatHeader {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  min-height: 60px;
+  background-color: #3b82f6 !important; /* 🔧 Forzar fondo azul para header */
+  color: #ffffff !important; /* 🔧 Forzar texto blanco para header */
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.headerAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.assistantName {
+  color: #ffffff !important; /* 🔧 Forzar texto blanco en header */
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.onlineStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8) !important; /* 🔧 Forzar texto blanco semi-transparente */
+}
+
+.onlineIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+}
+
+.headerButton {
+  background: none !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.8) !important; /* 🔧 Forzar texto blanco para botones del header */
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerButton svg {
+  color: rgba(255, 255, 255, 0.8) !important; /* 🔧 Forzar iconos blancos */
+  fill: rgba(255, 255, 255, 0.8) !important;
+}
+
+.headerButton:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.headerButton:hover svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Cuerpo del chat */
+.chatBody {
+  display: flex;
+  flex-direction: column;
+  height: 615px;
+}
+
+.messagesContainer {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizada - colores serán aplicados dinámicamente */
+.messagesContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color, rgba(0, 0, 0, 0.2));
+  border-radius: 2px;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color, rgba(0, 0, 0, 0.3));
+}
+
+/* Mensajes */
+.messageWrapper {
+  display: flex;
+  gap: 8px;
+  animation: messageSlide 0.3s ease-out;
+}
+
+.messageWrapper.userMessage {
+  justify-content: flex-end;
+}
+
+.messageWrapper.botMessage {
+  justify-content: flex-start;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.messageAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid; /* Border color is now handled dynamically in React */
+}
+
+.messageBubble {
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  border: 1px solid;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.userMessage .messageBubble {
+  border-radius: 18px 18px 4px 18px;
+  background-color: #3b82f6 !important; /* 🔧 Fondo azul para usuario */
+  color: #ffffff !important; /* 🔧 Texto blanco para usuario */
+}
+
+.botMessage .messageBubble {
+  border-radius: 18px 18px 18px 4px;
+  background-color: var(--color-surface, #ffffff) !important; /* 🔧 Fondo dinámico para bot */
+  color: var(--color-text, #000000) !important; /* 🔧 Texto dinámico para bot */
+}
+
+.messageText {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: inherit !important; /* 🔧 Heredar color del contenedor padre */
+  opacity: 1 !important; /* 🔧 Asegurar que sea visible */
+  display: block !important; /* 🔧 Asegurar que se muestre */
+}
+
+/* 🔧 Asegurar que el texto del usuario sea visible */
+.userMessage .messageText {
+  color: #ffffff !important; /* 🔧 Texto blanco para mensajes del usuario */
+}
+
+.botMessage .messageText {
+  color: var(--color-text, #000000) !important; /* 🔧 Texto dinámico para bot */
+}
+
+.messageTime {
+  font-size: 11px;
+  opacity: 0.7;
+  display: block;
+  text-align: right;
+  color: inherit !important; /* 🔧 Heredar color del contenedor */
+}
+
+/* 🔧 Tiempo visible para mensajes del usuario */
+.userMessage .messageTime {
+  color: rgba(255, 255, 255, 0.7) !important; /* 🔧 Blanco semi-transparente para usuario */
+}
+
+.botMessage .messageTime {
+  color: var(--color-text-secondary, #6b7280) !important; /* 🔧 Color dinámico para bot */
+}
+
+.botMessage .messageTime {
+  text-align: left;
+}
+
+/* Indicador de escritura */
+.typingIndicator {
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 4px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+}
+
+.typingDots {
+  display: flex;
+  gap: 4px;
+}
+
+.typingDots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  /* Background color is now handled dynamically in React */
+  animation: typingPulse 1.4s infinite;
+}
+
+.typingDots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingPulse {
+  0%, 60%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  30% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Área de input */
+.inputArea {
+  padding: 16px;
+  border-top: 1px solid;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.messageInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid;
+  border-radius: 24px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  resize: none;
+}
+
+/* Focus styles are now handled dynamically in React */
+.messageInput:focus {
+  /* Styles are applied dynamically via onFocus event */
+}
+
+/* 🔧 Placeholder dinámico usando custom property */
+.messageInput {
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 12px 16px;
+  font-size: 14px;
+  outline: none;
+  flex: 1;
+  resize: none;
+  min-height: 20px;
+  max-height: 100px;
+  background-color: var(--color-background, #ffffff) !important; /* 🔧 Fondo dinámico */
+  color: var(--color-text, #000000) !important; /* 🔧 Texto dinámico */
+  border-color: var(--color-border, #e5e7eb) !important; /* 🔧 Borde dinámico */
+}
+
+.messageInput::placeholder {
+  color: var(--placeholder-color, #9ca3af) !important;
+}
+
+.sendButton {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* 🎯 SOLUCIÓN DEFINITIVA - Override globals.css */
+.sendButton {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  /* Anular la transición global de globals.css */
+  transition: transform 0.2s ease !important;
+}
+
+.sendButton svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Override con máxima especificidad para asegurar que funcione */
+button[data-testid="chat-send-button"] {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  pointer-events: auto !important; /* 🔧 Asegurar que reciba clics */
+  z-index: 10 !important; /* 🔧 Asegurar que esté encima */
+}
+
+button[data-testid="chat-send-button"]:disabled {
+  pointer-events: none !important; /* 🔧 No recibir clics cuando está deshabilitado */
+  opacity: 0.5 !important;
+}
+
+button[data-testid="chat-send-button"] svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  pointer-events: none !important; /* 🔧 El SVG no debe interceptar clics */
+}
+
+.sendButton:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.sendButton:disabled {
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floatingButton {
+    bottom: 20px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .assistantImage {
+    width: 44px;
+    height: 44px;
+  }
+
+  .chatContainer {
+    bottom: 90px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    max-width: none;
+  }
+
+  .messageBubble {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatContainer {
+    bottom: 90px;
+    right: 16px;
+    left: 16px;
+    height: 580px;
+  }
+
+  .chatBody {
+    height: 520px;
+  }
+
+  .messageBubble {
+    max-width: 250px;
+  }
+} 

@@ -1,0 +1,329 @@
+/* =============================================
+   SYSTEM FORM - ESTILOS MODERNOS LIMPIOS
+   ============================================= */
+
+.systemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  background-color: transparent;
+  max-width: 800px;
+  width: 100%;
+  border: none;
+}
+
+.systemForm.compact {
+  padding: 8px;
+  gap: 8px; /* Más compacto */
+}
+
+.systemForm.compact .formSection {
+  margin-bottom: 8px; /* Menos espacio entre secciones */
+}
+
+.systemForm.compact .textArea {
+  min-height: 60px; /* Altura mínima reducida */
+  padding: 6px 10px; /* Padding reducido */
+  line-height: 1.3; /* Line-height más compacto */
+}
+
+.systemForm.compact .sectionTitle {
+  margin-bottom: 6px; /* Menos espacio después del título */
+  padding-bottom: 4px;
+}
+
+.systemForm.compact .characterCount {
+  margin-top: 1px; /* Espacio mínimo */
+  font-size: 10px; /* Fuente más pequeña */
+}
+
+/* =============================================
+   SECCIONES DEL FORMULARIO
+   ============================================= */
+
+.formSection {
+  margin-bottom: 8px; /* Reducido para mayor compacidad */
+}
+
+.formSection:last-child {
+  margin-bottom: 0;
+}
+
+/* Sección de descripción más compacta */
+.formSection:last-of-type {
+  margin-bottom: 0;
+}
+
+.formSection:last-of-type .sectionTitle {
+  margin-bottom: 8px; /* Menos espacio para la sección de descripción */
+}
+
+.formSection:last-of-type .fieldGroup {
+  gap: 2px; /* Reducir gap en la sección de descripción */
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* =============================================
+   SECCIÓN DE DOS COLUMNAS
+   ============================================= */
+
+.twoColumnSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 6px; /* Reducido para menos espacio */
+  align-items: start;
+  /* Reset para asegurar alineación perfecta */
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.twoColumnSection .formSection {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+}
+
+.twoColumnSection .sectionTitle {
+  /* Títulos perfectamente alineados */
+  height: 40px; /* Altura fija reducida */
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Reducido para menos espacio */
+  padding-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.twoColumnSection .fieldGroup {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  /* Asegurar spacing consistente */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.twoColumnSection .fieldLabel {
+  height: 24px; /* Altura fija para labels */
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Asegurar que todos los elementos de formulario dentro de las dos columnas estén alineados */
+.twoColumnSection [data-radix-select-trigger] {
+  height: 32px !important; /* Altura uniforme para selects - coincide con inputs */
+  min-height: 32px !important;
+}
+
+.twoColumnSection input {
+  height: 32px !important; /* Altura uniforme para inputs */
+  min-height: 32px !important;
+}
+
+.twoColumnSection .fieldError,
+.twoColumnSection .loadingMessage,
+.twoColumnSection .warningMessage {
+  margin-top: 4px; /* Espaciado uniforme para mensajes */
+  min-height: 16px; /* Altura mínima para evitar saltos */
+}
+
+/* Modo compacto para dos columnas */
+.systemForm.compact .twoColumnSection {
+  gap: 16px;
+}
+
+.systemForm.compact .twoColumnSection .sectionTitle {
+  height: 32px; /* Altura fija menor para modo compacto */
+  margin-bottom: 6px; /* Reducido para menos espacio */
+  padding-bottom: 2px;
+}
+
+.systemForm.compact .twoColumnSection .fieldLabel {
+  height: 20px; /* Altura menor para labels en modo compacto */
+}
+
+.systemForm.compact .twoColumnSection [data-radix-select-trigger] {
+  height: 32px !important; /* Altura consistente para selects en modo compacto */
+  min-height: 32px !important;
+}
+
+.systemForm.compact .twoColumnSection input {
+  height: 32px !important; /* Altura consistente para inputs en modo compacto */
+  min-height: 32px !important;
+}
+
+/* =============================================
+   GRUPOS DE CAMPOS
+   ============================================= */
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.fieldGroup:last-child {
+  margin-bottom: 0;
+}
+
+/* Asegurar altura consistente para todos los campos del formulario */
+.fieldGroup [data-radix-select-trigger] {
+  height: 32px !important;
+  min-height: 32px !important;
+}
+
+.fieldGroup input {
+  height: 32px !important;
+  min-height: 32px !important;
+}
+
+/* Estilo para errores */
+.error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* El título del formulario se ha eliminado para evitar duplicación con el título del modal */
+
+/* =============================================
+   BOTONES DE ACCIÓN
+   ============================================= */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 768px) {
+  .twoColumnSection {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.compact .row {
+  gap: 0.75rem;
+}
+
+.compact .sectionTitle {
+  font-size: 1rem;
+}
+
+/* Estilos para campos deshabilitados */
+.field input:disabled,
+.field textarea:disabled,
+.field [data-radix-select-trigger]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Animaciones */
+.section {
+  transition: all 0.2s ease-in-out;
+}
+
+.section:hover {
+  border-color: var(--primary-color, #3182ce);
+}
+
+.field {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilos para el tema oscuro */
+[data-theme="dark"] .section {
+  background-color: var(--card-background-dark, #2d3748);
+  border-color: var(--border-color-dark, #4a5568);
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: var(--text-primary-dark, #f7fafc);
+  border-bottom-color: var(--border-color-dark, #4a5568);
+}
+
+[data-theme="dark"] .actions {
+  border-top-color: var(--border-color-dark, #4a5568);
+}
+
+/* Responsive design mejorado */
+@media (max-width: 1024px) {
+  .formCard {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .form {
+    gap: 1rem;
+  }
+  
+  .section {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+.field:focus-within {
+  outline: 2px solid var(--focus-color, #3182ce);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Indicadores visuales para campos requeridos */
+.field[data-required="true"] label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--error-color, #e53e3e);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+/* Estilos para tooltips de ayuda */
+.fieldHelp {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #718096);
+  margin-top: 0.25rem;
+}
+
+[data-theme="dark"] .fieldHelp {
+  color: var(--text-secondary-dark, #a0aec0);
+}

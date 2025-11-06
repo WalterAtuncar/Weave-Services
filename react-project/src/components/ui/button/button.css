@@ -1,0 +1,195 @@
+/* Animaciones globales */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(12deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) skewX(12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes iconRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pressEffect {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos base para todos los botones */
+.button-default,
+.button-custom,
+.button-action,
+.button-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Modo icon-only circular para variant=action */
+.button-action-icon-only {
+  border-radius: 9999px !important;
+  min-width: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+}
+
+.button-action-icon-only svg {
+  margin: 0 !important;
+}
+
+/* Pseudo-elemento para el efecto shimmer */
+.button-default::before,
+.button-custom::before,
+.button-action::before,
+.button-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(-100%) skewX(12deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Pseudo-elemento para el efecto de pressed */
+.button-default::after,
+.button-custom::after,
+.button-action::after,
+.button-secondary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.1s ease-in-out;
+}
+
+/* Efectos hover para todos los botones */
+.button-default:hover,
+.button-custom:hover,
+.button-action:hover,
+.button-secondary:hover {
+  transform: scale(1.05) translateY(-1px);
+}
+
+/* Activar animación shimmer en hover - más lento para apreciarlo */
+.button-default:hover::before,
+.button-custom:hover::before,
+.button-action:hover::before,
+.button-secondary:hover::before {
+  animation: shimmer 1.4s ease-out;
+}
+
+/* Rotación de iconos en hover */
+.button-default:hover svg,
+.button-custom:hover svg,
+.button-action:hover svg,
+.button-secondary:hover svg {
+  animation: iconRotate 0.6s ease-in-out;
+}
+
+/* Efecto pressed - oscurece 15% el background */
+.button-default:active::after,
+.button-custom:active::after,
+.button-action:active::after,
+.button-secondary:active::after {
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  animation: pressEffect 0.3s ease-out;
+}
+
+/* Estados comunes */
+.button-default:active,
+.button-custom:active,
+.button-action:active,
+.button-secondary:active {
+  transform: scale(1.02) translateY(0px);
+}
+
+.button-default:focus,
+.button-custom:focus,
+.button-action:focus,
+.button-secondary:focus {
+  outline: 2px solid rgba(64, 80, 181, 0.5);
+  outline-offset: 2px;
+}
+
+.button-default:disabled,
+.button-custom:disabled,
+.button-action:disabled,
+.button-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.button-default:disabled::before,
+.button-default:disabled::after,
+.button-custom:disabled::before,
+.button-custom:disabled::after,
+.button-action:disabled::before,
+.button-action:disabled::after,
+.button-secondary:disabled::before,
+.button-secondary:disabled::after {
+  display: none;
+}
+
+.button-default:disabled svg,
+.button-custom:disabled svg,
+.button-action:disabled svg,
+.button-secondary:disabled svg {
+  animation: none !important;
+}
+
+/* Animación de loading spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

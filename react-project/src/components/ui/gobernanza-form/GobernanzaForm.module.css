@@ -1,0 +1,682 @@
+/* =============================================
+   CONTENEDOR PRINCIPAL
+   ============================================= */
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 75vh;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: var(--color-text-secondary);
+}
+
+.loading p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* =============================================
+   TABS NAVEGACIÓN
+   ============================================= */
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 8px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.tabActive {
+  color: var(--color-primary) !important;
+  border-bottom-color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+/* =============================================
+   CHECKBOXES DEL FORMULARIO
+   ============================================= */
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.checkboxItem:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-primary);
+}
+
+.checkboxItem input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.checkboxItem input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkboxItem label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxItem label:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =============================================
+   CONTENIDO DE TABS
+   ============================================= */
+
+.tabContent {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Scrollbar personalizado */
+.tabContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tabContent::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: 3px;
+}
+
+.tabContent::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.tabContent::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* =============================================
+   SECCIONES DEL FORMULARIO
+   ============================================= */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+/* =============================================
+   GRIDS DE FORMULARIO
+   ============================================= */
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.threeColumnRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+/* =============================================
+   SECCIÓN DE ROLES
+   ============================================= */
+
+.emptyRoles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  text-align: center;
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+}
+
+.emptyRoles p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roleCard {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-background);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.roleCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.roleHeader {
+  display: grid;
+  grid-template-columns: auto 2fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  min-height: 60px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.roleHeader:hover {
+  background-color: var(--color-surface-hover, rgba(0, 0, 0, 0.02));
+}
+
+.roleTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.roleHeaderInfo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.roleHeaderField {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.roleHeaderLabel {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.roleHeaderValue {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roleHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: end;
+  margin-left: auto;
+  min-width: fit-content;
+}
+
+.collapseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  color: var(--color-text-secondary);
+}
+
+.collapseButton:hover {
+  background-color: var(--color-surface-hover, rgba(0, 0, 0, 0.08));
+  color: var(--color-text);
+}
+
+.roleContent {
+  padding: 12px;
+}
+
+/* Nuevo layout compacto para roles */
+.roleContentCompact {
+  display: grid;
+  grid-template-columns: 1.3fr 1.3fr 1fr 0.6fr;
+  gap: 12px;
+  /* Alinear todos los ítems al fondo para que los inputs queden alineados */
+  align-items: end;
+  /* Padding lateral/vertical para que no quede pegado a los bordes */
+  padding: 12px 16px;
+}
+
+/* Cada grupo reserva espacio para la leyenda y la posiciona sin afectar el flujo */
+.roleFieldGroup {
+  position: relative;
+  padding-bottom: 14px; /* espacio para la leyenda (small) */
+}
+
+.roleFieldGroup > small {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 0.65rem;
+  line-height: 1.1;
+  color: var(--color-text-secondary);
+}
+
+.roleFieldLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.roleFieldValue {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.rolePermissions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rolePermissionItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.roleActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rolesFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px dashed var(--color-border-soft);
+}
+
+@media (max-width: 900px) {
+  .rolesFooter {
+    justify-content: stretch;
+  }
+}
+
+/* =============================================
+   ESTADOS DE ERROR
+   ============================================= */
+
+.generalError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid #EF4444;
+  border-radius: 6px;
+  color: #EF4444;
+  font-size: 0.875rem;
+  margin-top: 16px;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .formContainer {
+    max-height: 60vh;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .roleGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .roleContentCompact {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+  }
+  
+  .roleContentCompact > div:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+  
+  .roleContentCompact > div:nth-child(4) {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  
+  .roleHeader {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    position: relative;
+  }
+  
+  .roleTitle {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .roleHeaderInfo {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    order: 2;
+  }
+  
+  .roleHeaderActions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    order: 1;
+  }
+  
+  .tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tab {
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+  
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .sectionHeader h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .formContainer {
+    gap: 16px;
+    max-height: 55vh;
+  }
+  
+  .tabContent {
+    padding-right: 4px;
+  }
+  
+  .section {
+    gap: 16px;
+  }
+  
+  .formGrid {
+    gap: 10px;
+  }
+  
+  .roleCard {
+    margin: 0 -4px;
+  }
+  
+  .roleHeader {
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .roleHeaderInfo {
+    gap: 8px;
+  }
+  
+  .roleHeaderField {
+    gap: 2px;
+  }
+  
+  .roleHeaderLabel {
+    font-size: 0.65rem;
+  }
+  
+  .roleHeaderValue {
+    font-size: 0.8rem;
+  }
+  
+  .roleHeaderActions {
+    top: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+  
+  .collapseButton {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .roleContent {
+    padding: 8px;
+  }
+  
+  .roleContentCompact {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 8px;
+  }
+  
+  .roleContentCompact > div:nth-child(3),
+  .roleContentCompact > div:nth-child(4) {
+    grid-column: 1;
+  }
+  
+  .rolePermissions {
+    flex-direction: row;
+    gap: 12px;
+  }
+  
+  .emptyRoles {
+    padding: 32px 16px;
+  }
+  
+  .tab {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+/* =============================================
+   ANIMACIONES
+   ============================================= */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.roleCard {
+  animation: slideIn 0.3s ease-out;
+}
+
+.tabContent {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* =============================================
+   ESTADOS ESPECIALES
+   ============================================= */
+
+.formContainer[data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.roleCard[data-has-errors="true"] {
+  border-color: #F59E0B;
+  background-color: rgba(245, 158, 11, 0.02);
+}
+
+.roleCard[data-has-errors="true"] .roleHeader {
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+/* =============================================
+   DARK MODE SUPPORT
+   ============================================= */
+
+[data-theme="dark"] .formContainer {
+  --color-background: #1f2937;
+  --color-surface: #374151;
+  --color-border: #4b5563;
+  --color-text: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-primary: #3b82f6;
+}
+
+[data-theme="dark"] .roleCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .emptyRoles {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+/* =============================================
+   UTILIDADES
+   ============================================= */
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

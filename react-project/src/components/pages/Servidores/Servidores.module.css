@@ -1,0 +1,365 @@
+/* ===== CONTAINER ===== */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+/* ===== LOADING STATE ===== */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== HEADER ===== */
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 24px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.headerTitle svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.headerTitle h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.headerTitle p {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.headerStats {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--color-background);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  min-width: 80px;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchContainer svg {
+  color: var(--color-text-secondary);
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+}
+
+.searchInput {
+  padding-left: 40px !important;
+  width: 600px !important;
+  max-width: 80vw; /* Responsive: máximo 80% del ancho de la ventana */
+}
+
+.statsButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.newButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: var(--color-background);
+  overflow: auto;
+}
+
+.grid {
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* ===== SERVIDOR CELL ===== */
+.servidorCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.servidorIcon {
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light);
+  border-radius: 6px;
+  color: var(--color-primary);
+}
+
+.servidorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.servidorNombre {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.servidorCodigo {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-family: 'Courier New', monospace;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .headerContent {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .headerStats {
+    gap: 16px;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .toolbarLeft,
+  .toolbarRight {
+    justify-content: center;
+  }
+  
+  .searchInput {
+    width: 100%;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px;
+  }
+  
+  .headerTitle h1 {
+    font-size: 24px;
+  }
+  
+  .headerStats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .stat {
+    min-width: 60px;
+    padding: 8px 12px;
+  }
+  
+  .statValue {
+    font-size: 20px;
+  }
+  
+  .toolbar {
+    padding: 12px 16px;
+  }
+  
+  .toolbarLeft,
+  .toolbarRight {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* ===== DARK THEME ===== */
+[data-theme="dark"] .container {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-primary-dark);
+}
+
+[data-theme="dark"] .header {
+  background-color: var(--color-surface-dark);
+  border-bottom-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .toolbar {
+  background-color: var(--color-surface-dark);
+  border-bottom-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .stat {
+  background-color: var(--color-background-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .grid {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .servidorIcon {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .servidorNombre {
+  color: var(--color-text-primary-dark);
+}
+
+[data-theme="dark"] .servidorCodigo {
+  color: var(--color-text-secondary-dark);
+}
+
+/* ===== ANIMATIONS ===== */
+.container {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat {
+  transition: all 0.2s ease;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+  transition: all 0.2s ease;
+}
+
+.statsButton,
+.newButton {
+  transition: all 0.2s ease;
+}
+
+.statsButton:hover {
+  transform: translateY(-1px);
+}
+
+.newButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+} 

@@ -1,0 +1,1075 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.stepContent {
+  padding: 24px;
+  min-height: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* ===== ESTADOS DE CARGA Y ERROR ===== */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  gap: 16px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  gap: 16px;
+  text-align: center;
+}
+
+.errorContainer h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.errorContainer p {
+  margin: 0;
+  font-size: 14px;
+  max-width: 400px;
+}
+
+/* ===== ERROR GENERAL ===== */
+.generalError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===== CONTENEDORES DE PASOS ===== */
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid;
+  margin-bottom: 12px;
+}
+
+.stepIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
+  color: white;
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.stepDescription {
+  margin: 2px 0 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ===== SECCIONES DE FORMULARIO ===== */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Wrappers para centrar horizontal y verticalmente label e icon */
+.sectionHeaderLabel,
+.sectionHeaderIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Altura consistente igual al diámetro del botón icon-only size=s */
+.sectionHeaderLabel {
+  height: 32px;
+  line-height: 32px;
+}
+
+.sectionHeaderIcon {
+  height: 32px;
+}
+
+/* Override específico: título dentro de header sin márgenes y centrado */
+.sectionHeader .sectionTitle {
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  line-height: 32px;
+}
+
+.sectionDescription {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ===== GRID DE CAMPOS ===== */
+.formGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.formGrid.twoColumns {
+  grid-template-columns: 1fr 1fr;
+}
+
+.formGrid.threeColumns {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Distribución 70% izquierda / 30% derecha */
+.formGrid.twoColumnsWideLeft {
+  grid-template-columns: 7fr 3fr;
+}
+
+/* Una sola columna para cuando el panel está colapsado */
+.formGrid.singleColumn {
+  grid-template-columns: 1fr;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* ===== CAMPOS DE FORMULARIO ===== */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.fieldLabel.required::after {
+  content: ' *';
+  color: #ef4444;
+}
+
+.fieldInput {
+  padding: 10px 12px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.fieldInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.fieldInput.error {
+  border-color: #ef4444;
+}
+
+.fieldInput.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.fieldTextarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.fieldError {
+  font-size: 12px;
+  color: #ef4444;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fieldHint {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* ===== SELECTORES ===== */
+.fieldSelect {
+  padding: 10px 12px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.fieldSelect:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+/* ===== CHECKBOXES Y SWITCHES ===== */
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* ===== CHIPS Y TAGS ===== */
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chip.selected {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.chipRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chipRemove:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== BOTONES ===== */
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid;
+  text-decoration: none;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button.primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.button.primary:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(65, 73, 118, 0.3);
+}
+
+.button.secondary {
+  background-color: transparent;
+  border-color: var(--color-border);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background-color: var(--color-surface);
+}
+
+.button.danger {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+.button.danger:hover:not(:disabled) {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* ===== LISTAS Y TABLAS ===== */
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 6px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid;
+  transition: all 0.2s ease;
+}
+
+.listItem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.itemTitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.itemDescription {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.itemActions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-1px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .stepContent {
+    padding: 16px;
+  }
+  
+  .formGrid.twoColumns,
+  .formGrid.threeColumns {
+    grid-template-columns: 1fr;
+  }
+  
+  .stepHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .buttonGroup {
+    flex-direction: column;
+  }
+  
+  .chipGroup {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepContent {
+    padding: 12px;
+  }
+  
+  .formSection {
+    padding: 16px;
+  }
+  
+  .stepIcon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .stepTitle {
+    font-size: 18px;
+  }
+}
+
+/* ===== TEMA OSCURO ===== */
+body.dark .fieldInput,
+body.dark .fieldSelect,
+body.dark .fieldTextarea {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+body.dark .fieldInput:focus,
+body.dark .fieldSelect:focus,
+body.dark .fieldTextarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+body.dark .chip {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+body.dark .listItem {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark .actionButton {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* ===== ESTILOS PARA GOVERNANCE SELECTION ===== */
+.governanceSelection {
+  margin-top: 16px;
+}
+
+.searchSection {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.sectionIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+}
+
+.searchCriteria {
+  margin-bottom: 16px;
+}
+
+.radioLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.radioOption input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.selectContainer {
+  margin-bottom: 16px;
+}
+
+.governanceSelect {
+  width: 100%;
+}
+
+.selectedGovernanceInfo {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.governanceHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.governanceHeader h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.governanceIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+}
+
+.governanceDescription {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.rolesSection {
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+
+.rolesTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.rolesIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-primary);
+}
+
+.rolesList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.roleItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  background-color: var(--color-background);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.roleName {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.userName {
+  color: var(--color-text-secondary);
+}
+
+.moreRoles {
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* ===== TEMA OSCURO PARA GOVERNANCE ===== */
+body.dark .searchSection {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark .selectedGovernanceInfo {
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+}
+
+body.dark .roleItem {
+  background-color: var(--color-surface);
+}
+/* ===== OVERRIDES DE CONTENEDOR DEL STEPPER (AMPLIAR ANCHO) ===== */
+/* duplicamos la clase para elevar especificidad respecto a .stepperModal */
+.stepper.stepper {
+  /* Aprovecha más espacio horizontal para Step 4 */
+  max-width: min(1200px, 96vw);
+}
+
+/* ===== ESTILOS ADICIONALES PARA STEP3 GOVERNANCE ===== */
+.searchControls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.searchTypeSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.searchLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.searchTypeSelect {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.searchInput {
+  flex: 1;
+}
+
+.procesoSelect {
+  width: 100%;
+}
+
+.processDetails {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.processInfo {
+  margin-bottom: 16px;
+}
+
+.processTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.processIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+}
+
+.processDescription {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.processMetadata {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.processType,
+.processStatus {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+}
+
+.loadingRoles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.roleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.roleInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roleCode {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: normal;
+}
+
+.readOnlyRole {
+  border-left: 3px solid var(--color-warning);
+}
+
+.readOnlyIcon {
+  color: var(--color-warning);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.userIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-secondary);
+}
+
+.roleMetadata {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.assignmentDate,
+.executionOrder {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.roleStatus {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.roleStatus.active {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.roleStatus.inactive {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.statusIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.noRoles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+}
+
+.noRolesIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.sectionDivider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 24px 0;
+}
+
+/* ===== TEMA OSCURO PARA STEP3 ===== */
+body.dark .searchTypeSelect {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark .processDetails {
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+}
+
+body.dark .processType,
+body.dark .processStatus {
+  background-color: var(--color-surface);
+}
+
+/* ===== AUTOCOMPLETE PARA PROCESOS (STEP4 DOCUMENTO) ===== */
+.autocompleteContainer {
+  position: relative;
+}
+
+.suggestionsDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background-color: var(--color-background);
+}
+
+.suggestionMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestionTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.suggestionCode {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.suggestionMeta {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.mutedText {
+  color: var(--color-text-secondary);
+}
+
+.selectedList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectedItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-background);
+}
+
+.selectedMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.selectedTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.removeBtn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.removeBtn:hover {
+  background-color: var(--color-surface);
+}
+
+/* Dark theme adjustments for autocomplete */
+body.dark .suggestionsDropdown {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark .suggestionItem:hover {
+  background-color: var(--color-surface);
+}
+
+body.dark .selectedItem {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark .removeBtn {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}

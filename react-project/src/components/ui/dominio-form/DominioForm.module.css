@@ -1,0 +1,124 @@
+.dominioForm {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}
+
+.fieldError {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.generalErrors {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.generalError {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.generalError:last-child {
+  margin-bottom: 0;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 1rem;
+}
+
+/* Padding adicional para el primer Card sin título */
+.contentTopPad {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+/* Modo compacto */
+.compact .formContent {
+  gap: 1rem;
+}
+
+.compact .formGrid {
+  gap: 0.75rem;
+}
+
+.compact .formActions {
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .formGroup.fullWidth {
+    grid-column: 1;
+  }
+  
+  .formActions {
+    flex-direction: column-reverse;
+  }
+  
+  .formActions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dominioForm {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .formContent {
+    gap: 0.75rem;
+  }
+}

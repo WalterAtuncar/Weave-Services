@@ -1,0 +1,37 @@
+/* Estilos del SelectorItemsModal integrados con temas del proyecto */
+.filtersBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.filtersLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.filtersRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radioCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionsCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helperText {
+  font-size: 12px;
+}

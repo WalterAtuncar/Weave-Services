@@ -1,0 +1,656 @@
+/* =========================================
+   DATEPICKER - CSS MODULE WITH THEMING
+   ========================================= */
+
+/* CSS Custom Properties for Theming */
+:root {
+  --rdp-cell-size: 1.25rem; /* Más pequeño para calendario compacto */
+  --rdp-accent-color: #3b82f6;
+  --rdp-accent-color-hover: #2563eb;
+  --rdp-today-color: #f59e0b;
+  --rdp-selected-bg: var(--rdp-accent-color);
+  --rdp-selected-text: #ffffff;
+  --rdp-border-radius: 0.375rem;
+  --rdp-border-radius-sm: 0.25rem;
+  --rdp-spacing-sm: 0.0625rem; /* Espacios ultracompactos */
+  --rdp-spacing-md: 0.125rem; /* Espacios ultracompactos */
+  --rdp-spacing-lg: 0.25rem; /* Espacios ultracompactos */
+  --rdp-transition-fast: 150ms ease;
+  --rdp-transition-normal: 300ms ease;
+  --rdp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --rdp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --rdp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Light Theme Variables */
+.light {
+  --rdp-background: #ffffff;
+  --rdp-surface: #f9fafb;
+  --rdp-text: #1f2937;
+  --rdp-text-secondary: #6b7280;
+  --rdp-border: #e5e7eb;
+  --rdp-hover: #f3f4f6;
+  --rdp-disabled: #d1d5db;
+  --rdp-disabled-text: #9ca3af;
+}
+
+/* Dark Theme Variables */
+.dark {
+  --rdp-background: #1f2937;
+  --rdp-surface: #111827;
+  --rdp-text: #f9fafb;
+  --rdp-text-secondary: #d1d5db;
+  --rdp-border: #374151;
+  --rdp-hover: #374151;
+  --rdp-disabled: #4b5563;
+  --rdp-disabled-text: #6b7280;
+}
+
+/* Container */
+.container {
+  position: relative;
+  background: var(--rdp-background);
+  border: 1px solid var(--rdp-border);
+  border-radius: var(--rdp-border-radius);
+  box-shadow: var(--rdp-shadow-lg);
+  overflow: visible !important; /* Permitir que el dropdown sea visible */
+  width: fit-content; /* Ajustar exactamente al contenido */
+  min-width: 280px !important; /* Ancho mínimo optimizado */
+  height: fit-content !important; /* Ajustar exactamente al contenido */
+  max-height: none !important; /* Sin restricción máxima */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Month Container with Transitions */
+.monthContainer {
+  position: relative;
+  overflow: visible !important; /* Permitir que el dropdown de años sea visible */
+  height: fit-content !important; /* Ajustar exactamente al contenido */
+  max-height: none !important; /* Sin restricción máxima */
+  width: fit-content !important; /* Ajustar exactamente al contenido */
+}
+
+.month {
+  position: relative;
+  padding: 0 var(--rdp-spacing-sm); /* Eliminado padding vertical para máxima compactación */
+  transition: transform var(--rdp-transition-normal);
+  height: 250px !important; /* Altura FIJA para mostrar todo el contenido */
+  max-height: none !important; /* Sin restricción máxima */
+  overflow: visible !important; /* Asegurar visibilidad completa */
+}
+
+/* Month Transition Classes */
+.monthEnter {
+  transform: translateX(100%);
+}
+
+.monthEnterActive {
+  transform: translateX(0);
+  transition: transform var(--rdp-transition-normal);
+}
+
+.monthExit {
+  transform: translateX(0);
+}
+
+.monthExitActive {
+  transform: translateX(-100%);
+  transition: transform var(--rdp-transition-normal);
+}
+
+.monthEnterFromLeft {
+  transform: translateX(-100%);
+}
+
+.monthEnterFromLeftActive {
+  transform: translateX(0);
+  transition: transform var(--rdp-transition-normal);
+}
+
+/* Table Layout */
+.table {
+  width: fit-content !important; /* Ajustar exactamente al contenido */
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 auto; /* Centrar la tabla en el contenedor */
+  height: 220px !important; /* Altura FIJA para mostrar todas las semanas */
+  max-height: none !important; /* Sin restricción máxima */
+  overflow: visible !important; /* Asegurar visibilidad completa */
+}
+
+.weekdays {
+  margin-bottom: 0.0625rem; /* Mínimo margen para ultracompactación */
+}
+
+.weekday {
+  padding: 0.0625rem 0; /* Mínimo padding para ultracompactación */
+  text-align: center;
+  font-size: 0.6875rem; /* Texto más pequeño para mayor compactación */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em; /* Reducido para mayor compactación */
+  color: var(--rdp-text-secondary);
+}
+
+/* Week and Day Cells */
+.week {
+  /* No specific styles needed, inherits table row behavior */
+}
+
+.day {
+  padding: 0.5px; /* Mínimo padding para ultracompactación */
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Day Button */
+.dayButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--rdp-cell-size);
+  height: var(--rdp-cell-size);
+  border: 1px solid transparent;
+  border-radius: var(--rdp-border-radius-sm);
+  background: transparent;
+  color: var(--rdp-text);
+  font-size: 0.75rem; /* Texto más pequeño para calendario compacto */
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.dayButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--rdp-hover);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: -1;
+}
+
+.dayButton:hover:not(.disabled):not(.selected) {
+  color: var(--rdp-text);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dayButton:hover:not(.disabled):not(.selected)::before {
+  width: 100%;
+  height: 100%;
+}
+
+.dayButton:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: var(--rdp-accent-color);
+  ring-offset: 2px;
+}
+
+/* Day States */
+.dayButton.selected {
+  background: var(--rdp-selected-bg);
+  color: var(--rdp-selected-text);
+  border-color: var(--rdp-accent-color);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: scale(1.02);
+  position: relative;
+  z-index: 1;
+}
+
+.dayButton.selected::before {
+  width: 100%;
+  height: 100%;
+  background: var(--rdp-accent-color-hover);
+  opacity: 0;
+}
+
+.dayButton.selected:hover {
+  background: var(--rdp-accent-color-hover);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.dayButton.selected:hover::before {
+  opacity: 0.1;
+}
+
+.dayButton.today:not(.selected) {
+  background: linear-gradient(135deg, var(--rdp-today-color), #f59e0b);
+  color: #ffffff;
+  font-weight: 600;
+  border-color: var(--rdp-today-color);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.dayButton.today:not(.selected)::before {
+  background: #d97706;
+  width: 0;
+  height: 0;
+}
+
+.dayButton.today:not(.selected):hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+}
+
+.dayButton.today:not(.selected):hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.dayButton.outside {
+  color: var(--rdp-disabled-text);
+  opacity: 0.5;
+  position: relative;
+  background: transparent;
+}
+
+.dayButton.outside::before {
+  background: var(--rdp-surface);
+  opacity: 0.3;
+}
+
+.dayButton.outside:hover:not(.disabled) {
+  color: var(--rdp-text-secondary);
+  opacity: 0.7;
+  transform: scale(1.02);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dayButton.outside:hover:not(.disabled)::before {
+  width: 80%;
+  height: 80%;
+  opacity: 0.5;
+}
+
+.dayButton.disabled {
+  color: var(--rdp-disabled-text);
+  background: transparent;
+  cursor: not-allowed;
+  opacity: 0.4;
+  position: relative;
+}
+
+.dayButton.disabled::before {
+  background: var(--rdp-disabled);
+  opacity: 0.3;
+  width: 0;
+  height: 0;
+}
+
+.dayButton.disabled:hover {
+  transform: none;
+  opacity: 0.4;
+}
+
+.dayButton.disabled:hover::before {
+  width: 0;
+  height: 0;
+}
+
+/* Custom Navigation Styles */
+.nav {
+  /* Navigation styles are handled in CustomNavigation component */
+  margin-bottom: 0; /* Eliminar margen extra para mayor compactación */
+  display: none !important; /* Ocultar navegación interna del DayPicker */
+}
+
+/* Estabilizar el header durante el dropdown de años */
+.customNavigation {
+  position: relative;
+  min-height: 2.5rem; /* Altura mínima fija para evitar movimiento */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Eliminar espacios extra entre navegación y calendario */
+.month > .rdp-month {
+  margin-top: 0;
+}
+
+.table {
+  margin-top: 0; /* Eliminar margen superior de la tabla */
+}
+
+/* Ocultar navegación interna de DayPicker */
+:global(.rdp-nav) {
+  display: none !important;
+}
+
+/* FORZAR que todas las semanas se muestren - SOLUCIÓN DEFINITIVA */
+:global(.rdp) {
+  height: 280px !important; /* Altura FIJA para todo el componente */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-month) {
+  height: 250px !important; /* Altura FIJA para el mes */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-table) {
+  height: 220px !important; /* Altura FIJA para la tabla */
+  width: fit-content !important; /* Ajustar exactamente al contenido */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-weeks) {
+  height: 200px !important; /* Altura FIJA para las semanas */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-tbody) {
+  height: 180px !important; /* Altura FIJA para el tbody */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* FORZAR todas las filas de semanas */
+:global(.rdp-week) {
+  height: 30px !important; /* Altura fija por semana */
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* FORZAR visibilidad de todas las celdas */
+:global(.rdp-day) {
+  height: 30px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* ELIMINAR cualquier restricción de altura en containers */
+:global(.rdp *) {
+  max-height: none !important;
+}
+
+/* FORZAR estructura de altura en TODOS los elementos internos de react-day-picker */
+:global(.rdp-root) {
+  height: 300px !important;
+  min-height: 300px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-with_weeknumber) {
+  height: 300px !important;
+  min-height: 300px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+:global(.rdp-months) {
+  height: 280px !important;
+  min-height: 280px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* FORZAR altura en todos los tbody para mostrar 6 semanas */
+:global(.rdp tbody) {
+  height: 180px !important;
+  min-height: 180px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* FORZAR altura en todos los tr para distribuir las semanas */
+:global(.rdp tbody tr) {
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* FORZAR altura en todas las celdas */
+:global(.rdp tbody td) {
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* SOLUCION NUCLEAR - FORZAR 6 FILAS DE SEMANAS SIEMPRE */
+:global(.rdp-tbody) {
+  display: table-row-group !important;
+}
+
+:global(.rdp-week:nth-child(1)),
+:global(.rdp-week:nth-child(2)),
+:global(.rdp-week:nth-child(3)),
+:global(.rdp-week:nth-child(4)),
+:global(.rdp-week:nth-child(5)),
+:global(.rdp-week:nth-child(6)) {
+  display: table-row !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ASEGURAR que fixedWeeks funcione */
+:global(.rdp[data-fixed-weeks="true"]) {
+  height: 300px !important;
+  min-height: 300px !important;
+}
+
+:global(.rdp[data-fixed-weeks="true"] .rdp-table) {
+  height: 200px !important;
+  min-height: 200px !important;
+}
+
+:global(.rdp[data-fixed-weeks="true"] .rdp-tbody) {
+  height: 180px !important;
+  min-height: 180px !important;
+}
+
+/* Responsive Design - Mobile Optimizations */
+@media (max-width: 480px) {
+  :root {
+    --rdp-cell-size: 1.25rem; /* Aún más compacto en móviles */
+    --rdp-spacing-sm: 0.0625rem;
+    --rdp-spacing-md: 0.125rem;
+  }
+
+  .container {
+    min-width: 260px !important; /* Ancho mínimo optimizado para móviles */
+    height: 350px !important; /* Altura FIJA también en móviles */
+  }
+
+  .monthContainer {
+    height: 280px !important; /* Altura FIJA para móviles */
+  }
+
+  .dayButton {
+    font-size: 0.625rem; /* Texto más pequeño */
+    /* Reducir animaciones en móviles para mejor performance */
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .dayButton::before {
+    transition: all 0.2s ease; /* Transiciones más rápidas en móvil */
+  }
+
+  .dayButton:hover {
+    /* Hover menos agresivo en móviles */
+    transform: scale(1.02) !important;
+  }
+
+  .dayButton.selected:hover,
+  .dayButton.today:not(.selected):hover {
+    transform: scale(1.05) !important; /* Menos escalado en móvil */
+  }
+
+  .weekday {
+    font-size: 0.5rem; /* Texto más pequeño */
+    padding: 0.0625rem 0;
+  }
+
+  /* Optimización táctil para móviles */
+  .dayButton {
+    min-height: 1.25rem;
+    min-width: 1.25rem;
+    touch-action: manipulation; /* Optimizar para táctil */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    min-width: 280px !important; /* Ancho mínimo optimizado para pantallas grandes */
+    height: 350px !important; /* Altura FIJA para pantallas grandes */
+  }
+  
+  /* Mantener el mismo cell-size compacto en todas las pantallas */
+}
+
+/* Animation Performance Optimizations */
+.month,
+.dayButton {
+  will-change: transform;
+}
+
+.monthContainer {
+  /* Removido contain para permitir crecimiento libre del contenido */
+  /* contain: layout style paint; */
+}
+
+/* Focus Management */
+.dayButton:focus-visible {
+  outline: 2px solid var(--rdp-accent-color);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* Keyboard Navigation Indicator */
+.dayButton.keyboardFocused {
+  box-shadow: 0 0 0 2px var(--rdp-accent-color);
+  z-index: 1;
+}
+
+/* Loading State */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading .dayButton {
+  cursor: default;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .dayButton {
+    border-width: 2px;
+  }
+
+  .dayButton.selected {
+    border-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --rdp-transition-fast: 0ms;
+    --rdp-transition-normal: 0ms;
+  }
+
+  .dayButton,
+  .dayButton::before {
+    transition: none !important;
+  }
+
+  .dayButton:hover,
+  .dayButton.selected:hover,
+  .dayButton.today:hover,
+  .dayButton.outside:hover,
+  .dayButton.disabled:hover {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .monthEnterActive,
+  .monthExitActive,
+  .monthEnterFromLeftActive {
+    transition: none !important;
+  }
+
+  /* Deshabilitar todas las animaciones de pseudo-elementos */
+  .dayButton::before,
+  .dayButton.selected::before,
+  .dayButton.today:not(.selected)::before,
+  .dayButton.outside::before,
+  .dayButton.disabled::before {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .container {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .dayButton:hover {
+    transform: none;
+    background: transparent;
+  }
+}
+
+/* Spanish Weekday Labels Override */
+.weekdaySpanish {
+  position: relative;
+}
+
+.weekdaySpanish::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--rdp-text-secondary);
+}
+
+/* Hide original weekday text for Spanish labels */
+.weekdaySpanish > * {
+  visibility: hidden;
+}
+
+/* Custom scrollbar for year dropdown */
+.yearDropdown::-webkit-scrollbar {
+  width: 4px;
+}
+
+.yearDropdown::-webkit-scrollbar-track {
+  background: var(--rdp-surface);
+}
+
+.yearDropdown::-webkit-scrollbar-thumb {
+  background: var(--rdp-border);
+  border-radius: 2px;
+}
+
+.yearDropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--rdp-text-secondary);
+} 

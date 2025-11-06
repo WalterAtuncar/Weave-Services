@@ -1,0 +1,544 @@
+/* 
+Layout del diagrama BPMN:
+┌─────────────────────────────────────────────────────┐
+│                 bpmnDiagramContainer                │
+│ ┌─────────────────────────────────────────────────┐ │
+│ │              diagramContent (row)               │ │
+│ │ ┌─────────┐ ┌─────────────────┐ ┌─────────────┐ │ │
+│ │ │ Toolbar │ │   diagramArea   │ │ Properties  │ │ │
+│ │ │ (250px) │ │ ┌─────────────┐ │ │ Panel       │ │ │
+│ │ │         │ │ │ ReactFlow   │ │ │ (320px)     │ │ │
+│ │ │         │ │ │ (flex: 1)   │ │ │             │ │ │
+│ │ │         │ │ └─────────────┘ │ │             │ │ │
+│ │ └─────────┘ └─────────────────┘ └─────────────┘ │ │
+│ └─────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────┘
+*/
+
+.bpmnDiagramContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.diagramContent {
+  display: flex;
+  flex-direction: row; /* Cambio: layout horizontal */
+  height: 100%;
+  width: 100%;
+}
+
+.diagramArea {
+  display: flex;
+  flex-direction: row; /* Layout horizontal para ReactFlow y PropertiesPanel */
+  flex: 1; /* Ocupar el resto del espacio después del toolbar */
+  position: relative;
+  overflow: hidden;
+  min-height: 600px; /* Altura mínima mayor para mejor UX */
+}
+
+.reactFlowWrapper {
+  flex: 1; /* Tomar todo el espacio disponible entre toolbar y properties panel */
+  position: relative;
+  height: 100%;
+  min-height: 600px; /* Altura mínima mayor */
+  pointer-events: auto; /* Asegurar que puede recibir eventos */
+  z-index: 1; /* Asegurar que está por encima */
+  /* No fijar width para permitir que se adapte al espacio disponible */
+}
+
+.reactFlow {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 600px; /* Altura mínima mayor para ReactFlow */
+}
+
+.reactFlow.dragOver {
+  background-color: rgba(59, 130, 246, 0.05);
+  border: 2px dashed #3b82f6;
+}
+
+/* Nodos BPMN - Estilos base */
+.bpmnNode {
+  border-radius: 8px;
+  border: 2px solid;
+  padding: 12px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-width: 120px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bpmnNode:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.bpmnNode.selected {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Nodo de Inicio - Redimensionable */
+.startNode {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 60px; /* Tamaño mínimo al redimensionar */
+  min-height: 60px;
+  font-size: 12px;
+  font-weight: 600;
+  /* Permitir redimensionamiento dinámico */
+  width: 100%;
+  height: 100%;
+  /* Mantener forma circular al redimensionar */
+  aspect-ratio: 1;
+}
+
+/* Nodo de Fin - Redimensionable */
+.endNode {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 60px; /* Tamaño mínimo al redimensionar */
+  min-height: 60px;
+  font-size: 12px;
+  font-weight: 600;
+  border-width: 4px;
+  /* Permitir redimensionamiento dinámico */
+  width: 100%;
+  height: 100%;
+  /* Mantener forma circular al redimensionar */
+  aspect-ratio: 1;
+}
+
+/* Nodo de Tarea - Redimensionable */
+.taskNode {
+  border-radius: 8px;
+  min-width: 120px; /* Tamaño mínimo al redimensionar */
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px; /* Reducido para dar más espacio a los resize handles */
+  /* Permitir que el contenido se ajuste al nuevo tamaño */
+  overflow: visible; /* Cambiado para que los resize handles sean visibles */
+  word-wrap: break-word;
+  /* Permitir redimensionamiento dinámico */
+  width: 100%;
+  height: 100%;
+  position: relative; /* Asegurar posicionamiento correcto para resize handles */
+  /* Asegurar espacio para resize handles */
+  box-sizing: border-box;
+}
+
+.taskNodeHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.taskNodeIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.taskNodeLabel {
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.taskNodeMeta {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Nodo de Decisión - Redimensionable */
+.decisionNode {
+  transform: rotate(45deg);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 80px; /* Tamaño mínimo al redimensionar */
+  min-height: 80px;
+  position: relative;
+  /* Permitir redimensionamiento dinámico */
+  width: 100%;
+  height: 100%;
+  /* Mantener forma cuadrada (diamante) al redimensionar */
+  aspect-ratio: 1;
+}
+
+.decisionNodeContent {
+  transform: rotate(-45deg);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 60px;
+  word-wrap: break-word;
+}
+
+/* Handle para conexiones */
+.nodeHandle {
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid #fff !important;
+  background: #3b82f6 !important;
+  border-radius: 50% !important;
+}
+
+.nodeHandle.source {
+  bottom: -4px !important;
+}
+
+.nodeHandle.target {
+  top: -4px !important;
+}
+
+/* Nodos en modo solo lectura */
+.readOnly .bpmnNode {
+  cursor: default;
+}
+
+.readOnly .bpmnNode:hover {
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Resize handles - Configuración funcional */
+:global(.react-flow__resize-control) {
+  width: 14px !important;
+  height: 14px !important;
+  border: 2px solid #3b82f6 !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  pointer-events: auto !important;
+  cursor: nw-resize !important;
+}
+
+:global(.react-flow__resize-control:hover) {
+  background: #3b82f6 !important;
+  border-color: #1d4ed8 !important;
+  transform: scale(1.2) !important;
+}
+
+/* Asegurar que el resize funcione */
+:global(.react-flow__resize-control:active) {
+  background: #1d4ed8 !important;
+  cursor: nw-resize !important;
+}
+
+/* Configuración simplificada sin cursors específicos */
+
+/* Asegurar que el nodo sea resizable - Configuración crítica */
+:global(.react-flow__node[data-resizable="true"]) {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+:global(.react-flow__node) {
+  pointer-events: auto !important;
+}
+
+/* Asegurar que el resizer esté visible y funcional */
+:global(.react-flow__node-resizer) {
+  border: 1px dashed #3b82f6 !important;
+  background: transparent !important;
+}
+
+/* Forzar actualización visual durante resize */
+:global(.react-flow__node.resizing) {
+  transition: none !important;
+}
+
+:global(.react-flow__node) {
+  transition: none !important;
+}
+
+/* Resize handles para nodos seleccionados - Más visibles */
+:global(.react-flow__node.selected .react-flow__resize-control) {
+  opacity: 1 !important;
+  display: block !important;
+  pointer-events: auto !important;
+}
+
+/* Separar la funcionalidad de drag del resize */
+.drag-handle {
+  cursor: move !important;
+  pointer-events: auto !important;
+}
+
+.drag-handle:active {
+  cursor: grabbing !important;
+}
+
+/* Estilos específicos para resize en diferentes tipos de nodos */
+:global(.react-flow__node[data-node-type="start"] .react-flow__resize-control),
+:global(.react-flow__node[data-node-type="end"] .react-flow__resize-control) {
+  border-color: #10B981 !important;
+}
+
+:global(.react-flow__node[data-node-type="decision"] .react-flow__resize-control) {
+  border-color: #F59E0B !important;
+}
+
+/* Resize handles específicos para task nodes - Posicionamiento externo */
+:global(.react-flow__node[data-node-type="task"] .react-flow__resize-control) {
+  border-color: #3B82F6 !important;
+  z-index: 5000 !important;
+  position: absolute !important;
+}
+
+/* Posicionamiento específico para task nodes que tienden a tener overflow issues */
+:global(.react-flow__node[data-node-type="task"]) {
+  overflow: visible !important;
+}
+
+:global(.react-flow__node[data-node-type="task"] .react-flow__resize-control.top-left) {
+  top: -7px !important;
+  left: -7px !important;
+}
+
+:global(.react-flow__node[data-node-type="task"] .react-flow__resize-control.top-right) {
+  top: -7px !important;
+  right: -7px !important;
+}
+
+:global(.react-flow__node[data-node-type="task"] .react-flow__resize-control.bottom-left) {
+  bottom: -7px !important;
+  left: -7px !important;
+}
+
+:global(.react-flow__node[data-node-type="task"] .react-flow__resize-control.bottom-right) {
+  bottom: -7px !important;
+  right: -7px !important;
+}
+
+/* Clases específicas para resize handles de task */
+:global(.task-resize-handle) {
+  z-index: 6000 !important;
+  position: absolute !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+:global(.task-resize-line) {
+  opacity: 0.8 !important;
+  pointer-events: none !important;
+}
+
+/* Mostrar handles en hover para mejor UX */
+.react-flow__node:hover .react-flow__resize-control {
+  opacity: 0.7 !important;
+  display: block !important;
+}
+
+/* Asegurar que los nodos no interfieran con el resize */
+.react-flow__node {
+  pointer-events: auto !important;
+}
+
+.react-flow__node.selected {
+  pointer-events: auto !important;
+  z-index: 100 !important;
+}
+
+/* Prevenir conflictos entre drag y resize */
+.react-flow__node {
+  cursor: move !important;
+}
+
+.react-flow__node.selected {
+  cursor: move !important;
+}
+
+/* Los resize handles tienen máxima prioridad */
+:global(.react-flow__resize-control) {
+  cursor: grab !important;
+  touch-action: none !important;
+}
+
+:global(.react-flow__resize-control:hover) {
+  cursor: grab !important;
+}
+
+:global(.react-flow__resize-control:active) {
+  cursor: grabbing !important;
+}
+
+/* Mejorar área de clickeo de los handles */
+.react-flow__resize-control::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* Estilos personalizados para NodeResizer */
+:global(.custom-resize-handle) {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  border: 3px solid currentColor !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  opacity: 0.9 !important;
+  z-index: 1001 !important;
+  pointer-events: auto !important;
+  transition: all 0.2s ease !important;
+}
+
+:global(.custom-resize-handle:hover) {
+  transform: scale(1.2) !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+:global(.custom-resize-line) {
+  stroke-width: 2 !important;
+  stroke-dasharray: 4,2 !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+}
+
+/* Estilos para handles específicos de cada dirección - Sin cursors conflictivos */
+:global(.custom-resize-handle[data-direction="top-left"]) {
+  top: -7px !important;
+  left: -7px !important;
+}
+
+:global(.custom-resize-handle[data-direction="top-right"]) {
+  top: -7px !important;
+  right: -7px !important;
+}
+
+:global(.custom-resize-handle[data-direction="bottom-left"]) {
+  bottom: -7px !important;
+  left: -7px !important;
+}
+
+:global(.custom-resize-handle[data-direction="bottom-right"]) {
+  bottom: -7px !important;
+  right: -7px !important;
+}
+
+/* Sistema de resize robusto y funcional */
+:global(.react-flow__node-resizer) {
+  border: none !important;
+  background: transparent !important;
+  pointer-events: none !important;
+  z-index: 1000 !important;
+}
+
+:global(.react-flow__resize-control) {
+  position: absolute !important;
+  pointer-events: auto !important;
+  z-index: 5000 !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Nodos seleccionados muestran controles */
+:global(.react-flow__node.selected .react-flow__resize-control) {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Feedback visual al hacer hover */
+:global(.react-flow__node:hover .react-flow__resize-control) {
+  opacity: 0.8 !important;
+  visibility: visible !important;
+}
+
+/* Estilo del nodo seleccionado */
+:global(.react-flow__node.selected) {
+  outline: 2px solid rgba(59, 130, 246, 0.5) !important;
+  outline-offset: 2px !important;
+  z-index: 100 !important;
+}
+
+/* Asegurar interactividad de handles */
+:global(.react-flow__resize-control:active) {
+  transform: scale(1.2) !important;
+  z-index: 6000 !important;
+}
+
+/* Prevenir conflictos de eventos */
+:global(.react-flow__node.selected),
+:global(.react-flow__node.selected > *) {
+  pointer-events: auto !important;
+}
+
+:global(.react-flow__resize-control) {
+  pointer-events: auto !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bpmnNode {
+    min-width: 100px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  .taskNode {
+    min-width: 120px;
+    min-height: 50px;
+    padding: 8px;
+  }
+  
+  .startNode, .endNode {
+    width: 60px;
+    height: 60px;
+    font-size: 10px;
+  }
+  
+  .decisionNode {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .decisionNodeContent {
+    font-size: 10px;
+    max-width: 50px;
+  }
+}

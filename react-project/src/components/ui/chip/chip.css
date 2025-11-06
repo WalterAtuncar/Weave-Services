@@ -1,0 +1,183 @@
+/* =============================================
+   CHIP COMPONENT STYLES
+   ============================================= */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  user-select: none;
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.chip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chip.selected {
+  transform: scale(1.02);
+}
+
+.chip.selected:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--primary), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chip.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chip.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.chip-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chip-label {
+  font-weight: 600;
+}
+
+.chip-description {
+  font-size: 11px;
+  opacity: 0.8;
+  font-weight: 400;
+  margin-top: 1px;
+}
+
+.chip-remove-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  margin-left: auto;
+}
+
+.chip-remove-button:hover {
+  opacity: 1;
+}
+
+/* =============================================
+   CHIP GROUP STYLES
+   ============================================= */
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.chip-group-more {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
+.chip-group-add-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 16px;
+  border: 1px dashed var(--border);
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.chip-group-add-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.chip-group-add-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chip-group-add-button:disabled:hover {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+/* =============================================
+   THEME VARIABLES
+   ============================================= */
+
+:root {
+  --primary: #414976;
+  --surface: #FFFFFF;
+  --text-secondary: #6B7280;
+  --border: #E5E7EB;
+}
+
+[data-theme="dark"] {
+  --primary: #F3F4F8;
+  --surface: #1E293B;
+  --text-secondary: #94A3B8;
+  --border: #334155;
+}
+
+/* Soporte para clase global .dark */
+:global(.dark) {
+  --primary: #F3F4F8;
+  --surface: #1E293B;
+  --text-secondary: #94A3B8;
+  --border: #334155;
+}
+
+/* Estilos específicos para tema oscuro con clase global */
+:global(.dark) .chip {
+  background-color: var(--surface);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+:global(.dark) .chip:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .chip-group-more {
+  background-color: var(--surface);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+:global(.dark) .chip-group-add-button {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+:global(.dark) .chip-group-add-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}

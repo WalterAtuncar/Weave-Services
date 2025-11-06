@@ -1,0 +1,376 @@
+/* Proceso Card Styles */
+.procesoCard {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(var(--color-white));
+  border: 1px solid rgb(var(--color-gray-200));
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  height: auto;
+  min-height: 280px;
+}
+
+.procesoCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: rgb(var(--color-blue-300));
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  background-color: #414976;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.iconAndTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconAndTitle svg {
+  color: #ffffff;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.procesoName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  word-break: break-word;
+}
+
+.procesoCode {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #e5e7eb;
+  line-height: 1;
+}
+
+.headerActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.headerStatusBadge {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+}
+
+.headerStatusBadge .indicator {
+  background-color: #10b981 !important;
+}
+
+.approvalStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+/* Actions */
+.actionsContainer {
+  position: relative;
+}
+
+.actionsButton {
+  padding: 0.25rem !important;
+  min-width: auto !important;
+  width: 2rem;
+  height: 2rem;
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0.375rem !important;
+}
+
+.actionsButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.actionsMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* Fondo sólido para evitar transparencia y superposición de texto */
+  background-color: #ffffff;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 160px;
+  padding: 4px;
+  margin-top: 4px;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.actionItem:hover {
+  background: var(--color-background-hover);
+}
+
+.dangerAction {
+  color: var(--color-text-danger);
+}
+
+.dangerAction:hover {
+  background: var(--color-background-danger-subtle);
+}
+
+.actionDivider {
+  height: 1px;
+  background: var(--color-border-subtle);
+  margin: 4px 0;
+}
+
+/* Content */
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.procesoDescription {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.procesoMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.metaItemDescription {
+  align-items: flex-start;
+}
+
+.metaLabel {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.metaValue {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metaValueDescription {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+/* Footer */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.footerBadges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.governanceBadge,
+.dependencyBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.governanceBadge {
+  color: #3b82f6;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.dependencyBadge {
+  color: #f59e0b;
+  background: #fffbeb;
+  border-color: #fed7aa;
+}
+
+.footerDate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 11px;
+  text-align: right;
+}
+
+.dateLabel {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.dateValue {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Dark theme */
+[data-theme="dark"] .procesoCard {
+  background: var(--color-background-card);
+  border-color: var(--color-border-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .procesoCard:hover {
+  border-color: var(--color-border-interactive);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .procesoCode {
+  background: var(--color-background-subtle);
+}
+
+[data-theme="dark"] .actionsMenu {
+  background: var(--color-background-card);
+  border-color: var(--color-border-subtle);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .governanceBadge {
+  color: #60a5fa;
+  background: #1e3a8a;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .dependencyBadge {
+  color: #fbbf24;
+  background: #92400e;
+  border-color: #f59e0b;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .procesoCard {
+    padding: 16px;
+    min-height: 260px;
+  }
+
+  .procesoName {
+    font-size: 15px;
+  }
+
+  .cardHeader {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .procesoCard {
+    padding: 14px;
+    min-height: 240px;
+  }
+
+  .procesoName {
+    font-size: 14px;
+  }
+
+  .iconAndTitle {
+    gap: 8px;
+  }
+
+  .headerActions {
+    gap: 6px;
+  }
+
+  .metaItem {
+    font-size: 12px;
+  }
+
+  .footerDate {
+    font-size: 10px;
+  }
+
+  .actionsMenu {
+    min-width: 140px;
+  }
+}

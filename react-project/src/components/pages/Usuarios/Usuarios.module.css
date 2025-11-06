@@ -1,0 +1,736 @@
+/* ====================================================================
+   USUARIOS COMPONENT - ESTILOS MODERNOS
+   ==================================================================== */
+
+.usuariosContainer {
+  padding: 24px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* ====================================================================
+   HEADER PRINCIPAL
+   ==================================================================== */
+
+.header {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.headerInfo h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.headerInfo p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ====================================================================
+   BARRA DE BÚSQUEDA Y FILTROS
+   ==================================================================== */
+
+.searchAndFilters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  max-width: 500px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 12px 12px 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+/* ====================================================================
+   CONTENIDO PRINCIPAL
+   ==================================================================== */
+
+.content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* ====================================================================
+   ESTADO VACÍO
+   ==================================================================== */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.emptyState h3 {
+  margin: 16px 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.emptyState p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* ====================================================================
+   TABLA DE USUARIOS
+   ==================================================================== */
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.usuariosTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.usuariosTable th {
+  text-align: left;
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.usuariosTable td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.usuariosTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* ====================================================================
+   INFORMACIÓN DEL USUARIO
+   ==================================================================== */
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #414976, #6b7280);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.userCode {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ====================================================================
+   CELDAS ESPECÍFICAS
+   ==================================================================== */
+
+.emailCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.statusBadge.activo {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.statusBadge.inactivo {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.statusBadge.suspendido {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.statusBadge.bloqueado {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.statusBadge.vacaciones {
+  background: #f3e8ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+}
+
+.statusBadge.licencia {
+  background: #e0f2fe;
+  color: #0891b2;
+  border: 1px solid #bae6fd;
+}
+
+.statusBadge.cesado {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.statusBadge.desconocido {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+/* Estilos para modo oscuro */
+:global(.dark) .statusBadge.activo {
+  background: rgba(34, 197, 94, 0.125);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+:global(.dark) .statusBadge.inactivo {
+  background: rgba(107, 114, 128, 0.125);
+  color: #9ca3af;
+  border: 1px solid rgba(107, 114, 128, 0.25);
+}
+
+:global(.dark) .statusBadge.suspendido {
+  background: rgba(245, 158, 11, 0.125);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+:global(.dark) .statusBadge.bloqueado {
+  background: rgba(239, 68, 68, 0.125);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+:global(.dark) .statusBadge.vacaciones {
+  background: rgba(168, 85, 247, 0.125);
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+:global(.dark) .statusBadge.licencia {
+  background: rgba(6, 182, 212, 0.125);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+:global(.dark) .statusBadge.cesado {
+  background: rgba(239, 68, 68, 0.125);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+:global(.dark) .statusBadge.desconocido {
+  background: rgba(107, 114, 128, 0.125);
+  color: #9ca3af;
+  border: 1px solid rgba(107, 114, 128, 0.25);
+}
+
+/* ====================================================================
+   ACCIONES
+   ==================================================================== */
+
+.actionsCell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.actionButton:hover {
+  transform: translateY(-1px);
+}
+
+.actionButton.view {
+  color: #6366f1;
+}
+
+.actionButton.view:hover {
+  background: #eef2ff;
+}
+
+.actionButton.edit {
+  color: #059669;
+}
+
+.actionButton.edit:hover {
+  background: #d1fae5;
+}
+
+.actionButton.delete {
+  color: #dc2626;
+}
+
+.actionButton.delete:hover {
+  background: #fee2e2;
+}
+
+/* ====================================================================
+   MODAL - VISTA DE DETALLES
+   ==================================================================== */
+
+.modalViewContent {
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modalViewSection {
+  margin-bottom: 32px;
+}
+
+.modalViewSection:last-child {
+  margin-bottom: 0;
+}
+
+.modalViewSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.modalViewItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.modalViewItem:last-child {
+  border-bottom: none;
+}
+
+.modalViewLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #6b7280;
+  font-size: 14px;
+  min-width: 140px;
+}
+
+.modalViewValue {
+  color: #1f2937;
+  font-size: 14px;
+  text-align: right;
+  flex: 1;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+/* ====================================================================
+   MODAL - FORMULARIO
+   ==================================================================== */
+
+.modalForm {
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modalFormSection {
+  margin-bottom: 32px;
+}
+
+.modalFormSection:last-child {
+  margin-bottom: 0;
+}
+
+.modalSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+  background: white;
+}
+
+.formInput:focus,
+.formSelect:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.formInput::placeholder {
+  color: #9ca3af;
+}
+
+.formHint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .usuariosContainer {
+    padding: 16px;
+  }
+  
+  .headerContent {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .searchAndFilters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchContainer {
+    max-width: none;
+  }
+  
+  .usuariosTable {
+    font-size: 12px;
+  }
+  
+  .usuariosTable th,
+  .usuariosTable td {
+    padding: 12px 8px;
+  }
+  
+  .userInfo {
+    gap: 8px;
+  }
+  
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .modalViewContent,
+  .modalForm {
+    padding: 16px;
+  }
+  
+  .modalViewItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .modalViewLabel {
+    min-width: auto;
+  }
+  
+  .modalViewValue {
+    text-align: left;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 16px;
+  }
+  
+  .headerInfo h1 {
+    font-size: 24px;
+  }
+  
+  .actionsCell {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .actionButton {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ====================================================================
+   STEPPER FORMULARIOS
+   ==================================================================== */
+
+.stepForm {
+  padding: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-top: 0;
+}
+
+/* Fila específica para Dirección y Ubigeo con distribución 50/50 */
+.direccionUbigeoRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  grid-column: 1 / -1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.formGroup label {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+  background: white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.formGroup input::placeholder {
+  color: #9ca3af;
+}
+
+/* Sección de resumen */
+.resumeSection {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.resumeSection h4 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.resumeItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.resumeItem:last-child {
+  border-bottom: none;
+}
+
+.resumeItem span:first-child {
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.resumeItem span:last-child {
+  text-align: right;
+  flex: 1;
+}
+
+/* Responsive para formularios */
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .resumeSection {
+    padding: 16px;
+  }
+  
+  .resumeItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .resumeItem span:last-child {
+    text-align: left;
+  }
+} 

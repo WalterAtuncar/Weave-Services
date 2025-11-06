@@ -1,0 +1,1 @@
+export { ProcessTypeIcon } from './ProcessTypeIcon';

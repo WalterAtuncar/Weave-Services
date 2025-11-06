@@ -1,0 +1,588 @@
+/* ====================================================================
+   GRID COMPONENT - ESTILOS MODERNOS Y PROFESIONALES
+   ==================================================================== */
+
+.grid-container {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* ====================================================================
+   TABLA
+   ==================================================================== */
+
+.grid-table-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: white;
+  table-layout: auto;
+}
+
+/* Header */
+.grid-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #414976;
+}
+
+.grid-header-cell {
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  white-space: nowrap;
+  position: relative;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.grid-header-cell:last-child {
+  border-right: none;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sort-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.sort-button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.sort-icon {
+  transition: all 0.2s ease;
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* Body */
+.grid-body-row {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid;
+}
+
+.grid-body-row:hover {
+  background-color: #f9fafb;
+}
+
+.grid-body-row.clickable {
+  cursor: pointer;
+}
+
+.grid-body-row.clickable:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid-body-cell {
+  padding: 8px 20px;
+  vertical-align: middle;
+  border: none;
+  color: #374151;
+  border-right: 1px solid;
+}
+
+.grid-body-cell:last-child {
+  border-right: none;
+}
+
+/* Estados especiales */
+.grid-loading,
+.grid-empty {
+  text-align: center;
+  padding: 60px 20px;
+  border: none;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid transparent;
+  border-top: 3px solid;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-content {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ====================================================================
+   PAGINADOR
+   ==================================================================== */
+
+.grid-paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #f9fafb;
+  border-top: 1px solid;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.paginator-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.page-info {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.page-size-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.page-size-selector label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.page-size-selector select {
+  padding: 6px 12px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 80px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.page-size-selector select:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.paginator-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paginator-button {
+  min-width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 8px;
+}
+
+.page-number {
+  min-width: 36px;
+  height: 36px;
+  border: 1px solid;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number:hover {
+  border-color: #414976;
+  background-color: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.page-number.active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  font-weight: 500;
+}
+
+.paginator-summary {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ====================================================================
+   RESPONSIVE DESIGN
+   ==================================================================== */
+
+@media (max-width: 1024px) {
+  .grid-paginator {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .paginator-info {
+    justify-content: center;
+  }
+  
+  .paginator-controls {
+    justify-content: center;
+  }
+  
+  .paginator-summary {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    border-radius: 8px;
+  }
+  
+  .grid-header-cell,
+  .grid-body-cell {
+    padding: 6px 16px;
+  }
+  
+  .grid-header-cell {
+    font-size: 11px;
+  }
+  
+  .grid-table {
+    font-size: 13px;
+  }
+  
+  .grid-paginator {
+    padding: 12px 16px;
+  }
+  
+  .page-numbers {
+    margin: 0 4px;
+    gap: 2px;
+  }
+  
+  .page-number,
+  .paginator-button {
+    min-width: 32px !important;
+    height: 32px !important;
+    font-size: 13px;
+  }
+  
+  .page-size-selector {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-header-cell,
+  .grid-body-cell {
+    padding: 4px 12px;
+  }
+  
+  .grid-paginator {
+    padding: 8px 12px;
+  }
+  
+  .paginator-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .page-numbers {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+  }
+  
+  .page-number,
+  .paginator-button {
+    min-width: 28px !important;
+    height: 28px !important;
+    font-size: 12px;
+  }
+  
+  .loading-content {
+    gap: 12px;
+  }
+  
+  .loading-spinner {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+  }
+}
+
+/* ====================================================================
+   ACCESIBILIDAD
+   ==================================================================== */
+
+.page-number:focus,
+.paginator-button:focus,
+.page-size-selector select:focus {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+.grid-body-row.clickable:focus-within {
+  outline: 2px solid;
+  outline-offset: -2px;
+}
+
+/* ====================================================================
+   ANIMACIONES
+   ==================================================================== */
+
+.grid-body-row {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-number,
+.paginator-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-number:active,
+.paginator-button:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+/* Estilos para las acciones */
+.action-button {
+  transition: all 0.2s ease;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.action-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.actions-container {
+  min-width: fit-content;
+}
+
+/* Responsive para las acciones */
+@media (max-width: 768px) {
+  .actions-container {
+    gap: 4px;
+  }
+  
+  .action-button {
+    padding: 2px;
+  }
+}
+
+/* Estilos para celdas de imagen */
+.grid-body-cell.image-cell {
+  padding: 6px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.grid-body-cell.image-cell > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====================================================================
+   TEMA OSCURO
+   ==================================================================== */
+
+[data-theme="dark"] .grid-container {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .grid-table {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .grid-header-row {
+  background: #0f172a;
+}
+
+[data-theme="dark"] .grid-header-cell {
+  color: #f1f5f9;
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .grid-body-row {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .grid-body-row:hover {
+  background-color: #334155;
+}
+
+[data-theme="dark"] .grid-body-row.clickable:hover {
+  background-color: #475569;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .grid-body-cell {
+  color: #f1f5f9;
+  border-right-color: #334155;
+}
+
+[data-theme="dark"] .grid-loading,
+[data-theme="dark"] .grid-empty {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .loading-spinner {
+  border-color: #334155;
+  border-top-color: #6366f1;
+}
+
+[data-theme="dark"] .empty-content {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .grid-paginator {
+  background: #0f172a;
+  border-top-color: #334155;
+}
+
+[data-theme="dark"] .page-info {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .page-size-selector label {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .page-size-selector select {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .page-size-selector select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme="dark"] .page-number {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .page-number:hover {
+  background: #334155;
+  border-color: #475569;
+}
+
+[data-theme="dark"] .page-number.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: white;
+}
+
+[data-theme="dark"] .page-number.active:hover {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+[data-theme="dark"] .paginator-button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .paginator-button:hover:not(:disabled) {
+  background: #334155;
+  border-color: #475569;
+}
+
+[data-theme="dark"] .paginator-button:disabled {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #475569;
+}
+
+[data-theme="dark"] .action-button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}

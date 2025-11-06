@@ -1,0 +1,119 @@
+/* Estilos globales para el sistema de temas */
+
+/* Variables por defecto (fallback) */
+:root {
+  --organigrama-primary: #3b82f6;
+  --organigrama-background: #F5F7FA;
+  --organigrama-surface: #FFFFFF;
+  --organigrama-text: #414976;
+  --organigrama-text-secondary: #6B7280;
+  --organigrama-border: #E5E7EB;
+  --organigrama-card-bg: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%);
+  --organigrama-card-bg-hover: linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #4F46E5 100%);
+  --organigrama-card-text: #ffffff;
+  --organigrama-position-assigned-bg: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  --organigrama-position-vacant-bg: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+  --organigrama-position-text: #1f2937;
+  --organigrama-button-bg: rgba(255, 255, 255, 0.2);
+  --organigrama-button-bg-hover: rgba(255, 255, 255, 0.3);
+  --organigrama-person-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --organigrama-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --organigrama-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Variables CSS para light theme */
+body.light {
+  --color-primary: #414976; /* Azul primario del proyecto */
+  --color-background: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-text: #414976;
+  --color-text-secondary: #6B7280;
+  --color-border: #E5E7EB;
+  
+  /* Variables específicas del organigrama para modo claro */
+  --organigrama-primary: #414976;
+  --organigrama-background: #F5F7FA;
+  --organigrama-surface: #FFFFFF;
+  --organigrama-text: #414976;
+  --organigrama-text-secondary: #6B7280;
+  --organigrama-border: #E5E7EB;
+  --organigrama-card-bg: #414976;
+  --organigrama-card-bg-hover: #414976;
+  --organigrama-card-text: #ffffff;
+  --organigrama-position-assigned-bg: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  --organigrama-position-vacant-bg: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+  --organigrama-position-text: #1f2937;
+  --organigrama-button-bg: rgba(255, 255, 255, 0.2);
+  --organigrama-button-bg-hover: rgba(255, 255, 255, 0.3);
+  --organigrama-person-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --organigrama-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --organigrama-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Variables CSS para dark theme */
+body.dark {
+  --color-primary: #3b82f6; /* 🔧 FIX: Azul para ser consistente con light theme */
+  --color-background: #0F172A;
+  --color-surface: #1E293B;
+  --color-text: #F3F4F8;
+  --color-text-secondary: #94A3B8;
+  --color-border: #334155;
+  
+  /* Variables específicas del organigrama para modo oscuro */
+  --organigrama-primary: #60a5fa;
+  --organigrama-background: #0F172A;
+  --organigrama-surface: #1E293B;
+  --organigrama-text: #F3F4F8;
+  --organigrama-text-secondary: #94A3B8;
+  --organigrama-border: #334155;
+  --organigrama-card-bg: linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%);
+  --organigrama-card-bg-hover: linear-gradient(135deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+  --organigrama-card-text: #f3f4f6;
+  --organigrama-position-assigned-bg: linear-gradient(135deg, #1f2937 0%, #064e3b 100%);
+  --organigrama-position-vacant-bg: linear-gradient(135deg, #1f2937 0%, #7f1d1d 100%);
+  --organigrama-position-text: #f3f4f6;
+  --organigrama-button-bg: rgba(148, 163, 184, 0.2);
+  --organigrama-button-bg-hover: rgba(148, 163, 184, 0.3);
+  --organigrama-person-bg: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  --organigrama-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --organigrama-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilos de transición suaves */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scrollbar personalizada para dark mode */
+body.dark::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.dark::-webkit-scrollbar-track {
+  background: #1E293B;
+}
+
+body.dark::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* Estilos base del body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+} 

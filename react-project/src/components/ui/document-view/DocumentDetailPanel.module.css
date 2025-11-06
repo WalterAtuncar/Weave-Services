@@ -1,0 +1,87 @@
+/* Backdrop para cerrar al hacer clic fuera */
+.overlayBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: saturate(180%) blur(2px);
+  z-index: 49;
+}
+
+/* Panel lateral con animación de slide-in */
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 380px;
+  background: hsl(var(--surface));
+  border-left: 1px solid hsl(var(--border));
+  box-shadow: -12px 0 24px rgba(0,0,0,0.12);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  z-index: 50;
+  animation: slideIn 240ms ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0.9rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.titleBox {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.headerActions { display: flex; gap: 0.25rem; }
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.content {
+  overflow: auto;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.section {
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  padding: 0.9rem;
+}
+
+.sectionTitle {
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.thumb {
+  width: 100%;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.actionsRow { display: flex; gap: 0.5rem; }
+
+.closeBtn { margin-left: 0.5rem; }
+
+.fab { display: none; }

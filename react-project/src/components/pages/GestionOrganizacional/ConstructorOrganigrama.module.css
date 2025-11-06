@@ -1,0 +1,1789 @@
+/* Constructor de Organigrama Styles */
+
+/* Variables CSS mejoradas para temas del organigrama */
+:root {
+  /* Light theme - valores por defecto */
+  --organigrama-primary: #3b82f6;
+  --organigrama-background: #F5F7FA;
+  --organigrama-surface: #FFFFFF;
+  --organigrama-text: #414976;
+  --organigrama-text-secondary: #6B7280;
+  --organigrama-border: #E5E7EB;
+  --organigrama-card-bg: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%);
+  --organigrama-card-bg-hover: linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #4F46E5 100%);
+  --organigrama-card-text: #ffffff;
+  --organigrama-position-assigned-bg: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  --organigrama-position-vacant-bg: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+  --organigrama-position-text: #1f2937;
+  --organigrama-button-bg: rgba(255, 255, 255, 0.2);
+  --organigrama-button-bg-hover: rgba(255, 255, 255, 0.3);
+  --organigrama-person-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --organigrama-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --organigrama-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark theme - sobreescribir variables */
+body.dark {
+  --organigrama-primary: #60a5fa;
+  --organigrama-background: #0F172A;
+  --organigrama-surface: #1E293B;
+  --organigrama-text: #F3F4F8;
+  --organigrama-text-secondary: #94A3B8;
+  --organigrama-border: #334155;
+  --organigrama-card-bg: linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%);
+  --organigrama-card-bg-hover: linear-gradient(135deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+  --organigrama-card-text: #f3f4f6;
+  --organigrama-position-assigned-bg: linear-gradient(135deg, #1f2937 0%, #064e3b 100%);
+  --organigrama-position-vacant-bg: linear-gradient(135deg, #1f2937 0%, #7f1d1d 100%);
+  --organigrama-position-text: #f3f4f6;
+  --organigrama-button-bg: rgba(148, 163, 184, 0.2);
+  --organigrama-button-bg-hover: rgba(148, 163, 184, 0.3);
+  --organigrama-person-bg: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  --organigrama-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --organigrama-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+.orgChartContainer {
+  min-height: 100vh;
+  background-color: var(--organigrama-background) !important;
+}
+
+/* Estados de carga y error */
+.loadingContainer, .errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loadingContainer h3, .errorContainer h3 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.loadingContainer p, .errorContainer p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  max-width: 400px;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(99, 102, 241, 0.1);
+  border-left-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.orgChartHeader {
+  background-color: var(--organigrama-surface) !important;
+  border-bottom: 1px solid var(--organigrama-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.orgChartHeaderContent {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.orgChartHeaderInfo h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  color: var(--organigrama-text) !important;
+}
+
+.orgChartHeaderInfo p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: var(--organigrama-text-secondary) !important;
+}
+
+.orgChartHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.orgChartStats {
+  font-size: 0.875rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--organigrama-text-secondary) !important;
+}
+
+.orgChartStats .statValue {
+  font-weight: 600;
+  color: var(--organigrama-text) !important;
+}
+
+.createUnitButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--organigrama-primary) !important;
+  color: white !important;
+  border: 1px solid var(--organigrama-primary) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.createUnitButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.05);
+}
+
+/* Variante neutra para botones que no son primarios */
+.buttonNeutral {
+  background-color: var(--organigrama-surface) !important;
+  color: var(--organigrama-text) !important;
+  border: 1px solid var(--organigrama-border) !important;
+  text-shadow: none !important;
+}
+
+/* Contenido principal */
+.orgChartContent {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 0.2rem 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.emptyState h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+  color: var(--organigrama-text-secondary);
+}
+
+.emptyState p {
+  margin: 0 0 1.5rem 0;
+  color: var(--organigrama-text-secondary);
+}
+
+.emptyState svg {
+  color: var(--organigrama-text-secondary);
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.createFirstUnitButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--organigrama-primary) !important;
+  color: white !important;
+  border: 1px solid var(--organigrama-primary) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 1.125rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Outline variant to avoid inline style overrides and adapt to dark theme */
+.createFirstUnitButtonOutline {
+  background-color: var(--organigrama-surface) !important;
+  color: var(--organigrama-primary) !important;
+  border: 2px solid var(--organigrama-primary) !important;
+  text-shadow: none !important;
+}
+
+.createFirstUnitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.05);
+}
+
+/* Disabled states for primary and outline variants (light/dark via CSS vars) */
+.createFirstUnitButton:disabled,
+.createFirstUnitButtonOutline:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  filter: none !important;
+  background-color: var(--organigrama-border) !important;
+  color: var(--organigrama-text-secondary) !important;
+  border-color: var(--organigrama-border) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== CONTROLES DE PAN Y ZOOM - DISEÑO PROFESIONAL ===== */
+.panControls {
+  position: absolute;
+  top: 12rem;
+  left: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--organigrama-surface);
+  border: 1px solid var(--organigrama-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  min-height: 56px;
+  max-width: fit-content;
+  /* Gradiente sutil para profundidad */
+  background: linear-gradient(135deg, 
+    var(--organigrama-surface) 0%, 
+    rgba(255, 255, 255, 0.95) 100%);
+  /* Animación suave al aparecer */
+  animation: slideInFromLeft 0.3s ease-out;
+  /* Mejoras para accesibilidad */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .panControls {
+    top: 11.5rem;
+    left: 0.75rem;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    min-height: 48px;
+    border-radius: 0.625rem;
+  }
+  
+  .panButton {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8125rem;
+  }
+  
+  .zoomIndicator {
+    min-width: 50px;
+    height: 32px;
+    font-size: 0.6875rem;
+    margin: 0 2px;
+  }
+}
+
+/* Mejoras para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .panControls {
+    background: linear-gradient(135deg, 
+      var(--organigrama-surface) 0%, 
+      rgba(30, 41, 59, 0.95) 100%);
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.25),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .panButtonInactive {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .zoomIndicator {
+    background: linear-gradient(135deg, 
+      var(--organigrama-surface) 0%, 
+      rgba(30, 41, 59, 0.9) 100%);
+  }
+}
+
+/* Estados de focus para accesibilidad */
+.panButton:focus {
+  outline: 2px solid var(--organigrama-primary);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panButton:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación de carga para cuando se actualiza el zoom */
+.zoomIndicator.updating {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Animación de entrada desde la izquierda */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mantener animación original por compatibilidad */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.panButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto ripple sutil */
+.panButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+  transform: translate(-50%, -50%);
+}
+
+.panButton:active::before {
+  width: 100px;
+  height: 100px;
+}
+
+.panButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estados de los botones */
+.panButtonActive {
+  background: linear-gradient(135deg, 
+    var(--organigrama-primary) 0%, 
+    rgba(59, 130, 246, 0.9) 100%);
+  color: white;
+  box-shadow: 
+    0 2px 8px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.panButtonInactive {
+  background: var(--organigrama-surface);
+  color: var(--organigrama-text-secondary);
+  border: 1px solid var(--organigrama-border);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.panButtonActive:hover {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 1.1) 0%, 
+    rgba(59, 130, 246, 1) 100%);
+  box-shadow: 
+    0 4px 12px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.panButtonInactive:hover {
+  background: var(--organigrama-surface);
+  color: var(--organigrama-text);
+  border-color: var(--organigrama-primary);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.panButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  background: var(--organigrama-background) !important;
+  color: var(--organigrama-text-secondary) !important;
+  border: 1px solid var(--organigrama-border) !important;
+}
+
+.panButton:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: var(--organigrama-background) !important;
+  color: var(--organigrama-text-secondary) !important;
+  border: 1px solid var(--organigrama-border) !important;
+}
+
+/* Separador visual mejorado */
+.panSeparator {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    var(--organigrama-border) 20%, 
+    var(--organigrama-border) 80%, 
+    transparent 100%);
+  margin: 8px 6px;
+  opacity: 0.6;
+}
+
+/* Indicador de zoom profesional */
+.zoomIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 36px;
+  background: linear-gradient(135deg, 
+    var(--organigrama-surface) 0%, 
+    rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid var(--organigrama-border);
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--organigrama-text);
+  margin: 0 4px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.zoomIndicator:hover {
+  border-color: var(--organigrama-primary);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Indicador de Pan mejorado */
+.panIndicator {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    var(--organigrama-surface) 0%, 
+    rgba(255, 255, 255, 0.95) 100%);
+  border: 1px solid var(--organigrama-border);
+  color: var(--organigrama-text);
+  padding: 0.75rem 1.25rem;
+  border-radius: 1.25rem;
+  font-size: 0.875rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: slideUpFade 0.3s ease-out;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.panIndicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.panIndicator.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.panIndicator small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  display: block;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* Cards de unidades */
+.unitCard {
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: var(--organigrama-shadow);
+  margin: 1rem 0.75rem 0.75rem 0.75rem;
+  position: relative;
+  min-width: 320px;
+  background: var(--organigrama-card-bg);
+  color: var(--organigrama-card-text);
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--organigrama-border);
+  backdrop-filter: blur(10px);
+}
+
+.unitCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--organigrama-shadow-hover);
+  background: var(--organigrama-card-bg-hover);
+  border-color: var(--organigrama-border);
+}
+
+.unitCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.unitCardInfo {
+  flex: 1;
+}
+
+.unitCardTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.unitCardTitle h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.unitCardType {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.unitCardObjective {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin: 0.5rem 0 0 0;
+}
+
+
+
+.unitCardActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.unitActionButton {
+  background: var(--organigrama-button-bg);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--organigrama-card-text);
+}
+
+.unitActionButton:hover {
+  background: var(--organigrama-button-bg-hover);
+}
+
+.unitDeleteButton {
+  background: rgba(239, 68, 68, 0.7);
+}
+
+.unitDeleteButton:hover {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+/* Cards de posiciones - DISEÑO COMPACTO OPTIMIZADO */
+.positionCard {
+  border-radius: 0.5rem;
+  box-shadow: var(--organigrama-shadow);
+  transition: all 0.2s ease;
+  min-height: 100px;
+  width: 280px; /* Aumentado de 220px a 280px para nombres más largos */
+  min-width: 280px; /* Asegurar ancho mínimo */
+  position: relative;
+  z-index: 2;
+  border: 1px solid var(--organigrama-border);
+  overflow: hidden;
+  background: var(--organigrama-surface);
+  color: var(--organigrama-position-text);
+}
+
+.positionCard:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--organigrama-shadow-hover);
+  border-color: var(--organigrama-border);
+}
+
+.positionCardAssigned {
+  border-left: 4px solid #10b981;
+  background: var(--organigrama-position-assigned-bg);
+}
+
+.positionCardVacant {
+  border-left: 4px solid #ef4444;
+  background: var(--organigrama-position-vacant-bg);
+}
+
+.positionCardContent {
+  padding: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.positionCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  min-height: 32px;
+}
+
+.positionCardInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.positionCardTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+  min-height: 1.5rem;
+  flex: 1;
+}
+
+.positionCardTitle h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+}
+
+.positionCardCategory {
+  font-size: 0.625rem;
+  margin: 0;
+  opacity: 0.7;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.positionCardActions {
+  display: flex;
+  gap: 0.125rem;
+  flex-shrink: 0;
+}
+
+.positionActionButton {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.positionActionButton:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Grid de personas para múltiples asignaciones en el modal de detalle */
+.personGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Persona asignada - DISEÑO HORIZONTAL COMPACTO */
+.personAssigned {
+  background: var(--organigrama-person-bg);
+  color: white;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.personAvatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.personName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  /* Permitir envolver texto en lugar de cortarlo */
+}
+
+.personLastName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  /* Permitir envolver texto en lugar de cortarlo */
+}
+
+.personPosition {
+  font-size: 0.625rem;
+  opacity: 0.9;
+  margin: 0.125rem 0 0 0;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Posición vacante - DISEÑO COMPACTO */
+.positionVacant {
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex: 1;
+  min-height: 40px;
+}
+
+.vacantIcon {
+  flex-shrink: 0;
+}
+
+.vacantText {
+  font-size: 0.625rem;
+  margin: 0;
+  flex: 1;
+  font-weight: 500;
+}
+
+.assignButton {
+  border: none;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--organigrama-primary);
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.assignButton:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: translateY(-1px);
+}
+
+/* SISTEMA DE ORGANIGRAMA MEJORADO */
+
+.hierarchyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0.1rem 0;
+}
+
+/* Contenedor de posiciones */
+.positionsRow {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1rem;
+  margin: 0.2rem 0;
+}
+
+/* Contenedor de unidades hijas */
+.childUnitsRow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+  /* Force children to align horizontally in one row; pan/zoom handles overflow */
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow: visible;
+}
+
+.childUnitWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Make siblings share row space evenly regardless of subtree width */
+  flex: 1 1 0;
+  min-width: 320px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.positionWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SISTEMA DE CONECTORES PROFESIONAL AVANZADO */
+
+/* ===== VARIABLES PARA CONECTORES MATEMÁTICAMENTE PRECISOS ===== */
+:root {
+  --connector-color: #94a3b8;
+  --connector-color-hover: #475569;
+  --connector-width: 2px;
+  --connector-shadow: 0 0 8px rgba(148, 163, 184, 0.3);
+  --connector-radius: 2px;
+  --connector-animation: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --connector-color: #64748b;
+  --connector-color-hover: #cbd5e1;
+}
+
+[data-theme="dark"] .modalHeader {
+  background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+[data-theme="dark"] .modalActions {
+  background: #1f2937;
+  border-top-color: #374151;
+}
+
+/* ===== GRUPO DE CONECTORES PRECISOS ===== */
+.connectorGroup {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ===== CONECTORES HORIZONTALES ===== */
+.connectorHorizontal {
+  position: absolute;
+  top: 50%;
+  height: var(--connector-width);
+  background: linear-gradient(90deg, 
+    var(--connector-color) 0%, 
+    var(--connector-color-hover) 50%, 
+    var(--connector-color) 100%
+  );
+  border-radius: var(--connector-radius);
+  transform: translateY(-50%);
+  box-shadow: var(--connector-shadow);
+  z-index: 11;
+}
+
+.connectorHorizontalUnits {
+  background: linear-gradient(90deg, 
+    #3b82f6 0%, 
+    #1d4ed8 50%, 
+    #3b82f6 100%
+  );
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.connectorHorizontalPositions {
+  background: linear-gradient(90deg, 
+    #10b981 0%, 
+    #059669 50%, 
+    #10b981 100%
+  );
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+}
+
+/* ===== CONECTORES VERTICALES ===== */
+.connectorVertical {
+  position: absolute;
+  top: 50%;
+  width: var(--connector-width);
+  height: 4px;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    var(--connector-color) 30%, 
+    var(--connector-color-hover) 100%
+  );
+  border-radius: var(--connector-radius);
+  transform: translateX(-50%);
+  z-index: 12;
+}
+
+.connectorVerticalUnits {
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    #3b82f6 30%, 
+    #1d4ed8 100%
+  );
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+.connectorVerticalPositions {
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    #10b981 30%, 
+    #059669 100%
+  );
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
+}
+
+/* ===== CONECTOR PRINCIPAL HACIA ABAJO ===== */
+.connectorParentDown {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: var(--connector-width);
+  height: 8px;
+  background: linear-gradient(180deg, 
+    var(--connector-color) 0%, 
+    var(--connector-color-hover) 100%
+  );
+  border-radius: var(--connector-radius);
+  transform: translateX(-50%);
+  z-index: 5;
+  box-shadow: var(--connector-shadow);
+}
+
+/* ===== ANIMACIONES SUAVES ===== */
+@keyframes connectorAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes connectorSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+.connectorParentDown {
+  animation: connectorAppear var(--connector-animation);
+  transform-origin: top center;
+}
+
+.connectorHorizontal {
+  animation: connectorSlide var(--connector-animation);
+  transform-origin: center left;
+}
+
+.connectorVertical {
+  animation: connectorAppear calc(var(--connector-animation) * 0.8);
+  transform-origin: top center;
+  animation-delay: calc(var(--connector-animation) * 0.2);
+}
+
+/* ===== EFECTOS HOVER MEJORADOS ===== */
+.hierarchyContainer:hover .connectorParentDown {
+  filter: brightness(1.15);
+  transform: translateX(-50%) scale(1.02);
+}
+
+.connectorGroup:hover .connectorHorizontal {
+  filter: brightness(1.15);
+  transform: translateY(-50%) scaleY(1.2);
+}
+
+.connectorGroup:hover .connectorVertical {
+  filter: brightness(1.15);
+  transform: translateX(-50%) scaleY(1.1);
+}
+
+/* ===== ESPACIADO PROFESIONAL POR NIVELES JERÁRQUICOS ===== */
+
+.orgLevel0 {
+  margin: 0.2rem 0;
+}
+
+.orgLevel0 .childUnitsRow {
+  margin-top: 0.4rem;
+  gap: 0.8rem;
+  min-height: 20px;
+}
+
+.orgLevel0 .positionsRow {
+  margin: 0.3rem 0;
+  gap: 0.2rem;
+}
+
+.orgLevel1 {
+  margin: 0.15rem 0;
+}
+
+.orgLevel1 .childUnitsRow {
+  margin-top: 0.4rem;
+  gap: 0.5rem;
+  min-height: 18px;
+}
+
+.orgLevel1 .positionsRow {
+  margin: 0.25rem 0;
+  gap: 0.15rem;
+}
+
+.orgLevel2 {
+  margin: 0.1rem 0;
+}
+
+.orgLevel2 .childUnitsRow {
+  margin-top: 0.4rem;
+  gap: 0.3rem;
+  min-height: 16px;
+}
+
+.orgLevel2 .positionsRow {
+  margin: 0.2rem 0;
+  gap: 0.1rem;
+}
+
+.orgLevel3 {
+  margin: 0.1rem 0;
+}
+
+.orgLevel3 .childUnitsRow {
+  margin-top: 0.4rem;
+  gap: 0.2rem;
+  min-height: 14px;
+}
+
+.orgLevel3 .positionsRow {
+  margin: 0.2rem 0;
+  gap: 0.1rem;
+}
+
+/* ===== RESPONSIVIDAD PARA CONECTORES ===== */
+@media (max-width: 768px) {
+  :root {
+    --connector-width: 1.5px;
+    --connector-radius: 1px;
+  }
+  
+  .connectorGroup {
+    top: -15px;
+    height: 15px;
+  }
+  
+  .connectorParentDown {
+    height: 15px;
+  }
+  
+  .connectorVertical {
+    height: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --connector-width: 1.8px;
+  }
+  
+  .connectorGroup {
+    top: -18px;
+    height: 18px;
+  }
+  
+  .connectorParentDown {
+    height: 18px;
+  }
+  
+  .connectorVertical {
+    height: 9px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --connector-width: 2.5px;
+    --connector-radius: 3px;
+  }
+  
+  .connectorGroup {
+    top: -25px;
+    height: 25px;
+  }
+  
+  .connectorParentDown {
+    height: 25px;
+  }
+  
+  .connectorVertical {
+    height: 12px;
+  }
+}
+
+/* Ajustes para posiciones con mejor espaciado */
+.positionsRow .connectorPositionsHorizontal {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.positionsRow:hover .connectorPositionsHorizontal {
+  opacity: 0.7;
+}
+
+/* EFECTOS VISUALES AVANZADOS PARA CONECTORES */
+
+/* Conectores principales con efecto profesional */
+.connectorParentDown,
+.connectorChildUp,
+.connectorHorizontalMain {
+  background: linear-gradient(135deg, var(--connector-color-primary) 0%, #1F2937 100%);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Conectores de posiciones con estilo más sutil */
+.connectorPositionsParentDown,
+.connectorPositionsChildUp,
+.connectorPositionsHorizontal {
+  background: linear-gradient(135deg, var(--connector-color-secondary) 0%, #374151 100%);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 1px 1px rgba(0, 0, 0, 0.16);
+  border-radius: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efectos hover para conectores */
+.hierarchyContainer:hover .connectorParentDown,
+.hierarchyContainer:hover .connectorChildUp,
+.hierarchyContainer:hover .connectorHorizontalMain {
+  background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.16),
+    0 1px 3px rgba(0, 0, 0, 0.28);
+  transform: scaleY(1.1);
+}
+
+.positionsRow:hover .connectorPositionsParentDown,
+.positionsRow:hover .connectorPositionsChildUp,
+.positionsRow:hover .connectorPositionsHorizontal {
+  background: linear-gradient(135deg, #374151 0%, #1F2937 100%);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Conectores en diferentes temas */
+.connectorParentDown,
+.connectorChildUp,
+.connectorHorizontalMain,
+.connectorPositionsParentDown,
+.connectorPositionsChildUp,
+.connectorPositionsHorizontal {
+  opacity: 0.9;
+}
+
+/* Efecto de conexión activa */
+.connectorSystem:hover .connectorParentDown,
+.connectorSystem:hover .connectorChildUp,
+.connectorSystem:hover .connectorHorizontalMain {
+  opacity: 1;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}
+
+/* Animación de aparición */
+@keyframes connectorFadeIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+}
+
+.connectorParentDown,
+.connectorChildUp {
+  animation: connectorFadeIn 0.4s ease-out;
+  transform-origin: top;
+}
+
+@keyframes connectorSlideIn {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+}
+
+.connectorHorizontalMain,
+.connectorPositionsHorizontal {
+  animation: connectorSlideIn 0.4s ease-out;
+  transform-origin: center;
+}
+
+/* RESPONSIVIDAD PROFESIONAL AVANZADA */
+
+/* Tablets grandes y laptops pequeñas */
+@media (max-width: 1200px) {
+  .orgLevel0 .childUnitsRow { 
+    gap: 0.5rem; 
+    min-height: 18px;
+  }
+  .orgLevel1 .childUnitsRow { 
+    gap: 0.35rem; 
+    min-height: 16px;
+  }
+  .orgLevel2 .childUnitsRow { 
+    gap: 0.25rem; 
+    min-height: 14px;
+  }
+  
+  .unitCard {
+    min-width: 280px;
+    padding: 1rem;
+  }
+  
+  .positionCard {
+    width: 220px; /* Ajustado para nombres más largos en pantallas medianas */
+    min-width: 220px;
+    min-height: 85px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .orgLevel0 .childUnitsRow { 
+    gap: 0.3rem; 
+    min-height: 16px;
+  }
+  .orgLevel1 .childUnitsRow { 
+    gap: 0.25rem; 
+    min-height: 14px;
+  }
+  .orgLevel2 .childUnitsRow { 
+    gap: 0.2rem; 
+    min-height: 12px;
+  }
+  
+  :root {
+    --connector-distance: 1.5rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .orgLevel0 .childUnitsRow { 
+    gap: 0.2rem; 
+    margin-top: 0.3rem;
+    min-height: 12px;
+  }
+  .orgLevel1 .childUnitsRow { 
+    gap: 0.15rem; 
+    margin-top: 0.3rem;
+    min-height: 10px;
+  }
+  .orgLevel2 .childUnitsRow { 
+    gap: 0.1rem; 
+    margin-top: 0.3rem;
+    min-height: 10px;
+  }
+  .orgLevel3 .childUnitsRow { 
+    gap: 0.1rem; 
+    margin-top: 0.3rem;
+    min-height: 10px;
+  }
+  
+  /* Conectores adaptados para móvil */
+  :root {
+    --connector-width-main: 1.5px;
+    --connector-width-secondary: 1px;
+    --connector-distance: 1rem;
+  }
+  
+  .connectorParentDown {
+    bottom: -0.15rem;
+    height: 0.15rem;
+  }
+  
+  .connectorChildUp {
+    top: -0.15rem;
+    height: 0.15rem;
+  }
+  
+  .connectorHorizontalMain {
+    top: -0.15rem;
+  }
+  
+  .unitCard {
+    min-width: 250px;
+    padding: 0.875rem;
+    margin: 0.5rem;
+  }
+  
+  .positionCard {
+    width: 220px; /* Ajustado para nombres más largos en móvil */
+    min-width: 220px;
+    min-height: 90px;
+  }
+  
+  /* Eliminar efectos de hover en móvil */
+  .unitCard:hover {
+    transform: none;
+  }
+  
+  .positionCard:hover {
+    transform: none;
+  }
+  
+  .hierarchyContainer:hover .connectorParentDown,
+  .hierarchyContainer:hover .connectorChildUp,
+  .hierarchyContainer:hover .connectorHorizontalMain {
+    transform: none;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .childUnitsRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem !important;
+    /* Allow wrapping vertically on very small screens */
+    flex-wrap: wrap;
+    width: auto;
+  }
+  
+  .positionsRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem !important;
+  }
+  
+  /* Conectores lineales para móviles pequeños */
+  .connectorHorizontalMain,
+  .connectorPositionsHorizontal {
+    display: none;
+  }
+  
+  .connectorParentDown {
+    height: 0.4rem;
+    bottom: -0.4rem;
+  }
+  
+  .unitCard {
+    min-width: 220px;
+  }
+  
+  .positionCard {
+    width: 240px; /* Ajustado para nombres más largos en pantallas pequeñas */
+    min-width: 240px;
+    min-height: 90px;
+  }
+}
+
+/* Modal base */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modalContent {
+  background-color: var(--organigrama-surface) !important;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 28rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #414976, #6b7280);
+  border-radius: 0.5rem 0.5rem 0 0;
+  color: white;
+}
+
+.modalTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.modalCloseButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: white;
+}
+
+.modalCloseButton:hover {
+  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+}
+
+/* Formularios */
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--organigrama-text) !important;
+}
+
+.formInput, .formSelect, .formTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--organigrama-background) !important;
+  color: var(--organigrama-text) !important;
+  border: 1px solid var(--organigrama-border) !important;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.formInput:focus, .formSelect:focus, .formTextarea:focus {
+  outline: none;
+  border-color: #6270a7;
+  box-shadow: 0 0 0 3px rgba(98, 112, 167, 0.1);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.formInfo {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Added: themed info container */
+.formInfoStandard {
+  background-color: var(--organigrama-background) !important;
+  color: var(--organigrama-text) !important;
+  border: 1px solid var(--organigrama-border) !important;
+}
+
+/* Added: warning styled info container */
+.formInfoWarning {
+  background-color: rgba(245, 158, 11, 0.12) !important; /* amber-500 at low opacity */
+  border: 1px solid #f59e0b !important;
+  color: #92400e !important;
+}
+
+/* Added: helper/muted small text for hints below labels */
+.formHelpText {
+  color: var(--organigrama-text-secondary) !important;
+  font-size: 0.75rem !important;
+  margin: 0 0 0.5rem 0 !important;
+  font-style: italic !important;
+}
+
+/* Added utilities */
+.textPrimary { color: var(--organigrama-text) !important; }
+.textSecondary { color: var(--organigrama-text-secondary) !important; }
+.textAccent { color: var(--organigrama-primary) !important; }
+.textDanger { color: #ef4444 !important; }
+.bgBackground { background-color: var(--organigrama-background) !important; }
+.bgSurface { background-color: var(--organigrama-surface) !important; }
+.borderBase { border-color: var(--organigrama-border) !important; }
+.italic { font-style: italic !important; }
+
+/* Pill indicator for view mode */
+.viewModePill {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--organigrama-primary) !important;
+  color: white !important;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Botón de cierre para indicador Pan */
+.panIndicatorClose {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.125rem;
+  color: var(--organigrama-text-secondary) !important;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin: 1.5rem -1.5rem -1.5rem -1.5rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.modalButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.modalButtonSecondary {
+  background-color: var(--organigrama-background) !important;
+  color: var(--organigrama-text) !important;
+  border: 1px solid var(--organigrama-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.modalButtonSecondary:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.modalButtonPrimary {
+  background-color: var(--organigrama-primary) !important;
+  color: white !important;
+  border: 1px solid var(--organigrama-primary) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.modalButtonPrimary:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.modalButtonPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orgChartHeaderContent {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .orgChartHeaderActions {
+    justify-content: space-between;
+  }
+  
+  .unitCard {
+    min-width: 250px;
+  }
+  
+  .positionCard {
+    width: 260px; /* Ajustado para nombres más largos en móvil */
+    min-width: 260px;
+  }
+  
+  .modalContent {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .childUnitsRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Estilos específicos para exportación */
+@media print, (min-resolution: 150dpi) {
+  .positionCard {
+    width: 320px !important; /* Ancho más amplio para exportación */
+    min-width: 320px !important;
+    min-height: 120px !important; /* Altura mínima mayor para acomodar nombres largos */
+  }
+  
+  .positionCardTitle h4 {
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.02em !important;
+    word-spacing: 0.1em !important;
+  }
+  
+  .positionCardContent {
+    padding: 1rem !important;
+  }
+  
+  .positionCardTitle {
+    margin-bottom: 0.375rem !important;
+    min-height: 2rem !important;
+  }
+  
+  /* Estilos específicos para nombres de personas en exportación */
+  .personAssigned {
+    min-height: 50px !important; /* Mayor altura para acomodar nombres largos */
+    padding: 0.75rem !important;
+  }
+  
+  .personName, .personLastName {
+    font-size: 0.8rem !important; /* Fuente ligeramente más grande */
+    line-height: 1.3 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    white-space: normal !important; /* Asegurar que el texto se envuelva */
+    max-width: 100% !important;
+  }
+  
+  .personPosition {
+    font-size: 0.65rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important; /* Permitir envolvimiento del cargo también */
+  }
+}

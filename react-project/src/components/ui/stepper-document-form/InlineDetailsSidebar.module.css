@@ -1,0 +1,134 @@
+/* Sidebar de detalles para modo inline del Stepper de Documentos */
+.sidebarContainer {
+  width: 320px;
+  flex-shrink: 0;
+  border-left: none; /* eliminar completamente el borde izquierdo */
+  background: #ffffff;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  /* quitar sombra lateral para evitar apariencia de borde pintado */
+  box-shadow: none;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin: 8px 12px 8px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.closeButton {
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.content {
+  padding: 12px;
+  overflow: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.accordion {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #f8fafc;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  transition: background-color 160ms ease;
+}
+
+.accordionHeader:hover {
+  background: #f1f5f9;
+}
+
+.chevron {
+  transition: transform 450ms ease; /* sincronizar con duración del acordeón */
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+.accordionBody {
+  padding: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.propRow {
+  display: grid;
+  grid-template-columns: 72px 1fr; /* reducir aún más la columna de etiqueta */
+  gap: 8px;
+  align-items: start; /* alinear la etiqueta al inicio para textos largos */
+  padding: 6px 0;
+}
+
+.muted {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* El valor (segunda columna) ligeramente más grande para mejor jerarquía visual */
+.propRow > div:last-child {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.handle {
+  position: absolute;
+  top: 50%;
+  right: -8px; /* sacar un poco hacia afuera del formulario */
+  transform: translate(0, -50%);
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 12px;
+  color: #334155;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebarContainer { width: 280px; }
+  .handle { right: -6px; }
+}

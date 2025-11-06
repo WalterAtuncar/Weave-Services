@@ -1,0 +1,886 @@
+/* ==============================================
+   COMPONENTE SYSTEMS ANALYTICS - DASHBOARD
+   ============================================== */
+
+.systemsAnalytics {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+  min-height: 0;
+}
+
+.compact {
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.compact .metricsGrid {
+  gap: 0.75rem;
+}
+
+.compact .metricCard {
+  padding: 1rem;
+}
+
+.compact .chartsGrid {
+  gap: 1rem;
+}
+
+.compact .chartContainer {
+  padding: 1rem;
+}
+
+.compact .chartTitle {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+}
+
+.compact .barChart {
+  height: 120px;
+  padding: 0.5rem 0;
+}
+
+.compact .analysisGrid {
+  gap: 1rem;
+}
+
+.compact .dependencyAnalysis {
+  padding: 1rem;
+}
+
+.compact .insightsContainer {
+  padding: 1rem;
+}
+
+/* ==============================================
+   GRID DE MÉTRICAS PRINCIPALES
+   ============================================== */
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.metricCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  background: var(--color-surface);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.metricCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.metricIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.metricContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metricValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metricTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metricSubtitle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.metricTrend {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.metricTrend.up {
+  color: #10B981;
+}
+
+.metricTrend.down {
+  color: #EF4444;
+}
+
+.metricTrend.stable {
+  color: #6B7280;
+}
+
+/* ==============================================
+   GRID DE GRÁFICOS
+   ============================================== */
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.chartContainer {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.chartTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ==============================================
+   GRÁFICO DE BARRAS
+   ============================================== */
+
+.barChart {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  height: 180px;
+  padding: 1rem 0;
+}
+
+.barItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bar {
+  width: 100%;
+  min-height: 4px;
+  border-radius: 0.25rem 0.25rem 0 0;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.bar:hover {
+  opacity: 1;
+  transform: scaleY(1.05);
+}
+
+.barLabel {
+  font-size: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.barValue {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ==============================================
+   GRÁFICO DE TENDENCIAS
+   ============================================== */
+
+.trendChart {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 120px;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.trendWeek {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trendBars {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: 80px;
+}
+
+.trendBarCreated,
+.trendBarUpdated {
+  width: 8px;
+  min-height: 2px;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s ease;
+}
+
+.trendBarCreated:hover,
+.trendBarUpdated:hover {
+  transform: scaleY(1.1);
+}
+
+.trendLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.trendLegend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* ==============================================
+   ANÁLISIS AVANZADO
+   ============================================== */
+
+.analysisGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.dependencyAnalysis {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dependencyMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dependencyMetric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface-secondary);
+}
+
+/* ==============================================
+   INSIGHTS Y RECOMENDACIONES
+   ============================================== */
+
+.insightsContainer {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.insightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.insightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.insightItem.success {
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10B981;
+}
+
+.insightItem.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #F59E0B;
+}
+
+.insightItem.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #EF4444;
+}
+
+.insightItem.info {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3B82F6;
+}
+
+.insightIcon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.insightItem.success .insightIcon {
+  color: #10B981;
+}
+
+.insightItem.warning .insightIcon {
+  color: #F59E0B;
+}
+
+.insightItem.error .insightIcon {
+  color: #EF4444;
+}
+
+.insightItem.info .insightIcon {
+  color: #3B82F6;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+@media (max-width: 1200px) {
+  .metricsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .analysisGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .systemsAnalytics {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .metricCard {
+    padding: 1rem;
+  }
+  
+  .metricValue {
+    font-size: 1.5rem;
+  }
+  
+  .chartContainer {
+    padding: 1rem;
+  }
+  
+  .barChart {
+    height: 140px;
+    gap: 0.5rem;
+  }
+  
+  .barLabel {
+    font-size: 0.625rem;
+  }
+  
+  .trendChart {
+    height: 100px;
+  }
+  
+  .dependencyAnalysis,
+  .insightsContainer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .systemsAnalytics {
+    padding: 0.75rem;
+  }
+  
+  .metricCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .metricIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .barChart {
+    flex-direction: column;
+    height: auto;
+    gap: 0.75rem;
+  }
+  
+  .barItem {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bar {
+    width: 60%;
+    height: 8px;
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+  
+  .trendChart {
+    gap: 0.25rem;
+  }
+  
+  .trendBarCreated,
+  .trendBarUpdated {
+    width: 6px;
+  }
+  
+  .dependencyMetric {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* ==============================================
+   MODO COMPACTO
+   ============================================== */
+
+.compact .metricsGrid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.compact .metricCard {
+  padding: 1rem;
+}
+
+.compact .metricValue {
+  font-size: 1.5rem;
+}
+
+.compact .chartContainer {
+  padding: 1rem;
+}
+
+.compact .barChart {
+  height: 120px;
+}
+
+.compact .trendChart {
+  height: 80px;
+}
+
+/* ==============================================
+   VARIABLES CSS PARA TEMAS
+   ============================================== */
+
+:root {
+  --color-surface-secondary: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] {
+  --color-surface-secondary: rgba(255, 255, 255, 0.05);
+}
+
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
+
+.systemsAnalytics * {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.metricCard,
+.chartContainer,
+.dependencyAnalysis,
+.insightsContainer {
+  animation: slideIn 0.3s ease-out;
+}
+
+.metricCard:nth-child(1) { animation-delay: 0.1s; }
+.metricCard:nth-child(2) { animation-delay: 0.2s; }
+.metricCard:nth-child(3) { animation-delay: 0.3s; }
+.metricCard:nth-child(4) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .systemsAnalytics *,
+  .metricCard,
+  .bar,
+  .trendBarCreated,
+  .trendBarUpdated,
+  .pieSegment,
+  .donutSegment,
+  .sparklineItem,
+  .sparklinePath {
+    transition: none;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ==============================================
+   GRÁFICO DE PASTEL (PIE CHART)
+   ============================================== */
+
+.pieChartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pieChart {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+}
+
+.compact .pieChart {
+  width: 160px;
+  height: 160px;
+}
+
+.pieSegment {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pieSegment:hover {
+  opacity: 0.8;
+  transform-origin: center;
+}
+
+.pieChartLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+/* ==============================================
+   GRÁFICO DE DONA (DONUT CHART)
+   ============================================== */
+
+.donutChartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.donutChartWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donutChart {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+}
+
+.compact .donutChart {
+  width: 160px;
+  height: 160px;
+}
+
+.donutSegment {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.donutSegment:hover {
+  opacity: 0.8;
+  filter: brightness(1.1);
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.donutCenterValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.compact .donutCenterValue {
+  font-size: 1.25rem;
+}
+
+.donutCenterLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.donutChartLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+/* ==============================================
+   LEYENDA COMPARTIDA
+   ============================================== */
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ==============================================
+   RESPONSIVE PARA GRÁFICOS CIRCULARES
+   ============================================== */
+
+@media (max-width: 768px) {
+  .pieChart,
+  .donutChart {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .pieChartLegend,
+  .donutChartLegend {
+    font-size: 0.75rem;
+  }
+
+  .donutCenterValue {
+    font-size: 1.125rem !important;
+  }
+
+  .donutCenterLabel {
+    font-size: 0.625rem;
+  }
+}
+
+/* ==============================================
+   SPARKLINES MINI
+   ============================================== */
+
+.sparklinesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.sparklineItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .sparklineItem {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sparklineItem:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .sparklineItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sparklineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sparklineLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sparklineValue {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.compact .sparklineValue {
+  font-size: 1.125rem;
+}
+
+.sparklineTrend {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sparklineTrend.up {
+  color: #10B981;
+}
+
+.sparklineTrend.down {
+  color: #EF4444;
+}
+
+.sparklineTrend.stable {
+  color: #6B7280;
+}
+
+.sparklineChart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.sparklineSvg {
+  width: 100px;
+  height: 30px;
+  overflow: visible;
+}
+
+.sparklinePath {
+  transition: all 0.3s ease;
+}
+
+.sparklineItem:hover .sparklinePath {
+  stroke-width: 3;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.sparklineSubtext {
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.sparklinesPeriod {
+  text-align: center;
+  font-size: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+
+/* Compacto para sparklines */
+.compact .sparklinesContainer {
+  gap: 1rem;
+}
+
+.compact .sparklineItem {
+  padding: 0.75rem;
+  gap: 0.5rem;
+}
+
+.compact .sparklineChart {
+  height: 35px;
+}
+
+.compact .sparklineSvg {
+  width: 80px;
+  height: 25px;
+}
+
+/* Responsive para sparklines */
+@media (max-width: 768px) {
+  .sparklinesContainer {
+    gap: 1rem;
+  }
+  
+  .sparklineItem {
+    padding: 0.75rem;
+  }
+  
+  .sparklineValue {
+    font-size: 1rem !important;
+  }
+  
+  .sparklineSvg {
+    width: 80px !important;
+    height: 25px !important;
+  }
+  
+  .sparklineLabel {
+    font-size: 0.8rem;
+  }
+} 

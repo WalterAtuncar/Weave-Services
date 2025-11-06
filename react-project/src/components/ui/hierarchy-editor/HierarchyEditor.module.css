@@ -1,0 +1,465 @@
+/* =============================================
+   HIERARCHY EDITOR - ESTILOS PRINCIPALES
+   ============================================= */
+
+.hierarchyEditor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+  min-height: 400px;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-color: var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-color);
+}
+
+.changesBadge {
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  background-color: #F59E0B;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* =============================================
+   ESTADÍSTICAS
+   ============================================= */
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-color: var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
+  text-align: center;
+}
+
+.statValue {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-color);
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =============================================
+   LISTA JERÁRQUICA
+   ============================================= */
+
+.hierarchyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-height: 600px;
+  overflow-y: auto;
+  padding: var(--spacing-2);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+}
+
+/* Scrollbar styling */
+.hierarchyList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hierarchyList::-webkit-scrollbar-track {
+  background: var(--surface-color);
+}
+
+.hierarchyList::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.hierarchyList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* =============================================
+   ELEMENTOS DEL SISTEMA
+   ============================================= */
+
+.systemItem {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.systemCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.systemCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.systemCard.selected {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.systemCard.hasChanges {
+  border-left: 4px solid #F59E0B;
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.systemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.systemHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+}
+
+.systemName {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+.changeIndicator {
+  color: #F59E0B;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+  60% { transform: translateY(-1px); }
+}
+
+.systemMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  font-size: var(--text-sm);
+}
+
+/* =============================================
+   CONTROL DE DEPENDENCIAS
+   ============================================= */
+
+.dependencyControl {
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.dependencySelect {
+  width: 100%;
+}
+
+/* =============================================
+   CONTENEDOR DE HIJOS
+   ============================================= */
+
+.childrenContainer {
+  margin-top: var(--spacing-2);
+  margin-left: var(--spacing-4);
+  padding-left: var(--spacing-3);
+  border-left: 2px dashed;
+  border-color: var(--border-color);
+  position: relative;
+}
+
+.childrenContainer::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -8px;
+  width: 2px;
+  height: 8px;
+  background-color: var(--border-color);
+}
+
+/* =============================================
+   CAMBIOS PENDIENTES
+   ============================================= */
+
+.pendingChanges {
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-color: var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.pendingChanges h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-color);
+}
+
+.pendingChanges ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.changeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  border-bottom: 1px solid;
+  border-color: var(--border-color);
+}
+
+.changeItem:last-child {
+  border-bottom: none;
+}
+
+.changeItem strong {
+  color: var(--text-color);
+}
+
+/* =============================================
+   ESTADO VACÍO
+   ============================================= */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .stats {
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+  }
+
+  .statItem {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .dependencyControl {
+    min-width: 180px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-2);
+  }
+
+  .titleSection {
+    justify-content: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .systemCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-2);
+  }
+
+  .systemMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .dependencyControl {
+    min-width: auto;
+    max-width: none;
+    width: 100%;
+  }
+
+  .childrenContainer {
+    margin-left: var(--spacing-2);
+    padding-left: var(--spacing-2);
+  }
+
+  .hierarchyList {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .statItem {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+.hierarchyEditor :focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systemCard {
+    transition: none;
+  }
+  
+  .systemCard:hover {
+    transform: none;
+  }
+  
+  .changesBadge {
+    animation: none;
+  }
+  
+  .changeIndicator {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .systemCard,
+  .stats,
+  .pendingChanges {
+    border-width: 2px;
+  }
+  
+  .childrenContainer {
+    border-left-width: 3px;
+  }
+}
+
+/* =============================================
+   THEMING SUPPORT
+   ============================================= */
+
+[data-theme="dark"] .hierarchyEditor {
+  --surface-hover: rgb(30 41 59);
+}
+
+[data-theme="dark"] .systemCard.hasChanges {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* =============================================
+   ESTADOS DE LOADING
+   ============================================= */
+
+.hierarchyEditor[data-submitting="true"] {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.hierarchyEditor[data-submitting="true"] .systemCard {
+  cursor: not-allowed;
+}
+
+.hierarchyEditor[data-loading="true"] .hierarchyList {
+  opacity: 0.6;
+} 

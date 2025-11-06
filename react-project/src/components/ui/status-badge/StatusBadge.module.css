@@ -1,0 +1,145 @@
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-family);
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.md {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.lg {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Indicator dot */
+.indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sm .indicator {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.lg .indicator {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+/* Status variants */
+.active {
+  background-color: rgb(var(--color-success-50));
+  color: rgb(var(--color-success-700));
+  border: 1px solid rgb(var(--color-success-200));
+}
+
+.active .indicator {
+  background-color: rgb(var(--color-success-500));
+}
+
+.inactive {
+  background-color: rgb(var(--color-gray-50));
+  color: rgb(var(--color-gray-700));
+  border: 1px solid rgb(var(--color-gray-200));
+}
+
+.inactive .indicator {
+  background-color: rgb(var(--color-gray-400));
+}
+
+.pending {
+  background-color: rgb(var(--color-warning-50));
+  color: rgb(var(--color-warning-700));
+  border: 1px solid rgb(var(--color-warning-200));
+}
+
+.pending .indicator {
+  background-color: rgb(var(--color-warning-500));
+}
+
+.error {
+  background-color: rgb(var(--color-error-50));
+  color: rgb(var(--color-error-700));
+  border: 1px solid rgb(var(--color-error-200));
+}
+
+.error .indicator {
+  background-color: rgb(var(--color-error-500));
+}
+
+.success {
+  background-color: rgb(var(--color-success-50));
+  color: rgb(var(--color-success-700));
+  border: 1px solid rgb(var(--color-success-200));
+}
+
+.success .indicator {
+  background-color: rgb(var(--color-success-500));
+}
+
+.warning {
+  background-color: rgb(var(--color-warning-50));
+  color: rgb(var(--color-warning-700));
+  border: 1px solid rgb(var(--color-warning-200));
+}
+
+.warning .indicator {
+  background-color: rgb(var(--color-warning-500));
+}
+
+/* Dark theme */
+[data-theme="dark"] .active {
+  background-color: rgb(var(--color-success-900) / 0.3);
+  color: rgb(var(--color-success-300));
+  border-color: rgb(var(--color-success-700));
+}
+
+[data-theme="dark"] .inactive {
+  background-color: rgb(var(--color-gray-800));
+  color: rgb(var(--color-gray-300));
+  border-color: rgb(var(--color-gray-600));
+}
+
+[data-theme="dark"] .pending {
+  background-color: rgb(var(--color-warning-900) / 0.3);
+  color: rgb(var(--color-warning-300));
+  border-color: rgb(var(--color-warning-700));
+}
+
+[data-theme="dark"] .error {
+  background-color: rgb(var(--color-error-900) / 0.3);
+  color: rgb(var(--color-error-300));
+  border-color: rgb(var(--color-error-700));
+}
+
+[data-theme="dark"] .success {
+  background-color: rgb(var(--color-success-900) / 0.3);
+  color: rgb(var(--color-success-300));
+  border-color: rgb(var(--color-success-700));
+}
+
+[data-theme="dark"] .warning {
+  background-color: rgb(var(--color-warning-900) / 0.3);
+  color: rgb(var(--color-warning-300));
+  border-color: rgb(var(--color-warning-700));
+} 

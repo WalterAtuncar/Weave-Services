@@ -1,0 +1,238 @@
+/* Login Card - Medidas ampliadas para mejor proporción */
+.login-card {
+  box-sizing: border-box;
+  width: 420px; /* Ampliado de 339px a 420px */
+  height: 480px; /* Ampliado de 359px a 480px */
+  /* background y border se manejan desde el componente con theme */
+  box-shadow: 2px 2px 2px 0.5px rgba(173, 146, 146, 0.15);
+  border-radius: 8px;
+  border-width: 0.5px;
+  border-style: solid;
+  padding: 48px 40px 40px 40px; /* Aumentado padding: Top: 48px, Horizontal: 40px, Bottom: 40px */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container principal */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  /* background-color se maneja desde el componente con theme */
+}
+
+/* Título - Espaciado desde arriba */
+.login-title {
+  font-size: 26px; /* Aumentado de 24px a 26px */
+  font-weight: 600;
+  text-align: center;
+  /* color se maneja desde el componente con theme */
+  margin: 0 0 0 0; /* Sin margen inferior fijo */
+  line-height: 1.2;
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* Form container - Distribución equitativa */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Toma todo el espacio disponible */
+  justify-content: space-between; /* Distribución equitativa */
+  padding-top: 40px; /* Espacio desde el título */
+  padding-bottom: 20px; /* Espacio hacia el botón */
+}
+
+/* Inputs container */
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Espacio equitativo entre inputs */
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* Forgot password link - Centrado en su área */
+.login-forgot-link {
+  font-size: 14px;
+  /* color se maneja desde el componente con theme */
+  text-decoration: none;
+  text-align: left;
+  margin: 0; /* Sin margen, el flexbox maneja la distribución */
+  flex-shrink: 0; /* No se encoge */
+  align-self: flex-start; /* Alineado a la izquierda */
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.login-forgot-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Button container - Fijo en la parte inferior */
+.login-button-container {
+  flex-shrink: 0; /* No se encoge */
+  margin: 0; /* Sin margen, posicionado por flexbox */
+}
+
+/* Custom input styles for login */
+.login-input-field {
+  width: 100%;
+  max-width: 340px; /* Aumentado de 275px a 340px para usar más espacio del card */
+}
+
+/* Custom button styles for login */
+.login-submit-button {
+  width: 100%;
+  max-width: 340px; /* Aumentado de 275px a 340px - Mismo ancho que inputs */
+  height: 44px; /* Aumentado de 40px a 44px - Altura específica del botón */
+  margin: 0 auto;
+}
+
+/* ===== FORGOT PASSWORD STYLES ===== */
+
+/* Forgot Password Card - Más ancho para acomodar el stepper */
+.forgot-password-card {
+  width: 600px;
+  height: auto;
+  min-height: 600px;
+  padding: 32px 40px 40px 40px;
+}
+
+/* Header con botón de regreso */
+.forgot-password-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  padding: 8px 0;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
+/* Step Indicator Container */
+.step-indicator-container {
+  margin-bottom: 40px;
+}
+
+/* Step Container */
+.step-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Cada paso */
+.forgot-password-step {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del paso */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  /* Los colores de fondo y borde se manejan desde el componente con theme */
+}
+
+
+
+/* Títulos y descripciones */
+.step-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.step-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Formulario del paso */
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* Botón del paso */
+.step-button {
+  width: 100%;
+  height: 44px;
+}
+
+/* Botón de reenvío */
+.resend-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: opacity 0.2s ease;
+  padding: 8px 0;
+  text-decoration: underline;
+}
+
+.resend-button:hover {
+  opacity: 0.8;
+}
+
+/* Error de contraseña */
+.password-error {
+  font-size: 14px;
+  margin: -16px 0 0 0;
+  font-weight: 500;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .forgot-password-card {
+    width: 90vw;
+    max-width: 420px;
+    padding: 24px 20px 32px 20px;
+  }
+  
+  .step-content {
+    max-width: 350px;
+    padding: 24px;
+  }
+  
+  .step-title {
+    font-size: 22px;
+  }
+  
+  .step-description {
+    font-size: 15px;
+  }
+} 

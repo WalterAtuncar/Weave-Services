@@ -1,0 +1,1 @@
+export { Ubigeo } from './Ubigeo'; 

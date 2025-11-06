@@ -1,0 +1,611 @@
+/* ====================================================================
+   PÁGINA DE GESTIÓN DE GOBERNANZA
+   ==================================================================== */
+
+/* Variables CSS */
+:root {
+  --gobernanza-primary: #7c3aed;
+  --gobernanza-primary-hover: #6d28d9;
+  --gobernanza-secondary: #64748b;
+  --gobernanza-accent: #10b981;
+  --gobernanza-danger: #ef4444;
+  --gobernanza-warning: #f59e0b;
+  --gobernanza-info: #06b6d4;
+  --gobernanza-bg: #ffffff;
+  --gobernanza-bg-secondary: #f8fafc;
+  --gobernanza-border: #e2e8f0;
+  --gobernanza-text: #1e293b;
+  --gobernanza-text-muted: #64748b;
+  --gobernanza-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --gobernanza-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --gobernanza-radius: 8px;
+  --gobernanza-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================================================
+   CONTENEDOR PRINCIPAL
+   ==================================================================== */
+
+.gobernanzaContainer {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: var(--gobernanza-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ====================================================================
+   HEADER
+   ==================================================================== */
+
+.gobernanzaHeader {
+  background: var(--gobernanza-bg);
+  border-bottom: 1px solid var(--gobernanza-border);
+  padding: 2rem 2rem 1.5rem 2rem;
+  box-shadow: var(--gobernanza-shadow);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.headerInfo h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gobernanza-text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.headerInfo p {
+  margin: 0;
+  color: var(--gobernanza-text-muted);
+  font-size: 1rem;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ====================================================================
+   ESTADÍSTICAS
+   ==================================================================== */
+
+.estadisticasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.estadisticaCard {
+  background: var(--gobernanza-bg);
+  border: 1px solid var(--gobernanza-border);
+  border-radius: var(--gobernanza-radius);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: var(--gobernanza-transition);
+}
+
+.estadisticaCard:hover {
+  box-shadow: var(--gobernanza-shadow);
+  transform: translateY(-2px);
+}
+
+.estadisticaIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--gobernanza-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.estadisticaContent {
+  flex: 1;
+}
+
+.estadisticaValor {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gobernanza-text);
+}
+
+.estadisticaTitulo {
+  margin: 0 0 0.125rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gobernanza-text);
+}
+
+.estadisticaDescripcion {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--gobernanza-text-muted);
+}
+
+/* ====================================================================
+   CONTENIDO PRINCIPAL
+   ==================================================================== */
+
+.content {
+  background: var(--gobernanza-bg);
+  border-radius: var(--gobernanza-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--gobernanza-border);
+  flex: 1;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ====================================================================
+   ESTADOS DE CARGA Y ERROR
+   ==================================================================== */
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  gap: 1rem;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gobernanza-border);
+  border-top: 3px solid var(--gobernanza-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  gap: 1rem;
+}
+
+.errorText {
+  color: var(--gobernanza-danger);
+  text-align: center;
+  margin: 0;
+}
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 64px;
+  height: 64px;
+  color: var(--gobernanza-text-muted);
+  margin-bottom: 1rem;
+}
+
+.emptyTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gobernanza-text);
+}
+
+.emptyDescription {
+  margin: 0 0 1.5rem 0;
+  color: var(--gobernanza-text-muted);
+  max-width: 400px;
+}
+
+/* ====================================================================
+   CONFIGURACIÓN INICIAL
+   ==================================================================== */
+
+.configurationContainer {
+  background: linear-gradient(135deg, var(--gobernanza-primary), var(--gobernanza-accent));
+  border-radius: var(--gobernanza-radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.configurationTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.configurationDescription {
+  margin: 0 0 2rem 0;
+  font-size: 1.125rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.configurationActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ====================================================================
+   WIZARD DE CONFIGURACIÓN
+   ==================================================================== */
+
+.wizardContainer {
+  padding: 2rem;
+}
+
+.wizardSteps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.wizardStep {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  position: relative;
+}
+
+.wizardStep:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: var(--gobernanza-border);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.wizardStepActive:not(:last-child)::after {
+  background: var(--gobernanza-primary);
+}
+
+.wizardStepIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gobernanza-border);
+  color: var(--gobernanza-text-muted);
+  font-weight: 600;
+  z-index: 2;
+  position: relative;
+}
+
+.wizardStepActive .wizardStepIcon {
+  background: var(--gobernanza-primary);
+  color: white;
+}
+
+.wizardStepCompleted .wizardStepIcon {
+  background: var(--gobernanza-accent);
+  color: white;
+}
+
+.wizardStepText {
+  font-weight: 500;
+  color: var(--gobernanza-text-muted);
+}
+
+.wizardStepActive .wizardStepText {
+  color: var(--gobernanza-primary);
+  font-weight: 600;
+}
+
+/* ====================================================================
+   TOOLBAR Y FILTROS
+   ==================================================================== */
+
+.toolbar {
+  margin-bottom: 1.5rem;
+}
+
+.filterButton {
+  background: var(--gobernanza-bg);
+  border: 1px solid var(--gobernanza-border);
+  border-radius: var(--gobernanza-radius);
+  padding: 0.5rem 1rem;
+  color: var(--gobernanza-text);
+  cursor: pointer;
+  transition: var(--gobernanza-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterButton:hover {
+  background: var(--gobernanza-bg-secondary);
+  border-color: var(--gobernanza-primary);
+}
+
+.filterButtonActive {
+  background: var(--gobernanza-primary);
+  color: white;
+  border-color: var(--gobernanza-primary);
+}
+
+/* ====================================================================
+   BADGES Y ETIQUETAS
+   ==================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  gap: 0.25rem;
+}
+
+.badgeSuccess {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badgeWarning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badgeDanger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badgeInfo {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badgeSecondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .gobernanzaContainer {
+    padding: 1rem;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .estadisticasGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .wizardSteps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .wizardStep::after {
+    display: none;
+  }
+
+  .configurationActions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .estadisticaCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .estadisticaIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .estadisticaValor {
+    font-size: 1.25rem;
+  }
+}
+
+/* ====================================================================
+   ANIMACIONES
+   ==================================================================== */
+
+.fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slideIn {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ====================================================================
+   TEMA OSCURO
+   ==================================================================== */
+
+[data-theme="dark"] {
+  --gobernanza-bg: #1e293b;
+  --gobernanza-bg-secondary: #0f172a;
+  --gobernanza-border: #334155;
+  --gobernanza-text: #f8fafc;
+  --gobernanza-text-muted: #94a3b8;
+  --gobernanza-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --gobernanza-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+:global(.dark) .gobernanzaContainer {
+  --gobernanza-bg: #0f172a;
+  --gobernanza-bg-secondary: #1e293b;
+  --gobernanza-border: #334155;
+  --gobernanza-text: #f1f5f9;
+  --gobernanza-text-muted: #94a3b8;
+}
+
+[data-theme="dark"] .estadisticaCard:hover {
+  box-shadow: var(--gobernanza-shadow-lg);
+}
+
+:global(.dark) .estadisticaCard {
+  border-color: var(--gobernanza-border);
+}
+
+:global(.dark) .emptyContainer {
+  border-color: var(--gobernanza-border);
+}
+
+:global(.dark) .emptyIcon {
+  color: var(--gobernanza-text-muted);
+}
+
+[data-theme="dark"] .filterButton:hover {
+  background: var(--gobernanza-bg);
+}
+
+/* ====================================================================
+   UTILIDADES
+   ==================================================================== */
+
+.textCenter {
+  text-align: center;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.mb0 { margin-bottom: 0; }
+.mb1 { margin-bottom: 0.25rem; }
+.mb2 { margin-bottom: 0.5rem; }
+.mb3 { margin-bottom: 0.75rem; }
+.mb4 { margin-bottom: 1rem; }
+.mb5 { margin-bottom: 1.25rem; }
+.mb6 { margin-bottom: 1.5rem; }
+
+.mt0 { margin-top: 0; }
+.mt1 { margin-top: 0.25rem; }
+.mt2 { margin-top: 0.5rem; }
+.mt3 { margin-top: 0.75rem; }
+.mt4 { margin-top: 1rem; }
+.mt5 { margin-top: 1.25rem; }
+.mt6 { margin-top: 1.5rem; }
+
+.p0 { padding: 0; }
+.p1 { padding: 0.25rem; }
+.p2 { padding: 0.5rem; }
+.p3 { padding: 0.75rem; }
+.p4 { padding: 1rem; }
+.p5 { padding: 1.25rem; }
+.p6 { padding: 1.5rem; }
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flexEnd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gap1 { gap: 0.25rem; }
+.gap2 { gap: 0.5rem; }
+.gap3 { gap: 0.75rem; }
+.gap4 { gap: 1rem; }
+.gap5 { gap: 1.25rem; }
+.gap6 { gap: 1.5rem; }

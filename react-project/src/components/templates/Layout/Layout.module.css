@@ -1,0 +1,109 @@
+/* ====================================================================
+   GOLDENBELT LAYOUT - ADAPTADO PARA EL NUEVO PATRÓN
+   ==================================================================== */
+
+/* Layout Container Principal */
+.goldenBeltLayout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Main Content Area - Ajustado para sidebar fijo + panel secundario */
+.mainContentArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px; /* Espacio para el sidebar principal */
+  overflow: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+/* Content Area Principal */
+.pageContent {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  padding: 0;
+}
+
+/* ====================================================================
+   RESPONSIVE DESIGN
+   ==================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .mainContentArea {
+    margin-left: 50px; /* Sidebar más pequeño en tablet */
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .goldenBeltLayout.mobile .mainContentArea {
+    margin-left: 45px; /* Sidebar aún más pequeño en mobile */
+  }
+  
+  /* En mobile, el panel secundario debe overlay completo */
+  .pageContent {
+    padding: 0;
+  }
+}
+
+/* ====================================================================
+   ESTADOS Y TRANSICIONES
+   ==================================================================== */
+
+/* Transiciones suaves para cambios de layout */
+.mainContentArea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================================================
+   COMPATIBILIDAD CON HEADER
+   ==================================================================== */
+
+/* Cuando hay header, el contenido debe ajustarse */
+.pageContent {
+  /* El header se encarga de su propio padding/margin */
+  height: 100%;
+}
+
+/* ====================================================================
+   SCROLLBAR PERSONALIZADA PARA EL CONTENIDO
+   ==================================================================== */
+
+.pageContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pageContent::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.pageContent::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.pageContent::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Tema oscuro para scrollbar */
+:global(.dark) .pageContent::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+:global(.dark) .pageContent::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+:global(.dark) .pageContent::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ====================================================================
+   ESTILOS LEGACY REMOVIDOS - REEMPLAZADOS POR PATRÓN GOLDENBELT
+   ==================================================================== */ 

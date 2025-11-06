@@ -1,0 +1,606 @@
+/* ====================================================================
+   SISTEMAS COMPONENT - ESTILOS MODERNOS
+   ==================================================================== */
+
+.sistemasContainer {
+  padding: 24px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+  
+  /* Variables CSS para colores dinámicos */
+  --sistemas-primary: #3b82f6;
+  --sistemas-bg: #ffffff;
+  --sistemas-bg-secondary: #f8fafc;
+  --sistemas-surface: #ffffff;
+  --sistemas-border: #e2e8f0;
+  --sistemas-text: #1e293b;
+  --sistemas-text-muted: #64748b;
+  --sistemas-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --sistemas-radius: 0.75rem;
+  --sistemas-transition: all 0.2s ease-in-out;
+}
+
+/* ====================================================================
+   HEADER
+   ==================================================================== */
+
+.header {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.headerInfo h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.headerInfo p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ====================================================================
+   BARRA DE BÚSQUEDA Y FILTROS
+   ==================================================================== */
+
+.searchAndFilters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  max-width: 500px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 12px 12px 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #e5e7eb;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: var(--sistemas-transition);
+}
+
+.primaryButton {
+  background: var(--sistemas-primary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: var(--sistemas-transition);
+}
+
+.primaryButton:hover {
+  background: var(--sistemas-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--sistemas-shadow);
+}
+
+/* ====================================================================
+   TOOLBAR
+   ==================================================================== */
+
+.toolbar {
+  background: var(--sistemas-bg);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--sistemas-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.searchContainer {
+  min-width: 300px;
+  max-width: 400px;
+  flex: 1;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sistemas-text-muted);
+  border-color: var(--sistemas-border);
+  transition: var(--sistemas-transition);
+}
+
+.filterButton:hover {
+  color: var(--sistemas-primary);
+  border-color: var(--sistemas-primary);
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.viewToggle {
+  display: flex;
+  border: 1px solid var(--sistemas-border);
+  border-radius: var(--sistemas-radius);
+  overflow: hidden;
+}
+
+.viewButton {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  transition: var(--sistemas-transition);
+}
+
+.viewButton:first-child {
+  border-right: 1px solid var(--sistemas-border);
+}
+
+/* ====================================================================
+   ÁREA DE CONTENIDO
+   ==================================================================== */
+
+.contentArea {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  background: var(--sistemas-bg);
+  border-radius: var(--sistemas-radius);
+  box-shadow: var(--sistemas-shadow);
+}
+
+/* ====================================================================
+   CONTENIDO PRINCIPAL
+   ==================================================================== */
+
+.content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  flex: 1;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ====================================================================
+   ESTADO VACÍO Y CARGA
+   ==================================================================== */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--sistemas-bg);
+  border-radius: var(--sistemas-radius);
+  border: 2px dashed var(--sistemas-border);
+  min-height: 400px;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--sistemas-bg);
+  border-radius: var(--sistemas-radius);
+  min-height: 400px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--sistemas-border);
+  border-top: 3px solid var(--sistemas-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--sistemas-bg);
+  border-radius: var(--sistemas-radius);
+  border: 2px solid var(--sistemas-danger);
+  min-height: 400px;
+}
+
+.errorText {
+  color: var(--sistemas-danger);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.emptyIcon {
+  margin-bottom: 1.5rem;
+  color: var(--sistemas-text-muted);
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sistemas-text);
+  margin: 0 0 0.5rem 0;
+}
+
+.emptyDescription {
+  font-size: 1rem;
+  color: var(--sistemas-text-muted);
+  margin: 0 0 2rem 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.emptyAction {
+  background: var(--sistemas-primary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--sistemas-radius);
+  transition: var(--sistemas-transition);
+}
+
+.emptyAction:hover {
+  background: var(--sistemas-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--sistemas-shadow);
+}
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .sistemasContainer {
+    padding: 0.5rem;
+  }
+
+  .sistemasHeader {
+    padding: 1.5rem 1rem;
+  }
+  
+  .headerContent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  
+  .headerActions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .toolbar {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .toolbarLeft {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .searchContainer {
+    min-width: unset;
+    max-width: unset;
+  }
+  
+  .toolbarRight {
+    justify-content: center;
+  }
+  
+  .contentArea {
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .emptyState,
+  .loadingContainer,
+  .errorContainer {
+    padding: 2rem 1rem;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .actionButton,
+  .primaryButton {
+    justify-content: center;
+  }
+  
+  .viewToggle {
+    align-self: center;
+  }
+}
+
+/* ====================================================================
+   🌙 TEMA OSCURO
+   ==================================================================== */
+
+:global(.dark) .header {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .headerInfo h1 {
+  color: #f9fafb;
+}
+
+:global(.dark) .headerInfo p {
+  color: #d1d5db;
+}
+
+:global(.dark) .searchAndFilters {
+  border-color: #374151;
+}
+
+:global(.dark) .searchIcon {
+  color: #9ca3af;
+}
+
+:global(.dark) .searchInput {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+:global(.dark) .searchInput:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+:global(.dark) .searchInput::placeholder {
+  color: #9ca3af;
+}
+
+:global(.dark) .viewToggle {
+  border-color: #374151;
+}
+
+:global(.dark) .content {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .emptyState {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .emptyIcon {
+  color: var(--sistemas-text-muted);
+}
+
+/* ====================================================================
+   FILTROS SECTION
+   ==================================================================== */
+
+.filtersSection {
+  margin-bottom: 2rem;
+}
+
+/* ====================================================================
+   LIST VIEW PLACEHOLDER
+   ==================================================================== */
+
+.listViewPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: rgb(var(--color-gray-50));
+  border: 2px dashed rgb(var(--color-gray-300));
+  border-radius: 0.75rem;
+  color: rgb(var(--color-gray-500));
+  font-size: 1rem;
+}
+
+[data-theme="dark"] .listViewPlaceholder {
+  background-color: rgb(var(--color-gray-800));
+  border-color: rgb(var(--color-gray-600));
+  color: rgb(var(--color-gray-400));
+}
+
+/* ====================================================================
+   MODALES DE CARGA MASIVA
+   ==================================================================== */
+
+.vistaPreviaModalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 400px;
+}
+
+/* .accionesVistaPrevia removido - ahora se usan los botones del footer del Modal */
+
+.bulkUploadContent {
+  min-height: 300px;
+}
+
+/* Estilos específicos para el proceso de importación */
+.importStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--sistemas-bg-secondary);
+  border-radius: var(--sistemas-radius);
+  margin-bottom: 1rem;
+}
+
+.importStatus.success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #059669;
+}
+
+.importStatus.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #DC2626;
+}
+
+.importStatus.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #D97706;
+}
+
+/* Responsive para modales */
+@media (max-width: 768px) {
+  .vistaPreviaModalContent {
+    gap: 1rem;
+    min-height: 300px;
+  }
+}
+
+/* Tema oscuro para modales */
+[data-theme="dark"] .vistaPreviaModalContent {
+  --sistemas-bg: #1E293B;
+  --sistemas-bg-secondary: #334155;
+  --sistemas-border: #475569;
+  --sistemas-text: #F1F5F9;
+  --sistemas-text-muted: #94A3B8;
+}
+
+[data-theme="dark"] .importStatus.success {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34D399;
+}
+
+[data-theme="dark"] .importStatus.error {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #F87171;
+}
+
+[data-theme="dark"] .importStatus.warning {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #FBBF24;
+}

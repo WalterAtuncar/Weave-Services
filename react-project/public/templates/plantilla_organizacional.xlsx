@@ -1,0 +1,20 @@
+// Este archivo debe ser un Excel (.xlsx) con las siguientes columnas:
+// A: Organización
+// B: Código Unidad  
+// C: Nombre Unidad
+// D: Unidad Padre
+// E: Tipo Unidad
+// F: Posición
+// G: Categoría
+// H: Nombre
+// I: Apellido Paterno
+// J: Apellido Materno
+// K: Tipo Documento
+// L: Número Documento
+// M: Email
+// N: Celular
+// O: Fecha Nacimiento
+// P: Fecha Ingreso
+
+// Ejemplo de datos:
+// TechCorp Solutions S.A.C. | DG | Dirección General | | DIRECCION | Director General | EJECUTIVO | Juan | Pérez | García | DNI | 12345678 | juan.perez@techcorp.com | 987654321 | 1980-01-15 | 2023-01-15 

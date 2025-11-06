@@ -1,0 +1,984 @@
+/* =============================================
+   SYSTEM FORM - ESTILOS MODERNOS LIMPIOS
+   ============================================= */
+
+.systemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: transparent;
+  max-width: 800px;
+  width: 100%;
+  border: none;
+}
+
+.systemForm.compact {
+  padding: 8px;
+  gap: 8px; /* Más compacto */
+}
+
+.systemForm.compact .formSection {
+  margin-bottom: 8px; /* Menos espacio entre secciones */
+}
+
+.systemForm.compact .textArea {
+  min-height: 60px; /* Altura mínima reducida */
+  padding: 6px 10px; /* Padding reducido */
+  line-height: 1.3; /* Line-height más compacto */
+}
+
+.systemForm.compact .sectionTitle {
+  margin-bottom: 6px; /* Menos espacio después del título */
+  padding-bottom: 4px;
+}
+
+.systemForm.compact .characterCount {
+  margin-top: 1px; /* Espacio mínimo */
+  font-size: 10px; /* Fuente más pequeña */
+}
+
+/* =============================================
+   SECCIONES DEL FORMULARIO
+   ============================================= */
+
+.formSection {
+  margin-bottom: 12px; /* Reducido para mayor compacidad */
+}
+
+.formSection:last-child {
+  margin-bottom: 0;
+}
+
+/* Sección de descripción más compacta */
+.formSection:last-of-type {
+  margin-bottom: 0;
+}
+
+.formSection:last-of-type .sectionTitle {
+  margin-bottom: 8px; /* Menos espacio para la sección de descripción */
+}
+
+.formSection:last-of-type .fieldGroup {
+  gap: 2px; /* Reducir gap en la sección de descripción */
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* =============================================
+   SECCIÓN DE DOS COLUMNAS
+   ============================================= */
+
+.twoColumnSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 8px; /* Reducido para menos espacio */
+  align-items: start;
+  /* Reset para asegurar alineación perfecta */
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.twoColumnSection .formSection {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+}
+
+.twoColumnSection .sectionTitle {
+  /* Títulos perfectamente alineados */
+  height: 40px; /* Altura fija reducida */
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Reducido para menos espacio */
+  padding-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.twoColumnSection .fieldGroup {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  /* Asegurar spacing consistente */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.twoColumnSection .fieldLabel {
+  height: 24px; /* Altura fija para labels */
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Asegurar que todos los elementos de formulario dentro de las dos columnas estén alineados */
+.twoColumnSection [data-radix-select-trigger] {
+  height: 40px; /* Altura uniforme para selects */
+  min-height: 40px;
+}
+
+.twoColumnSection input {
+  height: 40px; /* Altura uniforme para inputs */
+  min-height: 40px;
+}
+
+.twoColumnSection .fieldError,
+.twoColumnSection .loadingMessage,
+.twoColumnSection .warningMessage {
+  margin-top: 4px; /* Espaciado uniforme para mensajes */
+  min-height: 16px; /* Altura mínima para evitar saltos */
+}
+
+/* Modo compacto para dos columnas */
+.systemForm.compact .twoColumnSection {
+  gap: 16px;
+}
+
+.systemForm.compact .twoColumnSection .sectionTitle {
+  height: 32px; /* Altura fija menor para modo compacto */
+  margin-bottom: 6px; /* Reducido para menos espacio */
+  padding-bottom: 2px;
+}
+
+.systemForm.compact .twoColumnSection .fieldLabel {
+  height: 20px; /* Altura menor para labels en modo compacto */
+}
+
+.systemForm.compact .twoColumnSection [data-radix-select-trigger] {
+  height: 36px; /* Altura menor para selects en modo compacto */
+  min-height: 36px;
+}
+
+.systemForm.compact .twoColumnSection input {
+  height: 36px; /* Altura menor para inputs en modo compacto */
+  min-height: 36px;
+}
+
+/* =============================================
+   CONTENEDOR DE LOADING
+   ============================================= */
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 200px;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.loadingMessage span {
+  font-weight: 500;
+}
+
+/* Modo oscuro para loading */
+[data-theme="dark"] .loadingMessage {
+  color: #9ca3af;
+}
+
+/* Responsive: En pantallas pequeñas, volver a una columna */
+@media (max-width: 768px) {
+  .twoColumnSection {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .twoColumnSection .sectionTitle {
+    height: auto; /* Altura automática en móvil */
+    min-height: 48px; /* Pero con un mínimo */
+  }
+  
+  .twoColumnSection .fieldLabel {
+    height: auto; /* Altura automática para labels en móvil */
+  }
+}
+
+/* =============================================
+   CONTENEDOR DE ERRORES GENERALES
+   ============================================= */
+
+.errorContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.errorsListContainer {
+  flex: 1;
+  font-size: 14px;
+}
+
+.errorsList {
+  margin: 4px 0 0 16px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.errorsList li {
+  margin-bottom: 4px;
+}
+
+/* =============================================
+   GRID DE CAMPOS
+   ============================================= */
+
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px; /* Reducido para menos espacio */
+}
+
+.systemForm.compact .fieldsGrid {
+  gap: 6px; /* Más compacto */
+}
+
+@media (max-width: 768px) {
+  .fieldsGrid {
+    grid-template-columns: 1fr;
+    gap: 8px; /* Reducido para menos espacio */
+  }
+}
+
+/* =============================================
+   GRUPOS DE CAMPOS LIMPIOS
+   ============================================= */
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px; /* Reducido de 4px a 3px */
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.fieldError {
+  font-size: 12px;
+  font-weight: 500;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+/* =============================================
+   CAMPOS DE ENTRADA LIMPIOS
+   ============================================= */
+
+.textArea {
+  width: 100%;
+  min-height: 80px; /* Reducido de 100px a 80px */
+  padding: 8px 12px; /* Reducido padding */
+  border: 1px solid #d1d5db;
+  border-radius: 6px; /* Bordes menos redondeados */
+  background-color: white;
+  color: #1f2937;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.4; /* Reducido line-height */
+  resize: vertical;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.textArea:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.textArea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f9fafb;
+}
+
+.textArea::placeholder {
+  color: #9ca3af;
+}
+
+.characterCount {
+  font-size: 11px; /* Reducido font-size */
+  color: #6b7280;
+  text-align: right;
+  margin-top: 2px; /* Reducido margin-top */
+}
+
+/* =============================================
+   OPCIONES EN SELECTS
+   ============================================= */
+
+.selectWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selectWithIcon > :first-child {
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+  pointer-events: none;
+  color: #6b7280;
+}
+
+.selectWithIcon select,
+.selectWithIcon [data-radix-select-trigger] {
+  padding-left: 40px;
+}
+
+.sistemaOption,
+.estadoOption,
+.gobernanzaOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.estadoIcon {
+  flex-shrink: 0;
+  margin-right: 2px; /* Pequeño margen para separar del texto */
+}
+
+.estadoIcon.active {
+  color: #16a34a; /* Verde para activo */
+}
+
+.estadoIcon.inactive {
+  color: #6b7280; /* Gris para inactivo */
+}
+
+.estadoIcon.draft {
+  color: #f59e0b; /* Amarillo para borrador */
+}
+
+.estadoIcon.pending {
+  color: #3b82f6; /* Azul para pendiente/iniciar flujo */
+}
+
+.estadoIcon.rejected {
+  color: #ef4444; /* Rojo para rechazado */
+}
+
+/* Tema oscuro para iconos de estado */
+[data-theme="dark"] .estadoIcon.active {
+  color: #22c55e; /* Verde más brillante en tema oscuro */
+}
+
+[data-theme="dark"] .estadoIcon.inactive {
+  color: #9ca3af; /* Gris más claro en tema oscuro */
+}
+
+[data-theme="dark"] .estadoIcon.draft {
+  color: #fbbf24; /* Amarillo más brillante en tema oscuro */
+}
+
+[data-theme="dark"] .estadoIcon.pending {
+  color: #60a5fa; /* Azul más brillante en tema oscuro */
+}
+
+[data-theme="dark"] .estadoIcon.rejected {
+  color: #f87171; /* Rojo más brillante en tema oscuro */
+}
+
+/* =============================================
+   PREVIEW SISTEMA PADRE
+   ============================================= */
+
+.sistemaPadrePreview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  margin-top: 8px;
+}
+
+/* Para el preview en las dos columnas, que se mantenga en su columna */
+.twoColumnSection .sistemaPadrePreview {
+  grid-column: unset; /* No expandir a través de columnas */
+}
+
+.sistemaInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.sistemaNombre {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  flex: 1;
+}
+
+.sistemaCodigo,
+.gobernanzaCodigo {
+  font-size: 12px;
+  color: #6b7280;
+  font-family: 'Courier New', monospace;
+  background-color: #e5e7eb;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* =============================================
+   BOTONES DE ACCIÓN
+   ============================================= */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.systemForm.compact .actions {
+  margin-top: 24px;
+  padding-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =============================================
+   ESTADOS DE LOADING
+   ============================================= */
+
+.systemForm [data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* =============================================
+   ANIMACIONES SUAVES
+   ============================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fieldGroup {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .systemForm {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .systemForm {
+    padding: 16px;
+    gap: 12px; /* Reducido gap general */
+  }
+
+  .fieldsGrid {
+    gap: 12px;
+  }
+
+  .textArea {
+    min-height: 60px; /* Más compacto en móvil */
+    padding: 6px 10px; /* Padding reducido */
+    font-size: 16px; /* Prevenir zoom en iOS */
+  }
+  
+  .formSection {
+    margin-bottom: 12px; /* Menos espacio entre secciones en móvil */
+  }
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+.systemForm :focus-visible {
+  outline: 2px solid #414976;
+  outline-offset: 2px;
+}
+
+/* =============================================
+   SECCIÓN DE MÓDULOS
+   ============================================= */
+
+.modulosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.moduloCard {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.moduloCard:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.moduloHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.moduloNombre {
+  font-weight: 600;
+  color: #1f2937;
+  flex: 1;
+}
+
+.moduloActions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.moduloCard:hover .moduloActions {
+  opacity: 1;
+}
+
+.moduloDescripcion {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.moduloFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.moduloFecha {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.addModuloContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  min-height: 140px;
+  justify-content: center;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .modulosGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .moduloCard {
+    padding: 12px;
+  }
+}
+
+/* =============================================
+   TEMA CLARO/OSCURO
+   ============================================= */
+
+[data-theme="dark"] .systemForm {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .textArea {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .moduloCard {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .moduloCard:hover {
+  border-color: #4b5563;
+}
+
+[data-theme="dark"] .moduloNombre {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .moduloDescripcion {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .moduloFooter {
+  border-color: #374151;
+}
+
+[data-theme="dark"] .moduloFecha {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .addModuloContent {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .emptyState {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .loadingMessage {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .textArea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="dark"] .sistemaPadrePreview {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+/* =============================================
+   ACCESIBILIDAD AVANZADA
+   ============================================= */
+
+@media (prefers-contrast: high) {
+  .textArea {
+    border-width: 2px;
+  }
+
+  .errorContainer {
+    border: 2px solid #dc2626;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldGroup {
+    animation: none;
+  }
+
+  .textArea {
+    transition: none;
+  }
+}
+
+/* =============================================
+   OPCIONES DE SERVIDOR
+   ============================================= */
+
+.servidorOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.servidorIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.servidorInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.servidorNombre {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.servidorLinea1 {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.servidorLinea2 {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.servidorIP {
+  font-size: 12px;
+  color: #6b7280;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.warningMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d97706;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .servidorNombre {
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .servidorLinea1 {
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .servidorLinea2 {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .servidorIP {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .warningMessage {
+  color: #fbbf24;
+  background-color: #451a03;
+  border-color: #92400e;
+} 
+
+/* =============================================
+   NUEVOS ESTILOS PARA SERVidores DISPONIBLES
+   ============================================= */
+
+.servidorSelector {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.subLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+[data-theme="dark"] .servidorSelector {
+  border-top-color: #374151;
+}
+
+[data-theme="dark"] .subLabel {
+  color: #9ca3af;
+}
+
+/* =============================================
+   ESTILOS PARA CHECKBOX
+   ============================================= */
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  margin-top: 20px; /* Alineación perfecta con la línea base de los inputs */
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7.5 7.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6 10.293l7.146-7.147a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.checkbox:hover {
+  border-color: #9ca3af;
+}
+
+.checkbox:checked:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fieldHint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .checkbox {
+  border-color: #4b5563;
+  background-color: #1f2937;
+}
+
+[data-theme="dark"] .checkbox:hover {
+  border-color: #6b7280;
+}
+
+[data-theme="dark"] .checkboxLabel {
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .fieldHint {
+  color: #9ca3af;
+}

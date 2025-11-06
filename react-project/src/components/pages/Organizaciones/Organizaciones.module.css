@@ -1,0 +1,1684 @@
+/* ====================================================================
+   ORGANIZACIONES COMPONENT - ESTILOS MODERNOS
+   ==================================================================== */
+
+.organizacionesContainer {
+  padding: 24px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* ====================================================================
+   HEADER PRINCIPAL
+   ==================================================================== */
+
+.header {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.headerInfo h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.headerInfo p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ====================================================================
+   SISTEMA DE TABS
+   ==================================================================== */
+
+.tabsContainer {
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.tab:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.tab.active {
+  background: #414976;
+  color: white;
+}
+
+.tabIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.tabCounter {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.tab:not(.active) .tabCounter {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+/* ====================================================================
+   CONTENIDO DE TABS
+   ==================================================================== */
+
+.tabContent {
+  background: white;
+  border-radius: 0 12px 12px 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  min-height: 500px;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.searchAndFilters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+.searchContainer {
+  flex: 1;
+  max-width: 400px;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  color: #374151;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* ====================================================================
+   TABLA DE ORGANIZACIONES
+   ==================================================================== */
+
+.organizacionesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.organizacionesTable thead th {
+  background: #f9fafb;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.organizacionesTable tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.organizacionesTable tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.organizacionesTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.organizacionInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.organizacionLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.organizacionDetails h4 {
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.organizacionDetails p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.planInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planName {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 13px;
+}
+
+.planType {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.planType.demo {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.planType.comercial {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.planType.enterprise {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.planType.estándar {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #10b981;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressFill.warning {
+  background: #f59e0b;
+}
+
+.progressFill.danger {
+  background: #ef4444;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge.activa {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusBadge.vencida {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.statusBadge.suspendida {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusBadge.prueba {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.fechaVencimiento {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.fechaProxima {
+  color: #f59e0b;
+}
+
+.fechaVencida {
+  color: #ef4444;
+}
+
+.actionsCell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #6b7280;
+}
+
+.actionButton:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.actionButton.view {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.actionButton.view:hover {
+  background: #ecfdf5;
+  border-color: #10b981;
+  color: #059669;
+}
+
+.actionButton.edit {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.actionButton.edit:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+.actionButton.structure {
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.actionButton.structure:hover {
+  background: #f3e8ff;
+  border-color: #8b5cf6;
+  color: #7c3aed;
+}
+
+.actionButton.delete {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.actionButton.delete:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+/* ====================================================================
+   TABLA DE SUSCRIPCIONES
+   ==================================================================== */
+
+.suscripcionesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.suscripcionesTable thead th {
+  background: #f9fafb;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.suscripcionesTable tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.suscripcionesTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.organizacionSuscripcion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orgIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.orgName {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 13px;
+}
+
+.periodoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fechas {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.duracion {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.limiteUsuarios {
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* ====================================================================
+   GRID DE PLANES
+   ==================================================================== */
+
+.planesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.planCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px 24px 0 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+.planCard:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.planHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.planTitle {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.planDescription {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.planTypeLabel {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.planTypeLabel.demo {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.planTypeLabel.comercial {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.planTypeLabel.enterprise {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.planDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.planDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.planDetail:last-child {
+  border-bottom: none;
+}
+
+.detailLabel {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detailValue {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.precio {
+  font-size: 20px;
+  color: #10b981;
+}
+
+.planCardFooter {
+  background: transparent;
+  padding: 16px 0;
+  margin: 0 -24px;
+  border-top: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 60px;
+}
+
+.planActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.planActionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #6b7280;
+}
+
+.planActionButton:hover {
+  background: #f9fafb;
+  transform: scale(1.05);
+}
+
+.planActionButton.view {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.planActionButton.view:hover {
+  background: #ecfdf5;
+  border-color: #10b981;
+  color: #059669;
+}
+
+.planActionButton.edit {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.planActionButton.edit:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+.planActionButton.delete {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.planActionButton.delete:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+/* ====================================================================
+   FORMULARIOS DE MODALES MODERNOS
+   ==================================================================== */
+
+.modalForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 8px 0;
+}
+
+.modalFormSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modalSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.modalSectionTitle svg {
+  color: #6366f1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #374151;
+}
+
+.formLabel svg {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+}
+
+.formLabel .required {
+  color: #ef4444;
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.formInput::placeholder {
+  color: #9ca3af;
+}
+
+.formTextarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.formTextarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.formSelect {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.formSelect:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.formHint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.modalViewContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 8px 0;
+}
+
+.modalViewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modalViewSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.modalViewSectionTitle svg {
+  color: #6366f1;
+}
+
+.modalViewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.modalViewItem:last-child {
+  border-bottom: none;
+}
+
+.modalViewLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modalViewLabel svg {
+  width: 14px;
+  height: 14px;
+}
+
+.modalViewValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.modalSingleColumn {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ====================================================================
+   ESTADOS VACÍOS, LOADING Y ERROR
+   ==================================================================== */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.emptyState svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyState h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.loadingContainer p {
+  margin-top: 16px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.errorContainer svg {
+  width: 48px;
+  height: 48px;
+  color: #ef4444;
+  margin-bottom: 16px;
+}
+
+.errorContainer h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.errorContainer p {
+  margin: 0 0 16px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.comingSoon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.comingSoon svg {
+  width: 64px;
+  height: 64px;
+  color: #d1d5db;
+  margin-bottom: 16px;
+}
+
+.comingSoon h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.comingSoon p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Estados de licencia adicionales */
+.statusBadge.inactiva {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Animación de spin para loader */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ====================================================================
+   RESPONSIVE DESIGN
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .organizacionesContainer {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .headerInfo h1 {
+    font-size: 24px;
+  }
+
+  .tabsContainer {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .tabContent {
+    padding: 20px;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchAndFilters {
+    flex-direction: column;
+    min-width: unset;
+  }
+
+  .organizacionesTable,
+  .suscripcionesTable {
+    font-size: 12px;
+  }
+
+  .organizacionesTable thead th,
+  .suscripcionesTable thead th {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .organizacionesTable tbody td,
+  .suscripcionesTable tbody td {
+    padding: 12px;
+  }
+
+  .planesGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .planCard {
+    padding: 20px;
+  }
+}
+
+/* ====================================================================
+   TEMA OSCURO
+   ==================================================================== */
+
+:global(.dark) .header {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:global(.dark) .headerInfo h1 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .headerInfo p {
+  color: #94a3b8;
+}
+
+:global(.dark) .tab {
+  color: #94a3b8;
+}
+
+:global(.dark) .tab:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+:global(.dark) .tab.active {
+  background: #475569;
+  color: #f1f5f9;
+}
+
+:global(.dark) .tabContent {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:global(.dark) .organizacionesTable thead th,
+:global(.dark) .suscripcionesTable thead th {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+:global(.dark) .organizacionesTable tbody td,
+:global(.dark) .suscripcionesTable tbody td {
+  border-bottom-color: #334155;
+  color: #f1f5f9;
+}
+
+:global(.dark) .organizacionesTable tbody tr:hover,
+:global(.dark) .suscripcionesTable tbody tr:hover {
+  background: #334155;
+}
+
+:global(.dark) .organizacionDetails h4,
+:global(.dark) .orgName,
+:global(.dark) .planName,
+:global(.dark) .detailValue,
+:global(.dark) .limiteUsuarios {
+  color: #f1f5f9;
+}
+
+:global(.dark) .organizacionDetails p,
+:global(.dark) .fechas,
+:global(.dark) .duracion,
+:global(.dark) .detailLabel {
+  color: #94a3b8;
+}
+
+:global(.dark) .planCard {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:global(.dark) .planCardFooter {
+  background: transparent;
+}
+
+:global(.dark) .planTitle {
+  color: #f1f5f9;
+}
+
+:global(.dark) .planDescription {
+  color: #94a3b8;
+}
+
+:global(.dark) .planDetail {
+  border-bottom-color: #334155;
+}
+
+:global(.dark) .actionButton,
+:global(.dark) .planActionButton,
+:global(.dark) .filterButton {
+  background: #334155;
+  border-color: #475569;
+  color: #94a3b8;
+}
+
+:global(.dark) .actionButton:hover,
+:global(.dark) .planActionButton:hover,
+:global(.dark) .filterButton:hover {
+  background: #475569;
+  color: #f1f5f9;
+}
+
+:global(.dark) .actionButton.view,
+:global(.dark) .planActionButton.view {
+  color: #34d399;
+  border-color: #34d399;
+}
+
+:global(.dark) .actionButton.view:hover,
+:global(.dark) .planActionButton.view:hover {
+  background: #064e3b;
+  border-color: #34d399;
+  color: #6ee7b7;
+}
+
+:global(.dark) .actionButton.edit,
+:global(.dark) .planActionButton.edit {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+:global(.dark) .actionButton.edit:hover,
+:global(.dark) .planActionButton.edit:hover {
+  background: #1e3a8a;
+  border-color: #60a5fa;
+  color: #93c5fd;
+}
+
+:global(.dark) .actionButton.structure {
+  color: #c4b5fd;
+  border-color: #a78bfa;
+}
+
+:global(.dark) .actionButton.structure:hover {
+  background: #581c87;
+  border-color: #a78bfa;
+  color: #ddd6fe;
+}
+
+:global(.dark) .actionButton.delete,
+:global(.dark) .planActionButton.delete {
+  color: #f87171;
+  border-color: #f87171;
+}
+
+:global(.dark) .actionButton.delete:hover,
+:global(.dark) .planActionButton.delete:hover {
+  background: #7f1d1d;
+  border-color: #f87171;
+  color: #fca5a5;
+}
+
+:global(.dark) .organizacionLogo,
+:global(.dark) .orgIcon {
+  background: #334155;
+  color: #94a3b8;
+}
+
+:global(.dark) .emptyState h3 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .emptyState {
+  color: #94a3b8;
+}
+
+/* Formularios de modales - Tema oscuro */
+:global(.dark) .modalSectionTitle {
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+:global(.dark) .formLabel {
+  color: #f1f5f9;
+}
+
+:global(.dark) .formInput,
+:global(.dark) .formTextarea,
+:global(.dark) .formSelect {
+  background: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+:global(.dark) .formInput:focus,
+:global(.dark) .formTextarea:focus,
+:global(.dark) .formSelect:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+:global(.dark) .formInput::placeholder {
+  color: #64748b;
+}
+
+:global(.dark) .formHint {
+  color: #94a3b8;
+}
+
+:global(.dark) .modalViewSectionTitle {
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+:global(.dark) .modalViewLabel {
+  color: #94a3b8;
+}
+
+:global(.dark) .modalViewValue {
+  color: #f1f5f9;
+}
+
+:global(.dark) .modalViewItem {
+  border-bottom-color: #334155;
+}
+
+/* ====================================================================
+   ESTILOS ESPECÍFICOS PARA PLANES
+   ==================================================================== */
+
+.limiteUsuarios {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.precio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #059669;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.precio small {
+  color: #6b7280;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.duracion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.planType {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.planType.demo {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.planType.comercial {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.planType.enterprise {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.planType.estándar {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ====================================================================
+   ESTILOS ESPECÍFICOS PARA SUSCRIPCIONES
+   ==================================================================== */
+
+.vigenciaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fechas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fechaInicio,
+.fechaFin {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.fechaInicio svg,
+.fechaFin svg {
+  width: 12px;
+  height: 12px;
+}
+
+.diasRestantes {
+  margin-top: 4px;
+}
+
+.vigente {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #059669;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.porVencer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #d97706;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.vencida {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.vigente svg,
+.porVencer svg,
+.vencida svg {
+  width: 12px;
+  height: 12px;
+}
+
+.statusBadge.warning {
+  background: #fef3c7;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+/* Estilos para modo oscuro - suscripciones */
+:global(.dark) .fechaInicio,
+:global(.dark) .fechaFin {
+  color: #9ca3af;
+}
+
+:global(.dark) .vigente {
+  color: #10b981;
+}
+
+:global(.dark) .porVencer {
+  color: #f59e0b;
+}
+
+:global(.dark) .vencida {
+  color: #ef4444;
+}
+
+:global(.dark) .statusBadge.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+} 
+
+/* ====================================================================
+   LOGO PREVIEW STYLES
+   ==================================================================== */
+
+.logoPreview {
+  margin-top: 12px;
+  padding: 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.logoPreviewLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.logoImageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.logoImage {
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 8px;
+}
+
+.logoError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dc2626;
+  font-size: 13px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+}
+
+.logoError svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Dark mode styles for logo preview */
+:global(.dark) .logoPreview {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .logoPreviewLabel {
+  color: #d1d5db;
+}
+
+:global(.dark) .logoError {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #f87171;
+}
+
+/* ====================================================================
+   COLOR INPUT STYLES
+   ==================================================================== */
+
+.colorInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.colorInput {
+  width: 60px;
+  height: 40px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.colorInput:hover {
+  border-color: #6366f1;
+  transform: scale(1.05);
+}
+
+.colorInput:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.colorPreview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.colorValue {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background: #f9fafb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Dark mode styles for color inputs */
+:global(.dark) .colorInput {
+  border-color: #475569;
+}
+
+:global(.dark) .colorInput:hover {
+  border-color: #6366f1;
+}
+
+:global(.dark) .colorCircle {
+  border-color: #475569;
+}
+
+:global(.dark) .colorValue {
+  background: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+/* ====================================================================
+   CORPORATE INFO STYLES
+   ==================================================================== */
+
+.corporateInfo {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+.corporateInfoText {
+  color: #1e40af;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.corporateInfoText strong {
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* Dark mode styles for corporate info */
+:global(.dark) .corporateInfo {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  border-left-color: #3b82f6;
+}
+
+:global(.dark) .corporateInfoText {
+  color: #93c5fd;
+}
+
+:global(.dark) .corporateInfoText strong {
+  color: #bfdbfe;
+} 
+
+/* ====================================================================
+   DISTRIBUCIÓN EN DOS COLUMNAS
+   ==================================================================== */
+
+.modalFormTwoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.modalFormColumnLeft,
+.modalFormColumnRight {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 1024px) {
+  .modalFormTwoColumns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .modalFormColumnLeft,
+  .modalFormColumnRight {
+    gap: 16px;
+  }
+}

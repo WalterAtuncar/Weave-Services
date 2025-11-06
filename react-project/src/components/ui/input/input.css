@@ -1,0 +1,290 @@
+/* ✅ CORREGIDO: Estilos del input con alineación vertical center */
+.input-default {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  padding: 0 12px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  transition: all 0.2s ease-in-out;
+  outline: none !important;
+  display: flex !important;
+  align-items: center !important;
+  /* Los colores se manejan desde el componente con theme */
+}
+
+/* Tema claro */
+[data-theme="light"] .input-default,
+.input-default {
+  background: #FFFFFF !important;
+  border: 0.5px solid #6270A7 !important;
+  box-shadow: 1px 1px 2px 0.5px rgba(196, 186, 186, 0.09) !important;
+  color: #000000 !important;
+}
+
+/* Tema oscuro */
+[data-theme="dark"] .input-default {
+  background: #374151 !important;
+  border: 0.5px solid #6B7280 !important;
+  box-shadow: 1px 1px 2px 0.5px rgba(0, 0, 0, 0.2) !important;
+  color: #FFFFFF !important;
+}
+
+/* Input con ícono - padding extra a la izquierda */
+.input-with-icon {
+  padding-left: 36px !important;
+}
+
+/* Input con toggle de contraseña - padding extra a la derecha */
+.input-with-password-toggle {
+  padding-right: 36px !important;
+}
+
+/* Input con ícono izquierdo Y toggle derecho - padding en ambos lados */
+.input-with-icon.input-with-password-toggle {
+  padding-left: 36px !important;
+  padding-right: 36px !important;
+}
+
+/* Estados de focus - Tema claro */
+[data-theme="light"] .input-default:focus,
+.input-default:focus {
+  border-color: #414976 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(196, 186, 186, 0.09),
+    0 0 0 2px rgba(22, 24, 39, 0.1) !important;
+}
+
+/* Estados de focus - Tema oscuro */
+[data-theme="dark"] .input-default:focus {
+  border-color: #F3F4F8 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(0, 0, 0, 0.2),
+    0 0 0 2px rgba(243, 244, 248, 0.2) !important;
+}
+
+/* Estado hover - Tema claro */
+[data-theme="light"] .input-default:hover:not(:disabled),
+.input-default:hover:not(:disabled) {
+  border-color: #414976 !important;
+  box-shadow: 1px 1px 4px 1px rgba(196, 186, 186, 0.15) !important;
+}
+
+/* Estado hover - Tema oscuro */
+[data-theme="dark"] .input-default:hover:not(:disabled) {
+  border-color: #F3F4F8 !important;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Placeholder - Tema claro */
+[data-theme="light"] .input-default::placeholder,
+.input-default::placeholder {
+  color: #9CA3AF !important;
+  opacity: 1 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* Placeholder - Tema oscuro */
+[data-theme="dark"] .input-default::placeholder {
+  color: #9CA3AF !important;
+  opacity: 0.7 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* Estado disabled - Tema claro */
+[data-theme="light"] .input-default:disabled,
+.input-default:disabled {
+  background: #F9FAFB !important;
+  border-color: #D1D5DB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Estado disabled - Tema oscuro */
+[data-theme="dark"] .input-default:disabled {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Placeholder para input disabled en modo oscuro */
+[data-theme="dark"] .input-default:disabled::placeholder {
+  color: #6b7280 !important;
+  opacity: 0.7 !important;
+}
+
+/* Estado readOnly según diseño de Figma */
+.input-default:read-only {
+  background: #AFBBC9 !important;
+  border: 0.5px solid #EFF0F4 !important;
+  box-shadow: 1px 1px 2px 0.5px rgba(196, 186, 186, 0.09) !important;
+  color: white !important;
+  cursor: default;
+}
+
+.input-default:read-only:hover {
+  border-color: #EFF0F4 !important;
+  box-shadow: 1px 1px 2px 0.5px rgba(196, 186, 186, 0.09) !important;
+}
+
+.input-default:read-only:focus {
+  border-color: #EFF0F4 !important;
+  box-shadow: 1px 1px 2px 0.5px rgba(196, 186, 186, 0.09) !important;
+  outline: none !important;
+}
+
+.input-default:read-only::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Estados de validación */
+.input-error {
+  border-color: #EF4444 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(196, 186, 186, 0.09),
+    0 0 0 2px rgba(239, 68, 68, 0.1) !important;
+}
+
+.input-error:focus {
+  border-color: #EF4444 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(196, 186, 186, 0.09),
+    0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+.input-success {
+  border-color: #10B981 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(196, 186, 186, 0.09),
+    0 0 0 2px rgba(16, 185, 129, 0.1) !important;
+}
+
+.input-success:focus {
+  border-color: #10B981 !important;
+  box-shadow: 
+    1px 1px 2px 0.5px rgba(196, 186, 186, 0.09),
+    0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+} 
+
+/* === DateInput Styles === */
+.calendar-dropdown {
+  border: 1px solid;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 99999;
+  height: fit-content; /* Ajustar exactamente al contenido */
+  max-height: none; /* Sin restricción máxima */
+  overflow: visible; /* Permitir que todo el contenido sea visible */
+  margin: 0;
+  padding: 4px; /* Padding mínimo */
+}
+
+.calendar-dropdown.light-theme {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.calendar-dropdown.dark-theme {
+  background-color: #1e293b;
+  border-color: #475569;
+}
+
+.calendar-in-dropdown {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: fit-content; /* Ajustar exactamente al contenido */
+  min-width: 280px; /* Ancho mínimo optimizado */
+  max-width: 100%;
+  height: fit-content; /* Ajustar exactamente al contenido */
+  overflow: visible; /* Asegurar que todo el contenido sea visible */
+}
+
+/* ✅ CORREGIDO: Input con placeholder personalizado y alineación center */
+.input-default[data-placeholder="true"] {
+  color: #9ca3af;
+}
+
+.input-default[data-placeholder="true"] span {
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+}
+
+/* Estados de input deshabilitado y readonly */
+.input-disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+.input-readonly {
+  cursor: default !important;
+}
+
+/* Animaciones suaves para dropdown */
+.calendar-dropdown {
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ✅ CORREGIDO: Asegurar alineación vertical en todos los elementos de input */
+.input-default span,
+.input-default > span,
+.input-default input {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+}
+
+/* Corregir inputs regulares que pueden no tener la alineación */
+.input-default input {
+  display: block; /* Los inputs regulares deben ser block, no flex */
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendar-dropdown {
+    max-width: 95vw;
+    height: fit-content; /* Ajustar exactamente al contenido */
+    max-height: none; /* Sin restricción máxima */
+    overflow: visible; /* Permitir que todo el contenido sea visible */
+    padding: 3px; /* Padding reducido para tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-dropdown {
+    max-width: 98vw;
+    height: fit-content; /* Ajustar exactamente al contenido */
+    max-height: none; /* Sin restricción máxima */
+    overflow: visible; /* Permitir que todo el contenido sea visible */
+    padding: 2px; /* Padding mínimo para móvil */
+  }
+} 

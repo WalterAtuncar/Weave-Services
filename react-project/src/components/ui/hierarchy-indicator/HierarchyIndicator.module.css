@@ -1,0 +1,101 @@
+.hierarchyIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .iconContainer {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.md .iconContainer {
+  width: 2rem;
+  height: 2rem;
+}
+
+.lg .iconContainer {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Color variants */
+.blue {
+  background-color: rgb(var(--color-blue-50));
+  color: rgb(var(--color-blue-600));
+}
+
+.orange {
+  background-color: rgb(var(--color-orange-50));
+  color: rgb(var(--color-orange-600));
+}
+
+.green {
+  background-color: rgb(var(--color-green-50));
+  color: rgb(var(--color-green-600));
+}
+
+.purple {
+  background-color: rgb(var(--color-purple-50));
+  color: rgb(var(--color-purple-600));
+}
+
+/* Label container */
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--color-gray-600));
+  line-height: 1rem;
+}
+
+.dependencyName {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgb(var(--color-gray-500));
+  line-height: 1rem;
+}
+
+/* Dark theme */
+[data-theme="dark"] .blue {
+  background-color: rgb(var(--color-blue-900) / 0.3);
+  color: rgb(var(--color-blue-400));
+}
+
+[data-theme="dark"] .orange {
+  background-color: rgb(var(--color-orange-900) / 0.3);
+  color: rgb(var(--color-orange-400));
+}
+
+[data-theme="dark"] .green {
+  background-color: rgb(var(--color-green-900) / 0.3);
+  color: rgb(var(--color-green-400));
+}
+
+[data-theme="dark"] .purple {
+  background-color: rgb(var(--color-purple-900) / 0.3);
+  color: rgb(var(--color-purple-400));
+}
+
+[data-theme="dark"] .label {
+  color: rgb(var(--color-gray-300));
+}
+
+[data-theme="dark"] .dependencyName {
+  color: rgb(var(--color-gray-400));
+} 

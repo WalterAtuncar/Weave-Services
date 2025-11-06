@@ -1,0 +1,333 @@
+.documentCard {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(var(--color-white));
+  border: 1px solid rgb(var(--color-gray-200));
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  height: auto;
+  min-height: 280px;
+}
+
+.documentCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: rgb(var(--color-blue-300));
+}
+
+/* Header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  background-color: #414976;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.iconAndTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconAndTitle svg {
+  color: #ffffff;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.documentTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  word-break: break-word;
+}
+
+.documentCategory {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #e5e7eb;
+  line-height: 1;
+}
+
+.headerActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.headerStatusBadge {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+}
+
+.headerStatusBadge .indicator {
+  background-color: #10b981 !important;
+}
+
+/* Actions */
+.actionsContainer {
+  position: relative;
+}
+
+.actionsButton {
+  padding: 0.25rem !important;
+  min-width: auto !important;
+  width: 2rem;
+  height: 2rem;
+  color: #ffffff !important;
+}
+
+.actionsButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.actionsMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  min-width: 10rem;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  pointer-events: auto;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #374151;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.actionItem:hover {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.deleteAction {
+  color: #dc2626;
+}
+
+.deleteAction:hover {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Content */
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.documentMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metaLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--color-gray-500));
+  flex-shrink: 0;
+}
+
+.metaValue {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgb(var(--color-gray-700));
+  text-align: right;
+  word-break: break-word;
+}
+
+/* Footer */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(var(--color-gray-100));
+}
+
+.footerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footerLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--color-gray-500));
+}
+
+.footerBadge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Document Status */
+.documentStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Dark theme */
+[data-theme="dark"] .documentCard {
+  background-color: rgb(var(--surface-color));
+  border-color: rgb(var(--color-gray-700));
+}
+
+[data-theme="dark"] .documentCard:hover {
+  border-color: rgb(var(--color-blue-600));
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .cardHeader {
+  background-color: #3b82f6;
+}
+
+[data-theme="dark"] .headerStatusBadge {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .headerStatusBadge .indicator {
+  background-color: #34d399 !important;
+}
+
+[data-theme="dark"] .documentTitle {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .documentCategory {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .metaLabel {
+  color: rgb(var(--color-gray-400));
+}
+
+[data-theme="dark"] .metaValue {
+  color: rgb(var(--color-gray-300));
+}
+
+[data-theme="dark"] .footerLabel {
+  color: rgb(var(--color-gray-400));
+}
+
+[data-theme="dark"] .cardFooter {
+  border-color: rgb(var(--color-gray-700));
+}
+
+[data-theme="dark"] .actionsMenu {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+[data-theme="dark"] .actionItem {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .actionItem:hover {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .deleteAction {
+  color: #f87171;
+}
+
+[data-theme="dark"] .deleteAction:hover {
+  background-color: rgba(127, 29, 29, 0.3);
+  color: #fca5a5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .documentCard {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .documentTitle {
+    font-size: 1rem;
+  }
+
+  .metaItem {
+    font-size: 0.75rem;
+  }
+}

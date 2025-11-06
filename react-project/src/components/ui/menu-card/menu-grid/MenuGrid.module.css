@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  gap: 18px;
+}
+
+.cols1 { grid-template-columns: 1fr; }
+.cols2 { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+.cols3 { grid-template-columns: repeat(3, minmax(280px, 1fr)); }
+.cols4 { grid-template-columns: repeat(4, minmax(280px, 1fr)); }
+
+/* Responsive helpers */
+@media (max-width: 640px) {
+  .grid { gap: 12px; }
+  /* En móviles, siempre 1 columna */
+  .cols4, .cols3, .cols2 { grid-template-columns: 1fr; }
+}
+
+/* Ajustes responsivos progresivos */
+@media (max-width: 1280px) {
+  /* 4 columnas bajan a 3 en pantallas <= 1280px */
+  .cols4 { grid-template-columns: repeat(3, minmax(270px, 1fr)); }
+}
+
+@media (max-width: 1024px) {
+  /* 4 columnas bajan a 2; 3 columnas bajan a 2 en pantallas <= 1024px */
+  .cols4 { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+  .cols3 { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+
+/* Forzar 1 columna en anchos intermedios donde aún quedan 2 */
+@media (max-width: 900px) {
+  .cols4, .cols3, .cols2 { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  /* 2 columnas bajan a 1 en pantallas <= 768px */
+  .cols2 { grid-template-columns: 1fr; }
+}
+
+/* Encabezado de sección del menú */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  margin-bottom: 14px;
+}
+
+.sectionLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionTitle {
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 700;
+  margin: 0;
+}

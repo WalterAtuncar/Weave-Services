@@ -1,0 +1,159 @@
+/* =============================================
+   SYSTEM FORM WITH MODULES - ESTILOS MODERNOS LIMPIOS
+   ============================================= */
+
+.systemFormWithModules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.systemFormWithModules.compact {
+  gap: 8px;
+  max-width: 800px;
+}
+
+/* =============================================
+   SECCIÓN DE MÓDULOS
+   ============================================= */
+
+.modulesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modulesSeparator {
+  height: 1px;
+  border-top: 2px solid #e5e7eb;
+  margin: 4px 0;
+  opacity: 0.8;
+}
+
+/* =============================================
+   INFORMACIÓN DE MÓDULOS
+   ============================================= */
+
+.modulesInfo {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.modulesInfo p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+/* =============================================
+   BOTONES DE ACCIÓN FINALES (MODO CREATE)
+   ============================================= */
+
+.finalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.systemFormWithModules.compact .finalActions {
+  margin-top: 12px;
+  padding-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .finalActions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .finalActions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.modulesInfo strong {
+  color: #374151;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .systemFormWithModules {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .systemFormWithModules {
+    gap: 24px;
+  }
+
+  .systemFormWithModules.compact {
+    gap: 20px;
+  }
+
+  .modulesInfo {
+    padding: 16px;
+  }
+}
+
+/* =============================================
+   ANIMACIONES
+   ============================================= */
+
+.modulesSection {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   TEMA CLARO/OSCURO
+   ============================================= */
+
+[data-theme="dark"] .modulesSeparator {
+  border-color: #374151;
+}
+
+[data-theme="dark"] .modulesInfo {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .modulesInfo p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .modulesInfo strong {
+  color: #d1d5db;
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .modulesSection {
+    animation: none;
+  }
+}

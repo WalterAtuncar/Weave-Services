@@ -1,0 +1,963 @@
+/* ====================================================================
+   GOLDENBELT SIDEBAR PATTERN - ESTILO MODERNO
+   ==================================================================== */
+
+/* Variables CSS */
+:root {
+  --gb-primary: #414976;
+  --gb-primary-hover: #5a6396;
+  --gb-accent: #3b82f6;
+  --gb-accent-hover: #2563eb;
+  --gb-bg-light: #ffffff;
+  --gb-bg-secondary: #f8fafc;
+  --gb-text-primary: #1e293b;
+  --gb-text-secondary: #64748b;
+  --gb-text-light: #ffffff;
+  --gb-border: #e2e8f0;
+  --gb-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --gb-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --gb-radius: 8px;
+  --gb-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================================================
+   SAFARI FLICKER PREVENTION - TÉCNICAS DE OPTIMIZACIÓN 2025
+   ==================================================================== */
+
+/* Clase base para elementos que necesitan hardware acceleration */
+.safariOptimized {
+  /* Hardware acceleration - Fuerza el uso de GPU en Safari */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  
+  /* Will-change - Dice al navegador qué propiedades van a cambiar */
+  will-change: transform, opacity, background-color;
+  
+  /* Font smoothing - Previene problemas de anti-aliasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  
+  /* Backface visibility - Solo para casos extremos */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* Optimización de rendering */
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Clase específica para elementos con transiciones */
+.safariTransitionOptimized {
+  /* Heredar optimizaciones base */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, opacity, background-color, box-shadow;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Optimizaciones específicas para transiciones */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  
+  /* Prevenir parpadeo durante animaciones */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* Clase para elementos de texto que parpadean */
+.safariTextOptimized {
+  /* Hardware acceleration ligero para texto */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  
+  /* Font smoothing mejorado */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Z-index estratégico */
+  position: relative;
+  z-index: 10;
+  
+  /* Prevenir selección accidental */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ====================================================================
+   SIDEBAR PRINCIPAL (60px width - Solo iconos)
+   ==================================================================== */
+
+.goldenBeltSidebar {
+  width: 60px;
+  height: 100vh;
+  background: var(--gb-primary);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  
+  /* Aplicar optimizaciones Safari */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Logo del sidebar principal */
+.mainSidebarLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  
+  /* Optimización Safari */
+  transform: translateZ(0);
+  position: relative;
+  z-index: 11;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  
+  /* Optimización Safari para imágenes */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Navegación principal */
+.mainSidebarNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  gap: 4px;
+  
+  /* Optimización Safari */
+  transform: translateZ(0);
+  position: relative;
+  z-index: 10;
+}
+
+.mainSidebarItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  margin: 0 8px;
+  border-radius: var(--gb-radius);
+  cursor: pointer;
+  transition: var(--gb-transition);
+  color: rgba(255, 255, 255, 0.7);
+  
+  /* Aplicar optimizaciones Safari con transiciones */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, color, box-shadow;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* Z-index estratégico */
+  z-index: 12;
+}
+
+.mainSidebarItem:hover {
+  background: var(--gb-primary-hover);
+  color: var(--gb-text-light);
+  transform: translateX(2px) translateZ(0);
+  -webkit-transform: translate3d(2px, 0, 0);
+  
+  /* Optimización para hover */
+  will-change: transform, background-color, color;
+}
+
+.mainSidebarItem.active {
+  background: var(--gb-accent);
+  color: var(--gb-text-light);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  
+  /* Optimización para estado activo */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, box-shadow;
+  z-index: 13;
+}
+
+.mainSidebarItem.active .activeIndicator {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+  -webkit-transform: translate3d(0, -50%, 0);
+  width: 3px;
+  height: 24px;
+  background: var(--gb-accent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  
+  /* Optimización para indicador */
+  will-change: transform;
+  z-index: 14;
+}
+
+.mainSidebarIcon {
+  transition: var(--gb-transition);
+  
+  /* Optimización Safari para iconos */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, color;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hasNavigation {
+  position: relative;
+}
+
+.hasNavigation::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(16, 185, 129, 0.5);
+  
+  /* Optimización Safari para pseudo-elementos */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.navigationIndicator {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  opacity: 0.8;
+  
+  /* Optimización Safari */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+}
+
+/* ====================================================================
+   PANEL SECUNDARIO DESPLEGABLE (280-320px width)
+   ==================================================================== */
+
+.secondaryPanel {
+  position: fixed;
+  left: 60px;
+  top: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--gb-bg-light);
+  border-right: 1px solid var(--gb-border);
+  box-shadow: var(--gb-shadow);
+  z-index: 999;
+  transition: var(--gb-transition);
+  display: flex;
+  flex-direction: column;
+  
+  /* Optimizaciones Safari críticas para panel desplegable */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, opacity, visibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* Z-index estratégico muy alto */
+  z-index: 1001;
+}
+
+.secondaryPanel.open {
+  transform: translateX(0) translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  opacity: 1;
+  visibility: visible;
+  
+  /* Optimización para estado abierto */
+  will-change: transform, opacity, visibility;
+}
+
+.secondaryPanel.closed {
+  transform: translateX(-100%) translateZ(0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Optimización para estado cerrado */
+  will-change: transform, opacity, visibility;
+}
+
+/* Header del panel */
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--gb-border);
+  background: var(--gb-bg-secondary);
+  min-height: 60px;
+  
+  /* Optimización Safari para header */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  position: relative;
+  z-index: 1002;
+}
+
+.panelTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gb-text-primary);
+  margin: 0;
+  
+  /* Optimización Safari para texto de título */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  z-index: 1003;
+}
+
+.panelCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--gb-text-secondary);
+  transition: var(--gb-transition);
+  
+  /* Optimización Safari para botón */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, color;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  z-index: 1003;
+}
+
+.panelCloseButton:hover {
+  background: var(--gb-border);
+  color: var(--gb-text-primary);
+  
+  /* Optimización para hover */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, color;
+}
+
+/* Cuerpo del panel */
+.panelBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  
+  /* Optimización Safari para scroll */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, scroll-position;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 1001;
+}
+
+/* ====================================================================
+   CONTENIDO DEL PANEL
+   ==================================================================== */
+
+.panelContent {
+  padding: 20px;
+  
+  /* Optimización Safari para contenido */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  position: relative;
+  z-index: 1002;
+}
+
+.panelContent h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gb-text-primary);
+}
+
+.panelContent h4 {
+  margin: 16px 0 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gb-text-secondary);
+}
+
+.panelContent p {
+  margin: 0 0 16px 0;
+  color: var(--gb-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Sección de contenido */
+.contentSection {
+  margin-top: 20px;
+}
+
+.quickActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quickAction {
+  padding: 8px 12px;
+  border: 1px solid var(--gb-border);
+  background: var(--gb-bg-light);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--gb-text-primary);
+  transition: var(--gb-transition);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ====================================================================
+   CONTENIDO ESPECÍFICO - PROCESOS
+   ==================================================================== */
+
+.processList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.processItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-radius);
+  background: var(--gb-bg-light);
+  transition: var(--gb-transition);
+}
+
+.processItem:hover {
+  border-color: var(--gb-accent);
+  box-shadow: var(--gb-shadow-light);
+}
+
+.processIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--gb-bg-secondary);
+  border-radius: 6px;
+  color: var(--gb-accent);
+}
+
+.processInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.processName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gb-text-primary);
+}
+
+.processStatus {
+  font-size: 12px;
+  color: var(--gb-text-secondary);
+}
+
+.addButton {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed var(--gb-border);
+  background: transparent;
+  border-radius: var(--gb-radius);
+  color: var(--gb-text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--gb-transition);
+}
+
+.addButton:hover {
+  border-color: var(--gb-accent);
+  color: var(--gb-accent);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* ====================================================================
+   CONTENIDO ESPECÍFICO - ÁRBOL ORGANIZACIONAL
+   ==================================================================== */
+
+.organizationTree {
+  margin-top: 16px;
+}
+
+.treeItem {
+  margin-bottom: 8px;
+}
+
+.treeNode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--gb-transition);
+  font-size: 14px;
+  color: var(--gb-text-primary);
+}
+
+.treeNode:hover {
+  background: var(--gb-bg-secondary);
+}
+
+.treeIcon {
+  color: var(--gb-text-secondary);
+  transition: var(--gb-transition);
+}
+
+.nodeIcon {
+  color: var(--gb-accent);
+}
+
+.treeChildren {
+  margin-left: 24px;
+  border-left: 1px solid var(--gb-border);
+  padding-left: 16px;
+}
+
+/* ====================================================================
+   CONTENIDO ESPECÍFICO - DOCUMENTOS
+   ==================================================================== */
+
+.documentCategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--gb-border);
+  border-radius: var(--gb-radius);
+  background: var(--gb-bg-light);
+  cursor: pointer;
+  transition: var(--gb-transition);
+  text-align: center;
+}
+
+.category:hover {
+  border-color: var(--gb-accent);
+  box-shadow: var(--gb-shadow-light);
+}
+
+.categoryIcon {
+  color: var(--gb-accent);
+}
+
+.category span {
+  font-size: 13px;
+  color: var(--gb-text-primary);
+  font-weight: 500;
+}
+
+/* ====================================================================
+   CONTENIDO ESPECÍFICO - INDICADORES
+   ==================================================================== */
+
+.indicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background: var(--gb-bg-secondary);
+  border-radius: var(--gb-radius);
+  border: 1px solid var(--gb-border);
+}
+
+.indicatorValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gb-accent);
+}
+
+.indicatorLabel {
+  font-size: 12px;
+  color: var(--gb-text-secondary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ====================================================================
+   CONTENIDO ESPECÍFICO - CONFIGURACIÓN
+   ==================================================================== */
+
+.configSections {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  
+  /* Optimización Safari crítica para submenu */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  position: relative;
+  z-index: 1010;
+}
+
+.configSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--gb-radius);
+  cursor: pointer;
+  transition: var(--gb-transition);
+  background: var(--gb-bg-light);
+  border: 1px solid transparent;
+  
+  /* Optimizaciones Safari CRÍTICAS para elementos del submenu */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, border-color, box-shadow;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* Z-index MUY ALTO para submenu */
+  position: relative;
+  z-index: 1011;
+  
+  /* Optimización adicional para prevenir parpadeo */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.configSection:hover {
+  background: var(--gb-bg-secondary);
+  border-color: var(--gb-border);
+  box-shadow: var(--gb-shadow-light);
+  
+  /* Optimización Safari para hover en submenu */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, background-color, border-color, box-shadow;
+}
+
+.configSection:active {
+  transform: translateY(1px) translateZ(0);
+  -webkit-transform: translate3d(0, 1px, 0);
+}
+
+.sectionIcon {
+  /* Color dinámico aplicado via JS */
+  flex-shrink: 0;
+  
+  /* Optimización Safari para iconos de sección */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform, color;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sectionInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  
+  /* Optimización Safari para info de sección */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  position: relative;
+  z-index: 1012;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 500;
+  /* Color dinámico aplicado via JS */
+  
+  /* Optimización Safari para texto de título */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.sectionDesc {
+  font-size: 12px;
+  /* Color dinámico aplicado via JS */
+  line-height: 1.3;
+  
+  /* Optimización Safari para texto de descripción */
+  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ====================================================================
+   RESPONSIVE - MOBILE
+   ==================================================================== */
+
+.secondaryPanel.mobile {
+  left: 0;
+  width: 100vw;
+  z-index: 1100;
+}
+
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1099;
+  backdrop-filter: blur(2px);
+}
+
+/* ====================================================================
+   SCROLLBAR PERSONALIZADA
+   ==================================================================== */
+
+.panelBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panelBody::-webkit-scrollbar-track {
+  background: var(--gb-bg-secondary);
+}
+
+.panelBody::-webkit-scrollbar-thumb {
+  background: var(--gb-border);
+  border-radius: 3px;
+}
+
+.panelBody::-webkit-scrollbar-thumb:hover {
+  background: var(--gb-text-secondary);
+}
+
+/* ====================================================================
+   RESPONSIVE BREAKPOINTS
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .goldenBeltSidebar {
+    width: 50px;
+  }
+  
+  .mainSidebarItem {
+    height: 44px;
+    margin: 0 6px;
+  }
+  
+  .logoIcon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .secondaryPanel {
+    left: 50px;
+    width: calc(100vw - 50px);
+  }
+  
+  .secondaryPanel.mobile {
+    left: 0;
+    width: 100vw;
+  }
+  
+  .panelContent {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .goldenBeltSidebar {
+    width: 45px;
+  }
+  
+  .mainSidebarItem {
+    height: 40px;
+    margin: 0 4px;
+  }
+  
+  .mainSidebarIcon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .secondaryPanel {
+    left: 45px;
+    width: calc(100vw - 45px);
+  }
+}
+
+/* ====================================================================
+   TEMA OSCURO
+   ==================================================================== */
+
+:global(.dark) .goldenBeltSidebar {
+  background: #0f172a;
+  border-right-color: rgba(255, 255, 255, 0.05);
+}
+
+:global(.dark) .secondaryPanel {
+  background: #1e293b;
+  border-right-color: #334155;
+  color: #e2e8f0;
+}
+
+:global(.dark) .panelHeader {
+  background: #0f172a;
+  border-bottom-color: #334155;
+}
+
+/* Comentado para permitir colores dinámicos del tema */
+/*
+:global(.dark) .panelTitle {
+  color: #f1f5f9;
+}
+
+:global(.dark) .panelContent h3 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .processItem,
+:global(.dark) .category,
+:global(.dark) .configSection {
+  background: #334155;
+  border-color: #475569;
+}
+*/
+
+:global(.dark) .indicator {
+  background: #334155;
+  border-color: #475569;
+}
+
+/* ====================================================================
+   ANIMACIONES Y EFECTOS
+   ==================================================================== */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.secondaryPanel.open {
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.secondaryPanel.closed {
+  animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================================================
+   ESTADOS DE FOCUS PARA ACCESIBILIDAD
+   ==================================================================== */
+
+.mainSidebarItem:focus,
+.panelCloseButton:focus,
+.quickAction:focus,
+.processItem:focus,
+.category:focus,
+.configSection:focus {
+  outline: 2px solid var(--gb-accent);
+  outline-offset: 2px;
+}
+
+/* ====================================================================
+   UTILIDADES
+   ==================================================================== */
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+} 

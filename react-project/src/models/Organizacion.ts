@@ -1,0 +1,62 @@
+export interface Organizacion {
+  organizacionId: number;
+  codigo: string;
+  razonSocial: string;
+  nombreComercial: string;
+  tipoDocumento: string;
+  numeroDocumento: string;
+  sector: string;
+  industria: string;
+  pais: string;
+  departamento: string;
+  provincia: string;
+  distrito: string;
+  direccion: string;
+  telefono: string;
+  email: string;
+  paginaWeb: string;
+  mision: string;
+  vision: string;
+  valoresCorporativos: string;
+  fechaConstitucion: string;
+  fechaInicioOperaciones: string;
+  logoUrl: string;
+  colorPrimario: string;
+  colorSecundario: string;
+  version: string;
+  estado: 'ACTIVA' | 'INACTIVA' | 'SUSPENDIDA';
+  creadoPor: string;
+  fechaCreacion: string;
+  actualizadoPor: string;
+  fechaActualizacion: string;
+  registroEliminado: boolean;
+  suscripcionActualId: number | null;
+  estadoLicencia: 'ACTIVA' | 'VENCIDA' | 'SUSPENDIDA' | 'PRUEBA';
+}
+
+export interface OrganizacionFormData {
+  codigo: string;
+  razonSocial: string;
+  nombreComercial: string;
+  tipoDocumento: string;
+  numeroDocumento: string;
+  sector: string;
+  industria: string;
+  pais: string;
+  departamento: string;
+  provincia: string;
+  distrito: string;
+  direccion: string;
+  telefono: string;
+  email: string;
+  paginaWeb: string;
+  mision: string;
+  vision: string;
+  valoresCorporativos: string;
+  fechaConstitucion: string;
+  fechaInicioOperaciones: string;
+  logoUrl: string;
+  colorPrimario: string;
+  colorSecundario: string;
+  estado: 'ACTIVA' | 'INACTIVA' | 'SUSPENDIDA';
+} 

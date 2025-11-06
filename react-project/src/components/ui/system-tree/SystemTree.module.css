@@ -1,0 +1,661 @@
+/* =============================================
+   SYSTEM TREE - ESTILOS PRINCIPALES
+   ============================================= */
+
+.systemTree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+/* =============================================
+   HEADER DEL ÁRBOL
+   ============================================= */
+
+.treeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-color: var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-color);
+}
+
+.systemCount {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+}
+
+.dragHint {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.treeControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* =============================================
+   ESTADÍSTICAS POR NIVEL
+   ============================================= */
+
+.levelStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  border-color: var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.levelStat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-hover, var(--surface-color));
+}
+
+.levelLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.levelCounts {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+}
+
+/* =============================================
+   CONTENIDO DEL ÁRBOL
+   ============================================= */
+
+.treeContent {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+  max-height: 100%;
+}
+
+.treeNodes {
+  padding: var(--spacing-2);
+}
+
+/* Scrollbar styling */
+.treeContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.treeContent::-webkit-scrollbar-track {
+  background: var(--surface-color);
+}
+
+.treeContent::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.treeContent::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* =============================================
+   NODOS DEL ÁRBOL
+   ============================================= */
+
+.treeNode {
+  position: relative;
+  margin-bottom: var(--spacing-1);
+}
+
+/* Líneas de conexión */
+.nodeConnector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.verticalLine {
+  position: absolute;
+  left: 12px;
+  top: -20px;
+  width: 1px;
+  height: 40px;
+  border-left: 1px dashed;
+  border-color: var(--border-color);
+}
+
+.horizontalLine {
+  position: absolute;
+  left: 12px;
+  top: 20px;
+  width: 8px;
+  height: 1px;
+  border-top: 1px dashed;
+  border-color: var(--border-color);
+}
+
+/* Contenido del nodo */
+.nodeContent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.nodeContent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.nodeContent.selected {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* =============================================
+   DRAG & DROP STATES
+   ============================================= */
+
+.nodeContent[draggable="true"] {
+  cursor: move;
+}
+
+.nodeContent.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+  cursor: grabbing;
+  z-index: 1000;
+}
+
+.nodeContent.dropValid {
+  border-color: #10B981;
+  background-color: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.nodeContent.dropInvalid {
+  border-color: #EF4444;
+  background-color: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  cursor: grab;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dragHandle:hover {
+  background-color: var(--surface-hover, rgba(0, 0, 0, 0.05));
+  color: var(--primary-color);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+/* Drop indicators */
+.dropIndicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.dropIndicator.above {
+  top: -1px;
+}
+
+.dropIndicator.below {
+  bottom: -1px;
+}
+
+.dropIndicator.inside {
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  opacity: 0.6;
+}
+
+.invalidDropIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid #EF4444;
+  border-radius: var(--radius-sm);
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Botón de expansión */
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.expandIcon {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  min-width: auto !important;
+  height: auto !important;
+}
+
+.leafIndicator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+}
+
+/* Información del nodo */
+.nodeInfo {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.nodeHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.nodeName {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-color);
+  flex: 1;
+  min-width: 0;
+}
+
+.depthIndicator {
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  white-space: nowrap;
+}
+
+.nodeMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.systemCode {
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+}
+
+.childrenCount {
+  font-weight: var(--font-semibold);
+}
+
+.nodeDescription {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Acciones del nodo */
+.nodeActions {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nodeContent:hover .nodeActions {
+  opacity: 1;
+}
+
+/* Contenedor de hijos */
+.childrenContainer {
+  margin-top: var(--spacing-2);
+  padding-left: var(--spacing-6);
+  position: relative;
+}
+
+.childrenContainer::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  border-left: 1px dashed;
+  border-color: var(--border-color);
+  opacity: 0.5;
+}
+
+/* Estado vacío */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+}
+
+.emptyState small {
+  margin: 0;
+  font-size: var(--text-sm);
+  opacity: 0.7;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .levelStats {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .levelStat {
+    justify-content: space-between;
+  }
+
+  .nodeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .nodeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+}
+
+@media (max-width: 768px) {
+  .treeHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-3);
+  }
+
+  .titleSection {
+    justify-content: center;
+  }
+
+  .treeControls {
+    justify-content: center;
+  }
+
+  .levelStats {
+    display: none;
+  }
+
+  .levelStat {
+    padding: var(--spacing-2);
+  }
+
+  .nodeContent {
+    padding: var(--spacing-2);
+    gap: var(--spacing-2);
+  }
+
+  .nodeActions {
+    opacity: 1;
+  }
+
+  .childrenContainer {
+    padding-left: var(--spacing-4);
+  }
+
+  .dragHandle {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .treeControls {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .treeControls button {
+    width: 100%;
+  }
+
+  .nodeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nodeMeta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .levelCounts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .dragHint {
+    display: none;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITY & ANIMATION
+   ============================================= */
+
+.treeNode {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.childrenContainer {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+.systemTree :focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .treeNode {
+    animation: none;
+  }
+
+  .childrenContainer {
+    animation: none;
+  }
+
+  .nodeContent {
+    transition: none;
+  }
+
+  .nodeContent:hover {
+    transform: none;
+  }
+
+  .nodeContent.dragging {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .nodeContent,
+  .treeHeader,
+  .levelStats {
+    border-width: 2px;
+  }
+
+  .childrenContainer {
+    border-width: 2px;
+  }
+
+  .verticalLine,
+  .horizontalLine {
+    border-width: 2px;
+    opacity: 1;
+  }
+
+  .dropIndicator {
+    height: 3px;
+  }
+}
+
+/* =============================================
+   THEME OVERRIDES
+   ============================================= */
+
+.systemTree {
+  color-scheme: light dark;
+}
+
+[data-theme="dark"] .systemTree {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] .systemCode {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .dragHandle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .dropIndicator.inside {
+  background-color: rgba(16, 185, 129, 0.8);
+}
+
+/* Loading states */
+.systemTree[data-loading="true"] .treeContent {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.systemTree[data-loading="true"] .nodeContent {
+  cursor: not-allowed;
+} 

@@ -1,0 +1,44 @@
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 84px; /* 64px más a la izquierda que el theme toggle (20px + 44px + 20px margin) */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive: En mobile, usar posición relativa cuando está dentro del mobileHeader */
+@media (max-width: 768px) {
+  .logout-button {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-right: 12px; /* Espacio entre logout y theme toggle */
+  }
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25); /* Sombra rojiza en hover */
+  color: #dc3545 !important; /* Asegurar color rojo en hover */
+}
+
+.logout-button:active {
+  transform: scale(0.95);
+}
+
+.logout-button svg {
+  transition: transform 0.3s ease;
+}
+
+.logout-button:hover svg {
+  transform: rotate(-15deg); /* Rotación negativa para diferenciarlo del theme toggle */
+}

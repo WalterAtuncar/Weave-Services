@@ -1,0 +1,50 @@
+/* Botón atómico para acciones dentro del MenuCard */
+
+.btn {
+  width: 70%;
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.icon {
+  flex: 0 0 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon svg { width: 18px; height: 18px; }
+
+.label {
+  flex: 1 1 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.primary {}
+.outline {
+  background: transparent;
+}
+.ghost {
+  background: transparent;
+  border-style: dashed;
+}
+
+.small { font-size: 13px; }
+.medium { font-size: 14px; }
+.large { font-size: 15px; }

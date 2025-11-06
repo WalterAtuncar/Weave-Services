@@ -1,0 +1,1 @@
+export { GovernanceConfigurationModal } from './GovernanceConfigurationModal'; 

@@ -1,0 +1,362 @@
+/* Procesos Grid Container */
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Grid Layout */
+.procesosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Loading State */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loadingIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Error State */
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.errorIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-text-danger);
+  margin-bottom: 16px;
+}
+
+.errorTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.errorMessage {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.emptyMessage {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* Pagination */
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-radius: 0 0 12px 12px;
+}
+
+.paginationInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.resultsText {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pageSizeSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.pageSizeLabel {
+  font-weight: 500;
+  white-space: nowrap;
+  color: #6b7280;
+}
+
+.pageSizeSelect {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 80px;
+  transition: all 0.2s ease;
+  outline: none;
+  background: white;
+  color: #374151;
+}
+
+.pageSizeSelect:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  border-color: #9ca3af;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paginationButton {
+  min-width: 36px !important;
+  height: 36px !important;
+  padding: 0 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 8px;
+}
+
+.pageButton {
+  min-width: 36px;
+  height: 36px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  transform: translateY(-1px);
+}
+
+.pageButton.active {
+  background-color: #414976;
+  border-color: #414976;
+  color: white;
+}
+
+.pageButton.active:hover {
+  background-color: #353a61;
+  border-color: #353a61;
+  transform: translateY(-1px);
+}
+
+.ellipsis {
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+/* Dark Theme */
+[data-theme="dark"] .loadingIcon {
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .errorIcon {
+  color: var(--color-text-danger);
+}
+
+[data-theme="dark"] .emptyIcon {
+  color: var(--color-text-tertiary);
+}
+
+/* Dark theme - Estilo unificado con Grid */
+[data-theme="dark"] .paginationContainer {
+  background: #1e293b;
+  border-top-color: #334155;
+}
+
+[data-theme="dark"] .resultsText {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .pageSizeLabel {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .pageSizeSelect {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .pageSizeSelect:focus {
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.2);
+}
+
+[data-theme="dark"] .pageButton {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .pageButton:hover {
+  background-color: #1e293b;
+  border-color: #64748b;
+}
+
+[data-theme="dark"] .pageButton.active {
+  background-color: #414976;
+  border-color: #414976;
+  color: white;
+}
+
+[data-theme="dark"] .pageButton.active:hover {
+  background-color: #353a61;
+  border-color: #353a61;
+}
+
+[data-theme="dark"] .ellipsis {
+  color: #64748b;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .procesosGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .paginationContainer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .paginationInfo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .paginationControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .procesosGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .loadingState,
+  .errorState,
+  .emptyState {
+    padding: 2rem 1rem;
+    min-height: 200px;
+  }
+
+  .paginationContainer {
+    padding: 12px 16px;
+    flex-direction: column;
+  }
+
+  .paginationInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pageNumbers {
+    gap: 2px;
+  }
+
+  .pageButton,
+  .ellipsis {
+    min-width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .paginationButton {
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 8px !important;
+    font-size: 13px !important;
+  }
+}

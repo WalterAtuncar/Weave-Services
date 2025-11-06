@@ -1,0 +1,73 @@
+{
+  "id": 1754315202120,
+  "tipoOperacion": "EDITAR",
+  "entidadNombre": "cvb",
+  "entidadTipo": "SISTEMA",
+  "solicitadoPor": {
+    "id": 4,
+    "nombre": "Ana López",
+    "email": "ana.lopez@empresa.com",
+    "rol": "EJECUTOR",
+    "activo": true,
+    "fechaAsignacion": "2024-01-10T00:00:00Z",
+    "departamento": "Desarrollo",
+    "cargo": "Desarrolladora Frontend"
+  },
+  "estado": "PENDIENTE",
+  "fechaSolicitud": "2024-01-15T10:30:00Z",
+  "motivoSolicitud": "Actualización del sistema cvb - Nuevas funcionalidades de reportes",
+  "esBorrador": false,
+  "datosEntidad": {
+    "sistemaId": 1,
+    "nombreSistema": "cvb",
+    "cambiosSolicitados": [
+      "Módulo de reportes avanzados",
+      "Dashboard de métricas",
+      "Exportación de datos"
+    ],
+    "presupuestoAdicional": "$15,000 USD",
+    "tipoSistema": "APLICACION",
+    "familiaSistema": "GESTION",
+    "descripcion": "Sistema de gestión cvb"
+  },
+  "aprobaciones": [
+    {
+      "id": 1754315202121,
+      "solicitudId": 1754315202120,
+      "aprobador": {
+        "id": 2,
+        "nombre": "Antonio Torre",
+        "email": "antonio.torre@empresa.com",
+        "rol": "OWNER",
+        "activo": true,
+        "fechaAsignacion": "2024-01-01T00:00:00Z",
+        "departamento": "Ingeniería de Procesos",
+        "cargo": "Ingeniero de Procesos Senior"
+      },
+      "rolAprobador": "OWNER",
+      "estado": "APROBADO",
+      "fechaRespuesta": "2024-01-16T14:20:00Z",
+      "comentarios": "✅ Cambios para sistema cvb son necesarios. Aprobado técnicamente.",
+      "orden": 1
+    },
+    {
+      "id": 1754315202122,
+      "solicitudId": 1754315202120,
+      "aprobador": {
+        "id": 1,
+        "nombre": "Erick Machuca",
+        "email": "erick.machuca@empresa.com",
+        "rol": "SPONSOR",
+        "activo": true,
+        "fechaAsignacion": "2024-01-01T00:00:00Z",
+        "departamento": "Dirección General",
+        "cargo": "Director General"
+      },
+      "rolAprobador": "SPONSOR",
+      "estado": "PENDIENTE",
+      "fechaRespuesta": null,
+      "comentarios": null,
+      "orden": 2
+    }
+  ]
+} 

@@ -1,0 +1,480 @@
+/* =============================================
+   MODULE FORM - ESTILOS MODERNOS LIMPIOS
+   ============================================= */
+
+.moduleForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.moduleForm.compact {
+  gap: 16px;
+}
+
+/* =============================================
+   HEADER DEL COMPONENTE
+   ============================================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =============================================
+   LISTA DE MÓDULOS
+   ============================================= */
+
+.modulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moduleItem {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.moduleItem:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.addingModule {
+  border-color: #414976;
+  box-shadow: 0 0 0 1px rgba(65, 73, 118, 0.1);
+}
+
+/* =============================================
+   CONTENIDO DEL MÓDULO
+   ============================================= */
+
+.moduleContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.moduleInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.moduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.moduleName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+.moduleFunction {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6b7280;
+  word-break: break-word;
+}
+
+.moduleActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   FORMULARIO DE EDICIÓN INLINE
+   ============================================= */
+
+.moduleEditForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textArea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  color: #1f2937;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.textArea:focus {
+  border-color: #414976;
+  box-shadow: 0 0 0 3px rgba(65, 73, 118, 0.1);
+}
+
+.textArea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f9fafb;
+}
+
+.textArea::placeholder {
+  color: #9ca3af;
+}
+
+.fieldError {
+  font-size: 12px;
+  font-weight: 500;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* =============================================
+   ESTADO VACÍO
+   ============================================= */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.emptyState svg {
+  margin-bottom: 12px;
+  color: #9ca3af;
+}
+
+.emptyState p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+@media (max-width: 640px) {
+  .moduleForm {
+    gap: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .titleSection {
+    justify-content: center;
+  }
+
+  .moduleContent {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .moduleHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .moduleActions {
+    align-self: flex-end;
+  }
+
+  .formActions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .formActions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .emptyState {
+    padding: 32px 16px;
+  }
+}
+
+/* =============================================
+   ANIMACIONES
+   ============================================= */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.moduleItem {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* =============================================
+   ESTADOS DE LOADING
+   ============================================= */
+
+.moduleForm [data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+.moduleForm :focus-visible {
+  outline: 2px solid #414976;
+  outline-offset: 2px;
+}
+
+/* =============================================
+   TEMA CLARO/OSCURO
+   ============================================= */
+
+[data-theme="dark"] .moduleForm {
+  background-color: transparent;
+}
+
+[data-theme="dark"] .header {
+  border-color: #374151;
+}
+
+[data-theme="dark"] .title {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .count {
+  color: #d1d5db;
+  background-color: #374151;
+}
+
+[data-theme="dark"] .moduleItem {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .moduleItem:hover {
+  border-color: #4b5563;
+}
+
+[data-theme="dark"] .moduleName {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .moduleFunction {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .moduleEditForm {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .textArea {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .textArea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="dark"] .emptyState {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .emptyState svg {
+  color: #6b7280;
+}
+
+[data-theme="dark"] .emptyState p {
+  color: #9ca3af;
+}
+
+/* =============================================
+   ANIMACIONES REDUCIDAS
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .moduleItem {
+    animation: none;
+    transition: none;
+  }
+
+  .moduleItem:hover {
+    transform: none;
+  }
+
+  .textArea {
+    transition: none;
+  }
+}
+
+/* =============================================
+   CONTRASTE ALTO
+   ============================================= */
+
+@media (prefers-contrast: high) {
+  .moduleItem {
+    border-width: 2px;
+  }
+
+  .textArea {
+    border-width: 2px;
+  }
+
+  .emptyState {
+    border-width: 2px;
+  }
+}
+
+/* =============================================
+   ESTADOS ESPECÍFICOS
+   ============================================= */
+
+.moduleForm[data-submitting="true"] .moduleEditForm {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.moduleForm[data-submitting="true"] .moduleActions button:not([data-loading="true"]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* =============================================
+   ESTADOS DE CARGA Y ERROR DE MÓDULOS
+   ============================================= */
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.errorState {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* Tema oscuro */
+[data-theme="dark"] .loadingState {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .errorState {
+  background-color: #7f1d1d;
+  border-color: #991b1b;
+}
+
+[data-theme="dark"] .errorMessage {
+  color: #fca5a5;
+}
