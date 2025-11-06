@@ -1,0 +1,15 @@
+node_modules/
+dist/
+
+# Local environment files (do not commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Keep example env file tracked
+!.env.example
+
+# Logs and misc
+*.log
+*.tmp
+*.DS_Store
