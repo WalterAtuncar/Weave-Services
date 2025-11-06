@@ -1,0 +1,22 @@
+# Node / React
+node_modules/
+dist/
+*.log
+
+# Vite environment files (local only)
+.env
+.env.local
+.env.*.local
+
+# Keep example env tracked
+!.env.example
+
+# .NET build artifacts
+**/bin/
+**/obj/
+
+# IDE and tooling
+.vs/
+.vscode/
+*.tmp
+*.DS_Store
